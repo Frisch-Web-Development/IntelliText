@@ -6,3 +6,4 @@ Steps:
 2. Build a Basic Text Editor
 3. Login System / User DB and File Directory / Storage DB
 4. Annotations and Cards API
+5. Polish
