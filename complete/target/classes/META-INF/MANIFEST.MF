@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: gs-handling-form-submission
 Implementation-Version: 0.1.0
-Built-By: gkepe
+Built-By: Gregory
 Implementation-Vendor-Id: org.springframework
-Build-Jdk: 1.8.0_144
+Build-Jdk: 1.8.0_111
 Implementation-URL: http://projects.spring.io/spring-boot/gs-handling-
  form-submission/
 Created-By: Maven Integration for Eclipse

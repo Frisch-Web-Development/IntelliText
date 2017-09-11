@@ -15,6 +15,19 @@
 		function onSuccess(googleUser) {	
 			console.log('Logged in as: '
 					+ googleUser.getBasicProfile().getName());
+			var data = googleUser; 
+			$.ajax({
+				type : "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				url : "/login/finish",
+				data : JSON.stringify(data),
+			}).done(function(response) {
+				console.log("response:" + response);
+				$(location).attr('href', 'http://localhost:8080/home');  // don't forget to move this from local host! 
+			});
+
 		}
 		function onFailure(error) {
 			console.log(error);
