@@ -5,6 +5,8 @@ import com.main.entity.LoginEntityImpl;
 
 public interface PersistorDao {
 
-	void insertNewUser(LoginEntity login, String collection);	
+	void insertNewUser(LoginEntity login, String collection);
+
+	void insertGeneric(Object object, String collection);	
 	
 }

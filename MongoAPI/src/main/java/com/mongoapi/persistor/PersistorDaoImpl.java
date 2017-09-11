@@ -11,9 +11,16 @@ public class PersistorDaoImpl implements PersistorDao{
 	MongoTemplate mongo;
 	
 	@Override
+	public void insertGeneric(Object object, String collection) {
+		mongo.insert(object, collection);
+	}
+	
+	
+	@Override
 	public void insertNewUser(LoginEntity login, String collection) {
 		// TODO Auto-generated method stub
 		mongo.insert(login, collection);
 	}
 
+	
 }
