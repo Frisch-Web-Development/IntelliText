@@ -1,7 +1,4 @@
-package com.mongoapi.persistor;
-
-import com.main.entity.LoginEntity;
-import com.main.entity.LoginEntityImpl;
+package com.dataapi.dao;
 
 public interface PersistorDao {
 

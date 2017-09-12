@@ -1,10 +1,17 @@
-package com.mongoapi.persistor;
+package com.dataapi.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
+import org.springframework.test.context.ContextConfiguration;
 
-import com.main.entity.LoginEntity;
+import com.mongodb.MongoClient;
 
+@Repository
+@Component
 public class PersistorDaoImpl implements PersistorDao{
 
 	@Autowired

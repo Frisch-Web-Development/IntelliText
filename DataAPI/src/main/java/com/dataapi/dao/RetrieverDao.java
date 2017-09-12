@@ -1,6 +1,4 @@
-package com.mongoapi.retriever;
-
-import com.main.entity.UserEntity;
+package com.dataapi.dao;
 
 public interface RetrieverDao {
 

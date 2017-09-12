@@ -1,4 +1,4 @@
-package com.main.entity;
+package com.dataapi.dao;
 
 public interface LoginEntity {
 

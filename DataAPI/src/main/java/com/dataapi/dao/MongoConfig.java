@@ -1,4 +1,4 @@
-package com.mongoapi.config;
+package com.dataapi.dao;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,10 +17,8 @@ public class MongoConfig {
 	
 	@Bean
 	public MongoTemplate mongoTemplate() {
-		Mongo mongo = new MongoClient(host);
-		//MongoCredential credentials;
-		MongoDbFactory mongoFactory = new SimpleMongoDbFactory(mongo, dbName);
-		MongoTemplate mongoTemplate = new MongoTemplate(mongoFactory);
+		System.out.println("Mongo Configured");
+		MongoTemplate mongoTemplate = new MongoTemplate(new MongoClient("localhost:27017"),"IntelliText");
 		return mongoTemplate;
 	}
 		
