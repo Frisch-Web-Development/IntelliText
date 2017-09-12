@@ -14,8 +14,8 @@
 	<script>
 		function onSuccess(googleUser) {	
 			console.log('Logged in as: '
-					+ googleUser.getBasicProfile().getName());
-			var data = googleUser; 
+					+ googleUser.getBasicProfile().getEmail());
+			var data = [googleUser.getBasicProfile().getName(), googleUser.getBasicProfile().getEmail()]; 
 			$.ajax({
 				type : "POST",
 				headers: {
