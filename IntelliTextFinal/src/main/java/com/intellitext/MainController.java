@@ -10,19 +10,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-/*import com.dataapi.dao.PersistorDao;
+import com.dataapi.dao.PersistorDao;
+import com.dataapi.dao.PersistorDaoImpl;
 import com.dataapi.dao.RetrieverDao;
 import com.dataapi.dao.RetrieverDaoImpl;
-import com.dataapi.dao.UserEntity;*/
+import com.dataapi.dao.UserEntity;
 import com.intellitext.json.JsonTrans;
 
 @Controller
 public class MainController {
 
-//	@Autowired
-	//RetrieverDao retriever;
-	//@Autowired
-	//PersistorDao persistor;
+	@Autowired
+	RetrieverDao retriever;
+	@Autowired
+	PersistorDao persistor;
 
 	@GetMapping("/")
 	public String redirect(Model model) {
@@ -46,12 +47,12 @@ public class MainController {
 		String email = JsonTrans.cleanup(JsonTrans.getArrayValue(1, data));
 		System.out.println(email);
 		System.out.println(name);
-		/*if (!retriever.userExists(name)) {
+		if (!retriever.userExists(name)) {
 			System.out.println("User Exists");
 
 		} else {
 			persistor.insertNewUser(new UserEntity(name, email), "Users");
-		}*/
+		}
 		return new ResponseEntity<String>("All good", HttpStatus.OK);
 	}
 

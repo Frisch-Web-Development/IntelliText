@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>IntelliTextFinal</name>
-	<!-- <description>Mongo API</description> -->
+	<description>Mongo API</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -38,15 +38,18 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- <dependency>
+		<dependency>
 			<groupId>com.gdev</groupId>
 			<artifactId>DataAPI</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-		</dependency> -->
-
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
 		</dependency>
 	</dependencies>
 
