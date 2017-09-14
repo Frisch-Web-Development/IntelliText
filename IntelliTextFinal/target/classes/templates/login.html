@@ -9,37 +9,56 @@
 <script src="https://apis.google.com/js/client:platform.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-</meta>
+<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css"></link>
 <link rel="stylesheet" href="CSS/login.css"></link>
 
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<div id="top">
-	<h1 id="welcome">Welcome Please Sign in</h1>
-	<div id="my-signin2"></div>
-</div>
-</head>
-<body>
 
+</head>
+
+<body>
+	<div class="container" id="c1">
+		<div class="row">
+			<div class="col-sm-4" id="welcomeColumn" style = "text-align: left">
+				
+				<h1 id="welcome">Please sign in</h1>
+			</div>
+			<div class="col-sm-4" id="name"  style = "text-align: center">
+				</div>
+			<div class="col-sm-4" id="signInColumn"  style = "text-align: right">
+				<div id="my-signin2"></div>
+			</div>
+
+
+		</div>
+
+	</div>
 	<script>
-		function onSuccess(googleUser) {	
+		function onSuccess(googleUser) {
 			console.log('Logged in as: '
 					+ googleUser.getBasicProfile().getEmail());
-			var data = [googleUser.getBasicProfile().getName(), googleUser.getBasicProfile().getEmail()]; 
+			var data = [ googleUser.getBasicProfile().getName(),
+					googleUser.getBasicProfile().getEmail() ];
+
 			$.ajax({
 				type : "POST",
-				headers: {
-					"Content-Type": "application/json"
+				headers : {
+					"Content-Type" : "application/json"
 				},
 				url : "/login/finish",
 				data : JSON.stringify(data),
-			}).done(function(response) {
-				console.log("response:" + response);
-			//	$(location).attr('href', 'http://localhost:8080/home');  // don't forget to move this from local host! 
-			});
+			}).done(
+					function(response) {
+						console.log("response:" + response);
+						$('#welcome').text(
+								"Welcome, "
+										+ data[0].substring(0, data[0]
+												.indexOf(' ')));
+						//	$(location).attr('href', 'http://localhost:8080/home');  // don't forget to move this from local host! 
+					});
 
 		}
 		function onFailure(error) {
@@ -48,8 +67,8 @@
 		function renderButton() {
 			gapi.signin2.render('my-signin2', {
 				'scope' : 'profile email',
-				'width' : 240,
-				'height' : 25,
+				'width' : 250,
+				'height' : 50,
 				'longtitle' : true,
 				'theme' : 'dark',
 				'onsuccess' : onSuccess,
@@ -60,7 +79,46 @@
 
 	<script
 		src="https://apis.google.com/js/platform.js?onload=renderButton"></script>
+	<div class="jumbotron text-center" id="aboutUsJ">
+		<h1>Intelli Text</h1>
+		<h2>A Smart Text Editor</h2>
+		<p id="aboutUsP">Throughout many years of writing essays a person
+			might come to realize all word processors are all practically the
+			same. They all possess the same features and do the same thing. Not
+			this one. We have come up with ways to optimise the users performance
+			and make the drag of writing essays or notes that much easier.</p>
 
+	</div>
+	<div class="well well-lg" id="featuresB">
+		<h1 id="featuresW">Features</h1>
+	</div>
+
+	<div class="container" id="c2">
+		<div class="row" id="featuresR">
+			<div class="col-sm-4" id="Math">
+				<h3>Math</h3>
+				<p1>Annotations are super cool</p1>
+			</div>
+			<div class="col-sm-4" id="Grammer">
+				<h3>Grammar</h3>
+				<p1>Grammer stuff and things</p1>
+			</div>
+
+			<div class="col-sm-4" id="Research">
+				<h3>Research</h3>
+				<p1>Grammer stuff and things</p1>
+			</div>
+			<div class="col-sm-4" id="gap"></div>
+			<div class="col-sm-4" id="Annotations">
+				<h3>Annotations</h3>
+				<p1>Grammer stuff and things</p1>
+			</div>
+
+
+		</div>
+
+
+	</div>
 
 </body>
 </html>

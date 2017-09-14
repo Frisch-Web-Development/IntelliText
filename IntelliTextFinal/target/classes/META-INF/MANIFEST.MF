@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Implementation-Title: IntelliTextFinal
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: Gavri
+Built-By: gkepe
 Implementation-Vendor-Id: com.gdev
 Build-Jdk: 1.8.0_144
 Implementation-URL: http://projects.spring.io/spring-boot/IntelliTextF

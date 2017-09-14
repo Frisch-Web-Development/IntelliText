@@ -1,12 +1,85 @@
-@charset "ISO-8859-1";
-
-#welcome {
-	color : red;
-	display:inline-block; 
-}
-#my-singin2
+ #webName
 {
-	display:inline-block;
-	margin-right: 5%; 
+	color:white; 
+}
+ #welcome
+{
+	color:white; 
+}
+#name{
 	
+}
+
+
+
+
+#my-signin2
+{
+	float:right;
+	padding-top:1em;
+}
+#c1
+{
+	background: black;
+    width:100%;
+}
+#aboutUsP
+{
+	padding-right:20%;
+	padding-left:20%;
+	text-align:center;
+
+}
+#aboutUsJ
+{
+	/* background: orange; For browsers that do not support gradients
+    background: -webkit-linear-gradient(orange, yellow); For Safari 5.1 to 6.0
+    background: -o-linear-gradient(orange, yellow); For Opera 11.1 to 12.0
+    background: -moz-linear-gradient(orange, yellow); For Firefox 3.6 to 15
+    background: linear-gradient(orange, yellow); Standard syntax */
+}
+
+#featuresW
+{
+	font-size:7;
+	text-align:center;
+	font-family:impact;
+}
+#featuresB
+{
+	width:15%;
+	margin: 0 auto;
+
+}
+#Math
+{
+	border-style:inset; 
+	padding-bottom:.5em; 
+}
+#Annotations
+{
+	padding-bottom:.5em;
+	border-style:inset; 
+}
+#Grammer
+{
+	border-style:inset; 
+	padding-bottom:.5em;
+}
+#Research
+{
+	border-style:inset; 
+	padding-bottom:.5em;
+}
+
+
+h3
+{
+	font-family:impact; 
+}
+
+#c2
+{
+	padding-top:2em;
+	padding-bottom:5em;
 }
