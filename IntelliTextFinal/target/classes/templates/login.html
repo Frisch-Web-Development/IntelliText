@@ -20,15 +20,14 @@
 </head>
 
 <body>
-	<div class="container" id="c1">
+	<div class="container" id="c1" style="height: 50px">
 		<div class="row">
-			<div class="col-sm-4" id="welcomeColumn" style = "text-align: left">
-				
-				<h1 id="welcome">Please sign in</h1>
+			<div class="col-sm-4" id="welcomeColumn" style="text-align: left;">
+
+				<h4 id="welcome">Please sign in</h4>
 			</div>
-			<div class="col-sm-4" id="name"  style = "text-align: center">
-				</div>
-			<div class="col-sm-4" id="signInColumn"  style = "text-align: right">
+			<div class="col-sm-4" id="name" style="text-align: center"></div>
+			<div class="col-sm-4" id="signInColumn" style="text-align: right">
 				<div id="my-signin2"></div>
 			</div>
 
@@ -67,8 +66,8 @@
 		function renderButton() {
 			gapi.signin2.render('my-signin2', {
 				'scope' : 'profile email',
-				'width' : 250,
-				'height' : 50,
+				'width' : 200,
+				'height' : 30,
 				'longtitle' : true,
 				'theme' : 'dark',
 				'onsuccess' : onSuccess,
@@ -80,15 +79,15 @@
 	<script
 		src="https://apis.google.com/js/platform.js?onload=renderButton"></script>
 	<div class="jumbotron text-center" id="aboutUsJ">
-		<h1>Intelli Text</h1>
-		<h2>A Smart Text Editor</h2>
-		<p id="aboutUsP">Throughout many years of writing essays a person
-			might come to realize all word processors are all practically the
-			same. They all possess the same features and do the same thing. Not
-			this one. We have come up with ways to optimise the users performance
-			and make the drag of writing essays or notes that much easier.</p>
-
+		<h1 style="color: white; font-style: normal; font-size: 150px;">IntelliText</h1>
+		<h2 style="color: white;">A Smart Text Editor, 30 years ahead.</h2>
 	</div>
+	<p id="aboutUsP" style="color: grey; font-size: 2em">Throughout
+		many years of writing essays a person might come to realize all word
+		processors are all practically the same. They all possess the same
+		features and do the same thing. Not this one. We have come up with
+		ways to optimise the users performance and make the drag of writing
+		essays or notes that much easier.</p>
 	<div class="well well-lg" id="featuresB">
 		<h1 id="featuresW">Features</h1>
 	</div>
@@ -97,21 +96,37 @@
 		<div class="row" id="featuresR">
 			<div class="col-sm-4" id="Math">
 				<h3>Math</h3>
-				<p1>Annotations are super cool</p1>
+				<p1>When Listening in a math lecture, often students get lost
+				in the fundementals of what a teacher says. Now with this feature
+				you can type any function and we will graph it for you, as well as
+				solving equasions for you. This way we can all understand math class
+				a little better.</p1>
 			</div>
 			<div class="col-sm-4" id="Grammer">
 				<h3>Grammar</h3>
-				<p1>Grammer stuff and things</p1>
+				<p1>When Writting one might forget to find various information
+				to spice up your essay. This feature will read through your writting
+				and find information you might have left out. This way you can
+				consider including it in your paper.</p1>
 			</div>
 
 			<div class="col-sm-4" id="Research">
 				<h3>Research</h3>
-				<p1>Grammer stuff and things</p1>
+				<p1>When writting an essay you might forget about various
+				intracasies of the english langauges. This is where IntelliText
+				comes in, you can type normally and we will find words that are
+				repeated too often, mismatched tenses in a sentence, as well as
+				other usefull features. This way you can focus on the writting and
+				leave the Grammer to us.</p1>
 			</div>
 			<div class="col-sm-4" id="gap"></div>
 			<div class="col-sm-4" id="Annotations">
 				<h3>Annotations</h3>
-				<p1>Grammer stuff and things</p1>
+				<p1>When writting notes or an essay anotations could be really
+				usefull. You can set off sections in your paper to be titles, body
+				paragraphs, or any custom thing you can imagine. This way in your
+				notes or essays you can mark important points or confusing points to
+				go back to and re-read/write.</p1>
 			</div>
 
 
