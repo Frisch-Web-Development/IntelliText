@@ -61,37 +61,6 @@
     background: linear-gradient(orange, yellow); Standard syntax */
 	
 }
-
-#featuresW {
-	font-size: 7;
-	text-align: center;
-}
-
-#featuresB {
-	width: 15%;
-	margin: 0 auto;
-}
-
-#Math {
-	border-style: inset;
-	padding-bottom: .5em;
-}
-
-#Annotations {
-	padding-bottom: .5em;
-	border-style: inset;
-}
-
-#Grammer {
-	border-style: inset;
-	padding-bottom: .5em;
-}
-
-#Research {
-	border-style: inset;
-	padding-bottom: .5em;
-}
-
 h3 {
 	
 }
