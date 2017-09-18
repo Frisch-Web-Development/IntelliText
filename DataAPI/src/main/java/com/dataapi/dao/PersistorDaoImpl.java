@@ -12,22 +12,19 @@ import com.mongodb.MongoClient;
 
 @Repository
 @Component
-public class PersistorDaoImpl implements PersistorDao{
+public class PersistorDaoImpl implements PersistorDao {
 
 	@Autowired
 	MongoTemplate mongo;
-	
+
 	@Override
 	public void insertGeneric(Object object, String collection) {
 		mongo.insert(object, collection);
 	}
-	
-	
+
 	@Override
-	public void insertNewUser(LoginEntity login, String collection) {
-		// TODO Auto-generated method stub
-		mongo.insert(login, collection);
+	public void insertNewUser(UserEntity user, String collection) {
+		mongo.insert(user, collection);
 	}
 
-	
 }
