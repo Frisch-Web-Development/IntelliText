@@ -27,4 +27,20 @@ public class PersistorDaoImpl implements PersistorDao {
 		mongo.insert(user, collection);
 	}
 
+	@Override
+	public void insertNewFile(FileEntity file, UserEntity user) {
+		
+	}
+	
+	@Override
+	public void updateFile(FileEntity file, UserEntity user) {
+		
+	}
+	
+	@Override
+	public void deleteFile(FileEntity file, UserEntity user) {
+		
+	}
+	
+	
 }

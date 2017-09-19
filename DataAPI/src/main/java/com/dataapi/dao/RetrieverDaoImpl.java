@@ -24,5 +24,9 @@ public class RetrieverDaoImpl implements RetrieverDao{
 		return (UserEntity) mongo.findOne(new Query(Criteria.where("userName").is(name)), UserEntity.class) == null;
 	}
 	
+	@Override
+	public FileEntity getFile(FileEntity file, UserEntity user) {
+		return file;
+	}
 	
 }

@@ -22,7 +22,7 @@ public class DataApiApplicationTests {
 	
 	@Test
 	public void contextLoads() {
-		persistor.insertGeneric(new UserEntity("Name"), "test");
+		persistor.insertGeneric(new UserEntity("Name", "Email"), "test");
 	}
 
 	@Test

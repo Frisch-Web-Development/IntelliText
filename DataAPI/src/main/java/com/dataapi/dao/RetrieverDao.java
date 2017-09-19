@@ -6,4 +6,6 @@ public interface RetrieverDao {
 
 	boolean userExists(String name);
 
+	FileEntity getFile(FileEntity file, UserEntity user);
+
 }
