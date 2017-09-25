@@ -1,5 +1,7 @@
 package com.dataapi.dao;
 
+import java.util.List;
+
 public interface RetrieverDao {
 
 	UserEntity getUserByName(String name);
@@ -7,5 +9,7 @@ public interface RetrieverDao {
 	boolean userExists(String name);
 
 	FileEntity getFile(FileEntity file, UserEntity user);
+
+	List<FileEntity> getAllFiles(UserEntity user);
 
 }

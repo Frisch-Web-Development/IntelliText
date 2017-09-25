@@ -3,6 +3,9 @@ package com.dataapi.dao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
@@ -29,7 +32,12 @@ public class PersistorDaoImpl implements PersistorDao {
 
 	@Override
 	public void insertNewFile(FileEntity file, UserEntity user) {
-		
+		UserFileStorageEntity storage = mongo.findOne(
+				new Query(Criteria.where("email").is(user.getEmail())
+						.orOperator(Criteria.where("name").is(user.getUserName()))),
+				UserFileStorageEntity.class, "Files");
+		storage.addFile(file);
+		//Update update = new Update();
 	}
 	
 	@Override
