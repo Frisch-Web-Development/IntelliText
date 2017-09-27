@@ -13,3 +13,6 @@ First day at work. Started work with the google authentication API.
 
 ### 9/14
 Login system works, login page looks presentable.
+
+### 9/27
+Login system still works. Working on security and file system.
