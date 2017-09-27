@@ -1,0 +1,96 @@
+#webName {
+	color: white;
+}
+
+#welcome {
+	color: white;
+}
+
+#name {
+	
+}
+
+/* .jumbotron {
+	background: -webkit-linear-gradient(#b71c1c, #b71c1c);
+	background: -o-linear-gradient(#b71c1c, #b71c1c);
+	background: -moz-linear-gradient(#b71c1c, #b71c1c);
+	background: linear-gradient(#b71c1c, #b71c1c);
+	background : url(../images/index.png);
+}
+ */
+.bg {
+  background: url(../images/index.png);
+  filter: blur(3px);
+  -webkit-filter: blur(3px);
+  position: fixed;
+  width: 100%;
+  height: 550px; /*same height as jumbotron */
+  top:0;
+  left:0;
+  z-index: -1;
+}
+
+.jumbotron {
+  height: 550px;
+  color: white;
+  text-shadow: #444 0 1px 1px;
+  background:transparent;
+}
+
+#my-signin2 {
+	float: right;
+	padding-top: 1em;
+}
+
+#c1 {
+	background: black;
+	width: 100%;
+}
+
+#aboutUsP {
+	padding-right: 20%;
+	padding-left: 20%;
+	text-align: center;
+}
+
+#aboutUsJ {
+	/* background: orange; For browsers that do not support gradients
+    background: -webkit-linear-gradient(orange, yellow); For Safari 5.1 to 6.0
+    background: -o-linear-gradient(orange, yellow); For Opera 11.1 to 12.0
+    background: -moz-linear-gradient(orange, yellow); For Firefox 3.6 to 15
+    background: linear-gradient(orange, yellow); Standard syntax */
+	
+}
+h3 {
+	
+}
+
+#c2 {
+	padding-top: 2em;
+	padding-bottom: 5em;
+}
+
+#loginButton:hover {
+	cursor: pointer;
+}
+
+#loginButton {
+	display: block;
+
+}
+
+#buttonImage {
+	display: table-cell;
+	vertical-align: middle;
+	padding: 0.1em;
+	padding-right: 1em;
+}
+
+.navbar .navbar-nav {
+    display: inline-block;
+    float: none;
+}
+
+.navbar .navbar-collapse {
+    text-align: center;
+}

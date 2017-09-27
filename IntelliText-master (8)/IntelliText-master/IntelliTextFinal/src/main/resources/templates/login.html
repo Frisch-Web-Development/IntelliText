@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1" name="google-signin-client_id"
+	content="337875401568-h311m0lmtprrvgbak83kdgubqtn2siep.apps.googleusercontent.com" />
+
+<title>IntelliText</title>
+
+<script src="https://apis.google.com/js/client:platform.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css"></link>
+<link rel="stylesheet" href="CSS/login.css"></link>
+
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="JS/login.js"></script>
+</head>
+
+<body>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"
+		style="background-clip: black; min-height: 5em">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target=".navbar-ex1-collapse">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav navbar-brand navbar-left">
+				<li><a href="/home">My Files</a></li>
+				<li><a href="#">My Account</a></li>
+				<li><a href="#">GitHub</a></li>
+			</ul>
+			<div class="navbar-brand navbar-right">
+				<div id="gSignInWrapper"
+					style="min-height: 100%; display: inline-block; vertical-align: middle;">
+					<div id="loginButton" class="customGPlusSignIn"
+						style="background-color: #4285f4; box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .25);">
+						<div style="height: 95%; width: 95%; display: table;">
+							<span id="buttonImage"> <img
+								src="https://maxcdn.icons8.com/Share/icon/Logos//google_logo1600.png"
+								style="width: 2em; width: 2em; vertical-align: middle; background-color: white"></img>
+							</span> <span id="buttonText"
+								style="display: table-cell; vertical-align: middle; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: white; padding-right: 1em; white-space: nowrap;">Login</span>
+
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<script>
+		var googleUser = {};
+		gapi
+				.load(
+						'auth2',
+						function() {
+							// Retrieve the singleton for the GoogleAuth library and set up the client.
+							auth2 = gapi.auth2
+									.init({
+										client_id : '337875401568-h311m0lmtprrvgbak83kdgubqtn2siep.apps.googleusercontent.com',
+										cookiepolicy : 'single_host_origin',
+									// Request scopes in addition to 'profile' and 'email'
+									//scope: 'additional_scope'
+									});
+							attachSignin(document.getElementById('loginButton'));
+						});
+
+		function attachSignin(element) {
+			console.log(element.id);
+			auth2.attachClickHandler(element, {}, function(googleUser) {
+				document.getElementById('buttonText').innerText = "Welcome, "
+						+ googleUser.getBasicProfile().getName();
+				
+				var data = [ googleUser.getBasicProfile().getName(),
+					googleUser.getBasicProfile().getEmail() ];
+				
+				
+				$.ajax({
+					type : "POST",
+					headers : {
+						"Content-Type" : "application/json"
+					},
+					url : "/login/finish",
+					data : JSON.stringify(data),
+				}).done(
+						function(response) {
+							console.log("response:" + response);
+							$('#welcome').text(
+									"Welcome, "
+											+ data[0].substring(0, data[0]
+													.indexOf(' ')));
+							//	$(location).attr('href', 'http://localhost:8080/home');  // don't forget to move this from local host! 
+						});
+			}, function(error) {
+				alert(JSON.stringify(error, undefined, 2));
+			});
+		}
+
+		function onSuccess(googleUser) {
+			console.log('Logged in as: '
+					+ googleUser.getBasicProfile().getEmail());
+			var data = [ googleUser.getBasicProfile().getName(),
+					googleUser.getBasicProfile().getEmail() ];
+
+			$.ajax({
+				type : "POST",
+				headers : {
+					"Content-Type" : "application/json"
+				},
+				url : "/login/finish",
+				data : JSON.stringify(data),
+			}).done(
+					function(response) {
+						console.log("response:" + response);
+						$('#welcome').text(
+								"Welcome, "
+										+ data[0].substring(0, data[0]
+												.indexOf(' ')));
+						//	$(location).attr('href', 'http://localhost:8080/home');  // don't forget to move this from local host! 
+					});
+
+		}
+		function onFailure(error) {
+			console.log(error);
+		}
+		function renderButton() {
+			gapi.signin2.render('my-signin2', {
+				'scope' : 'profile email',
+				'width' : 200,
+				'height' : 30,
+				'longtitle' : true,
+				'theme' : 'dark',
+				'onsuccess' : onSuccess,
+				'onfailure' : onFailure
+			});
+		}
+	</script>
+
+	<script
+		src="https://apis.google.com/js/platform.js?onload=renderButton"></script>
+	<div class="bg"></div>
+	<div class="jumbotron text-center" id="aboutUsJ">
+		<h1
+			style="color: white; font-style: normal; font-size: 150px; padding-top: 0.75em">IntelliText</h1>
+		<h2 style="color: white;">A Smart Text Editor, 30 years ahead.</h2>
+	</div>
+	<div class = "container" style = "background-color: white; width : 100%">
+	<div class = "row">
+	<p id="aboutUsP" style="color: grey; font-size: 2em">Throughout
+		many years of writing essays a person might come to realize all word
+		processors are all practically the same. They all possess the same
+		features and do the same thing. Not this one. We have come up with
+		ways to optimise the users performance and make the drag of writing
+		essays or notes that much easier.</p>
+	<div class="well well-lg" id="featuresB" style = "text-align: center;">
+		<h1 id="featuresW">What makes IntelliText Special</h1>
+	</div>
+
+	<div class="container" id="c2">
+		<div class="row" id="featuresR">
+			<div class="col-sm-3" id="Math" style = "text-align: center;">
+						<img src = "/images/004-calculator.png" style = "height : 5em; width : auto;"></img>
+			
+				<h3>Math</h3>
+				<p>When Listening in a math lecture, often students get lost
+				in the fundementals of what a teacher says. Now with this feature
+				you can type any function and we will graph it for you, as well as
+				solving equasions for you. This way we can all understand math class
+				a little better.</p>
+			</div>
+			<div class="col-sm-3" id="Grammer" style = "text-align: center;">
+						<img src = "/images/003-typography.png" style = "height : 5em; width : auto;"></img>
+			
+				<h3>Grammar</h3>
+				<p>When Writting one might forget to find various information
+				to spice up your essay. This feature will read through your writting
+				and find information you might have left out. This way you can
+				consider including it in your paper.</p>
+			</div>
+
+			<div class="col-sm-3" id="Research" style = "text-align: center;">
+						<img src = "/images/002-file.png" style = "height : 5em; width : auto;"></img>
+			
+				<h3>Research</h3>
+				<p>When writting an essay you might forget about various
+				intracasies of the english langauges. This is where IntelliText
+				comes in, you can type normally and we will find words that are
+				repeated too often, mismatched tenses in a sentence, as well as
+				other usefull features. This way you can focus on the writting and
+				leave the Grammer to us.</p>
+			</div>
+			<div class="col-sm-3" id="Annotations" style = "text-align: center;">
+			<img src = "/images/001-at-symbol.png" style = "height : 5em; width : auto;"></img>
+				<h3>Annotations</h3>
+				<p>When writting notes or an essay anotations could be really
+				usefull. You can set off sections in your paper to be titles, body
+				paragraphs, or any custom thing you can imagine. This way in your
+				notes or essays you can mark important points or confusing points to
+				go back to and re-read/write.</p>
+			</div>
+
+
+		</div>
+
+</div>
+</div>
+	</div>
+
+</body>
+</html>
