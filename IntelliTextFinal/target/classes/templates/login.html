@@ -36,7 +36,7 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav navbar-brand navbar-left">
-				<li><a href="#">My Files</a></li>
+				<li><a href="/home">My Files</a></li>
 				<li><a href="#">My Account</a></li>
 				<li><a href="#">GitHub</a></li>
 			</ul>
@@ -83,6 +83,27 @@
 			auth2.attachClickHandler(element, {}, function(googleUser) {
 				document.getElementById('buttonText').innerText = "Welcome, "
 						+ googleUser.getBasicProfile().getName();
+				
+				var data = [ googleUser.getBasicProfile().getName(),
+					googleUser.getBasicProfile().getEmail() ];
+				
+				
+				$.ajax({
+					type : "POST",
+					headers : {
+						"Content-Type" : "application/json"
+					},
+					url : "/login/finish",
+					data : JSON.stringify(data),
+				}).done(
+						function(response) {
+							console.log("response:" + response);
+							$('#welcome').text(
+									"Welcome, "
+											+ data[0].substring(0, data[0]
+													.indexOf(' ')));
+							//	$(location).attr('href', 'http://localhost:8080/home');  // don't forget to move this from local host! 
+						});
 			}, function(error) {
 				alert(JSON.stringify(error, undefined, 2));
 			});

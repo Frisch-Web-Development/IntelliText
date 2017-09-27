@@ -1,14 +1,27 @@
 package com.intellitext;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+//import org.springframework.security.core.Authentication;
+//import org.springframework.security.core.context.SecurityContextHolder;
+//import org.springframework.security.core.*;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import java.security.Principal;
+import java.util.Collection;
+import java.util.Locale; 
+import javax.faces.context.ExternalContext;
 
 import com.dataapi.dao.PersistorDao;
 import com.dataapi.dao.PersistorDaoImpl;
@@ -18,8 +31,8 @@ import com.dataapi.dao.UserEntity;
 import com.intellitext.json.JsonTrans;
 
 @Controller
-public class MainController {
-
+public class MainController  {
+	
 	@Autowired
 	RetrieverDao retriever;
 	@Autowired
@@ -36,24 +49,35 @@ public class MainController {
 	}
 
 	@GetMapping("/home")
-	public String getHome(Model model) {
+	public String getHome(Model model, Principal prince) {
+		System.out.println(prince);
 		return "home";
 	}
-
+/*
 	@RequestMapping(value = "/login/finish", method = RequestMethod.POST)
-	public ResponseEntity<String> loginHandeler(@RequestBody String data) {
+	public ResponseEntity<String> loginHandeler(@RequestBody String data ,ExternalContext externalContext) {
 		System.out.println(data);
 		String name = JsonTrans.cleanup(JsonTrans.getArrayValue(0, data));
 		String email = JsonTrans.cleanup(JsonTrans.getArrayValue(1, data));
 		System.out.println(email);
 		System.out.println(name);
+		UserEntity user = new UserEntity(name,email);
+		//UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(email,name,  AuthorityUtils.createAuthorityList("ROLE_USER")); 
+		//HttpServletRequest a = (HttpServletRequest) externalContext.getRequest();
+		//token.setDetails(new WebAuthenticationDetails(a));
+		//Authentication auth = (Authentication)token;  
+		//SecurityContextHolder.getContext().setAuthentication(auth);
+		
+		
 		if (!retriever.userExists(name)) {
 			System.out.println("User Exists");
 
 		} else {
-			persistor.insertNewUser(new UserEntity(name, email), "Users");
+			persistor.insertNewUser(user, "Users");
 		}
-		return new ResponseEntity<String>("All good", HttpStatus.OK);
-	}
+		retu\rn new ResponseEntity<String>("All good", HttpStatus.OK);
+	}*/
+
+	
 
 }
