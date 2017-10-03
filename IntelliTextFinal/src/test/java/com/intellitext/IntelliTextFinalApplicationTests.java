@@ -11,6 +11,7 @@ public class IntelliTextFinalApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		System.out.print("Ok");
 	}
 
 }

@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.RequestContext;
 import org.springframework.webflow.context.ExternalContext;
 import org.springframework.webflow.execution.RequestContextHolder;
@@ -54,10 +55,11 @@ public class MainController  {
 	}
 
 	@GetMapping("/login")
-	public String getLogin(Model model) {
+	public String getLogin(Model model, Principal principal) {
+		System.out.println(principal == null);
 		return "login";
 	}
-
+	
 	@GetMapping("/home")
 	public String getHome(Model model) {
 		 SecurityContext context = SecurityContextHolder.getContext();
@@ -66,7 +68,7 @@ public class MainController  {
 	      System.out.println( authentication ) ;
 		return "home";
 	}
-
+	
 	@RequestMapping(value = "/login/finish", method = RequestMethod.POST)
 	public ResponseEntity<String> loginHandeler(@RequestBody String data) {
 		System.out.println(data);
@@ -78,13 +80,12 @@ public class MainController  {
 		UserEntity user = new UserEntity(name,email); 
 		
 		ExternalContext externalContext=RequestContextHolder.getRequestContext().getExternalContext();
+		System.out.println(externalContext == null);
 		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(email,name,  AuthorityUtils.createAuthorityList("ROLE_USER")); 
 		HttpServletRequest a = (HttpServletRequest) externalContext.getNativeRequest();
 		token.setDetails(new WebAuthenticationDetails(a));
 		Authentication auth = (Authentication)(token);  
 		SecurityContextHolder.getContext().setAuthentication(auth);
-
-		
 		System.out.println(SecurityContextHolder.getContext().getAuthentication());
 		
 		if (!retriever.userExists(name)) {
