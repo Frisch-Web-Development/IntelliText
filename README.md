@@ -16,3 +16,6 @@ Login system works, login page looks presentable.
 
 ### 9/27
 Login system still works. Working on security and file system.
+
+### 10/3
+Use an AJAX Post request with Google's tokenID to send to the Controller (Request Mapping) and create the principal object (TODO)
