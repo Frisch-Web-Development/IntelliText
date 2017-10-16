@@ -1,6 +1,7 @@
 package com.intellitext;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 //import org.apache.catalina.authenticator.Constants;
@@ -30,7 +31,7 @@ import org.springframework.webflow.execution.RequestContextHolder;
 
 import java.security.Principal;
 import java.util.Collection;
-import java.util.Locale; 
+import java.util.Locale;
 //import javax.faces.context.ExternalContext;
 
 import com.dataapi.dao.PersistorDao;
@@ -40,10 +41,9 @@ import com.dataapi.dao.RetrieverDaoImpl;
 import com.dataapi.dao.UserEntity;
 import com.intellitext.json.JsonTrans;
 
-
 @Controller
-public class MainController  {
-	
+public class MainController {
+
 	@Autowired
 	RetrieverDao retriever;
 	@Autowired
@@ -59,16 +59,16 @@ public class MainController  {
 		System.out.println(principal == null);
 		return "login";
 	}
-	
+
 	@GetMapping("/home")
 	public String getHome(Model model) {
-		 SecurityContext context = SecurityContextHolder.getContext();
-	      Authentication authentication = context.getAuthentication();
-	      System.out.println( context ) ;
-	      System.out.println( authentication ) ;
+		SecurityContext context = SecurityContextHolder.getContext();
+		Authentication authentication = context.getAuthentication();
+		System.out.println(context);
+		System.out.println(authentication);
 		return "home";
 	}
-	
+
 	@RequestMapping(value = "/login/finish", method = RequestMethod.POST)
 	public ResponseEntity<String> loginHandeler(@RequestBody String data) {
 		System.out.println(data);
@@ -77,17 +77,18 @@ public class MainController  {
 
 		System.out.println(email);
 		System.out.println(name);
-		UserEntity user = new UserEntity(name,email); 
-		
-		ExternalContext externalContext=RequestContextHolder.getRequestContext().getExternalContext();
+		UserEntity user = new UserEntity(name, email);
+		System.out.println("Null Error: " + RequestContextHolder.getRequestContext().getExternalContext() == null);
+		ExternalContext externalContext = RequestContextHolder.getRequestContext().getExternalContext();
 		System.out.println(externalContext == null);
-		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(email,name,  AuthorityUtils.createAuthorityList("ROLE_USER")); 
+		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(email, name,
+				AuthorityUtils.createAuthorityList("ROLE_USER"));
 		HttpServletRequest a = (HttpServletRequest) externalContext.getNativeRequest();
 		token.setDetails(new WebAuthenticationDetails(a));
-		Authentication auth = (Authentication)(token);  
+		Authentication auth = (Authentication) (token);
 		SecurityContextHolder.getContext().setAuthentication(auth);
 		System.out.println(SecurityContextHolder.getContext().getAuthentication());
-		
+
 		if (!retriever.userExists(name)) {
 			System.out.println("User Exists");
 
@@ -96,7 +97,5 @@ public class MainController  {
 		}
 		return new ResponseEntity<String>("All good", HttpStatus.OK);
 	}
-
-	
 
 }
