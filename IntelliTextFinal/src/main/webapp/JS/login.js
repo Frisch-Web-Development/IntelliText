@@ -38,7 +38,7 @@ function attachSignin(element) {
 			headers : {
 				"Content-Type" : "application/json"
 			},
-			url : "/login/finish",
+			url : "/user",
 			data : JSON.stringify(data),
 		}).done(
 				function(response) {
