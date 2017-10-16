@@ -37,7 +37,6 @@ public class PersistorDaoImpl implements PersistorDao {
 						.orOperator(Criteria.where("name").is(user.getUserName()))),
 				UserFileStorageEntity.class, "Files");
 		storage.addFile(file);
-		//Update update = new Update();
 	}
 	
 	@Override
@@ -47,7 +46,7 @@ public class PersistorDaoImpl implements PersistorDao {
 	
 	@Override
 	public void deleteFile(FileEntity file, UserEntity user) {
-		
+		//move file for 30 days
 	}
 	
 	

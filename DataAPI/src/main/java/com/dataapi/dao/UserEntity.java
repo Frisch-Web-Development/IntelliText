@@ -1,8 +1,13 @@
 package com.dataapi.dao;
 
+import com.dataapi.JsonViews;
+import com.fasterxml.jackson.annotation.JsonView;
+
 public class UserEntity {
 
+	@JsonView(value = {JsonViews.UserEntity.class})
 	String userName;
+	@JsonView(value = {JsonViews.UserEntity.class})
 	String email;
 
 	public UserEntity(String userName, String email) {

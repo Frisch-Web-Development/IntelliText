@@ -7,9 +7,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.dataapi.dao.PersistorDao;
-import com.dataapi.dao.PersistorDaoImpl;
 import com.dataapi.dao.RetrieverDao;
+import com.dataapi.dao.RtfParserDao;
+import com.dataapi.dao.RtfParserDaoImpl;
 import com.dataapi.dao.UserEntity;
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -28,5 +30,11 @@ public class DataApiApplicationTests {
 	@Test
 	public void contextLoads2() {
 		System.out.println(retriever.userExists("Name"));
+	}
+
+	@Test
+	public void rtfTesting() {
+		RtfParserDao rtf = new RtfParserDaoImpl();
+		
 	}
 }

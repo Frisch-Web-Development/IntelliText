@@ -44,6 +44,8 @@ import com.intellitext.json.JsonTrans;
 @Controller
 public class MainController {
 
+	// TODO: Use this class for initial web site visits
+	
 	@Autowired
 	RetrieverDao retriever;
 	@Autowired
@@ -51,51 +53,16 @@ public class MainController {
 
 	@GetMapping("/")
 	public String redirect(Model model) {
-		return "redirect:/home";
+		return "redirect:/login";
 	}
 
 	@GetMapping("/login")
-	public String getLogin(Model model, Principal principal) {
-		System.out.println(principal == null);
+	public String getLogin(Model model) {
 		return "login";
 	}
 
 	@GetMapping("/home")
 	public String getHome(Model model) {
-		SecurityContext context = SecurityContextHolder.getContext();
-		Authentication authentication = context.getAuthentication();
-		System.out.println(context);
-		System.out.println(authentication);
 		return "home";
 	}
-
-	@RequestMapping(value = "/login/finish", method = RequestMethod.POST)
-	public ResponseEntity<String> loginHandeler(@RequestBody String data) {
-		System.out.println(data);
-		String name = JsonTrans.cleanup(JsonTrans.getArrayValue(0, data));
-		String email = JsonTrans.cleanup(JsonTrans.getArrayValue(1, data));
-
-		System.out.println(email);
-		System.out.println(name);
-		UserEntity user = new UserEntity(name, email);
-		System.out.println("Null Error: " + RequestContextHolder.getRequestContext().getExternalContext() == null);
-		ExternalContext externalContext = RequestContextHolder.getRequestContext().getExternalContext();
-		System.out.println(externalContext == null);
-		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(email, name,
-				AuthorityUtils.createAuthorityList("ROLE_USER"));
-		HttpServletRequest a = (HttpServletRequest) externalContext.getNativeRequest();
-		token.setDetails(new WebAuthenticationDetails(a));
-		Authentication auth = (Authentication) (token);
-		SecurityContextHolder.getContext().setAuthentication(auth);
-		System.out.println(SecurityContextHolder.getContext().getAuthentication());
-
-		if (!retriever.userExists(name)) {
-			System.out.println("User Exists");
-
-		} else {
-			persistor.insertNewUser(user, "Users");
-		}
-		return new ResponseEntity<String>("All good", HttpStatus.OK);
-	}
-
 }
