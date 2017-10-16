@@ -60,7 +60,7 @@ function onSuccess(googleUser) {
 	var data = [ googleUser.getBasicProfile().getName(),
 			googleUser.getBasicProfile().getEmail() ];
 
-	/* $.ajax({
+	 $.ajax({
 		type : "POST",
 		headers : {
 			"Content-Type" : "application/json"
@@ -75,7 +75,7 @@ function onSuccess(googleUser) {
 								+ data[0].substring(0, data[0]
 										.indexOf(' ')));
 				//	$(location).attr('href', 'http://localhost:8080/home');  // don't forget to move this from local host! 
-			}); */
+			}); 
 
 }
 function onFailure(error) {

@@ -25,7 +25,7 @@ public class MainRestController {
 	@RequestMapping(value = "/user", method = RequestMethod.POST)
 	@JsonView(JsonViews.UserEntity.class)
 	public ResponseEntity login(@RequestBody UserEntity user) {
-		
+		System.out.println(user.getEmail()); 
 		return null;
 	}
 	
