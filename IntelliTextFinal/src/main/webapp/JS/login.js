@@ -33,7 +33,7 @@ function attachSignin(element) {
 		var data = [ googleUser.getBasicProfile().getName(),
 				googleUser.getBasicProfile().getEmail() ];
 
-		$.ajax({
+		/*$.ajax({
 			type : "POST",
 			headers : {
 				"Content-Type" : "application/json"
@@ -49,16 +49,18 @@ function attachSignin(element) {
 											+ data[0].substring(0, data[0]
 													.indexOf(' ')));
 					//	$(location).attr('href', 'http://localhost:8080/home');  // don't forget to move this from local host! 
-				});
+				});*/
 	}, function(error) {
 		alert(JSON.stringify(error, undefined, 2));
 	});
 }
 
 function onSuccess(googleUser) {
-	console.log('Logged in as: ' + googleUser.getBasicProfile().getEmail());
-	var data = [ googleUser.getBasicProfile().getName(),
+	console.log("Logged in!");
+	var user = [ googleUser.getBasicProfile().getName(),
 			googleUser.getBasicProfile().getEmail() ];
+	var user = {"email": profile.getEmail(),
+	        "userName": profile.getGivenName()};
 
 	 $.ajax({
 		type : "POST",
@@ -66,7 +68,7 @@ function onSuccess(googleUser) {
 			"Content-Type" : "application/json"
 		},
 		url : "/login/finish",
-		data : JSON.stringify(data),
+		data : JSON.stringify(user),
 	}).done(
 			function(response) {
 				console.log("response:" + response);

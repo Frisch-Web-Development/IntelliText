@@ -16,6 +16,7 @@ import com.intellitext.config.WebSecurityConfig;
 @ComponentScan("com.intellitext")
 @EnableAutoConfiguration
 @Import({WebSecurityConfig.class})
+@ComponentScan(basePackageClasses = MainRestController.class)
 public class IntelliTextFinalApplication {
 
 	public static void main(String[] args) {

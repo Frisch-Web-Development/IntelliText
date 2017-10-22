@@ -19,6 +19,7 @@ public class MainRestController {
 
 	@RequestMapping(value = "/user", method = RequestMethod.GET)
 	public Principal user(Principal user) { 
+		System.out.println("User Called");
 		return user; 
 	}
 	
