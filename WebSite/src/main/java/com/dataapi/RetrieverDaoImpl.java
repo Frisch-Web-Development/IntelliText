@@ -61,8 +61,13 @@ public class RetrieverDaoImpl implements RetrieverDao {
 
 	@Override
 	public UserDetails loadUserByUsername(String arg0) throws UsernameNotFoundException {
-		// TODO FIX THIS
-		return null;
+		User user = getUserByEmail(arg0);
+		CodeUserDetails principal = CodeUserDetails.getBuilder()
+                .firstName(user.getFirstName()).lastName(user.getLastName()).id(user.getId())
+                .password(user.getPassword()).role(user.getRole()).username(user.getEmail())
+                .build();
+
+        return principal;
 	}
 
 }

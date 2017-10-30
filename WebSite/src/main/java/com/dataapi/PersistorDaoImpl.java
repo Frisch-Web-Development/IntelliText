@@ -23,6 +23,9 @@ public class PersistorDaoImpl implements PersistorDao {
 	@Autowired
 	MongoTemplate mongo;
 
+	@Autowired
+	RetrieverDao retriever;
+	
 	@Override
 	public void insertGeneric(Object object, String collection) {
 		mongo.insert(object, collection);
@@ -54,8 +57,13 @@ public class PersistorDaoImpl implements PersistorDao {
 
 	@Override
 	public UserDetails loadUserByUsername(String arg0) throws UsernameNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		User user = retriever.getUserByEmail(arg0);
+		CodeUserDetails principal = CodeUserDetails.getBuilder()
+                .firstName(user.getFirstName()).lastName(user.getLastName()).id(user.getId())
+                .password(user.getPassword()).role(user.getRole()).username(user.getEmail())
+                .build();
+
+        return principal;
 	}
 	
 	
