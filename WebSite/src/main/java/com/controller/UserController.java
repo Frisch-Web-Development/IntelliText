@@ -2,6 +2,8 @@ package com.controller;
 
 
 import com.conf.GoogleProperties;
+import com.dataapi.PersistorDao;
+import com.dataapi.RetrieverDao;
 import com.fasterxml.jackson.annotation.JsonView;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,13 +42,16 @@ public class UserController {
     @Autowired
     GoogleProperties googleProperties;
 
-
+    @Autowired
+    PersistorDao persistor;
+    
+    @Autowired
+    RetrieverDao retriever;
 
     @RequestMapping(value = "/conf/userlist", method = RequestMethod.GET)
     //"Retrieve list of all registered users"
     public List<User> getAll() {
-        //use DataAPI Here
-    	//return userService.getAll();
+    	return retriever.getAllUsers();
     }
 
 
