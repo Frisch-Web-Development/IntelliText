@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken.Payload;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
+import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.model.User;
 
@@ -66,8 +67,6 @@ public class UserController {
         GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(new NetHttpTransport(), jacksonFactory)
                 .setAudience(Collections.singletonList(googleProperties.getClientId()))
                 .build();
-        log.info("Login Controller: " + user.getEmail());
-        log.info("Token ID: "  + user.getTokenId());
         GoogleIdToken idToken = verifier.verify(user.getTokenId());
         if (idToken == null) {
             return new ResponseEntity("Invalid token data", HttpStatus.BAD_REQUEST);
@@ -118,7 +117,7 @@ public class UserController {
     public ResponseEntity test(Authentication authentication) {
 //        System.out.println(SecurityContextHolder.getContext().getAuthentication().isAuthenticated());
         if (SecurityContextHolder.getContext().getAuthentication().isAuthenticated()) {
-            log.info(SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString());
+            //log.info(SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString());
         }
 
         return new ResponseEntity("Ok", HttpStatus.OK);
