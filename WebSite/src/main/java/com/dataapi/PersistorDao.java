@@ -1,8 +1,10 @@
 package com.dataapi;
 
+import org.springframework.security.core.userdetails.UserDetailsService;
+
 import com.model.User;
 
-public interface PersistorDao {
+public interface PersistorDao extends UserDetailsService{
 
 	void insertGeneric(Object object, String collection);
 

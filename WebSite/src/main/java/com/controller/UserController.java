@@ -30,6 +30,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.servlet.http.HttpSession;
+
 @RestController
 public class UserController {
 
@@ -80,13 +82,13 @@ public class UserController {
             if (payload == null || !payload.getEmail().equals(user.getEmail())) {
                 return new ResponseEntity("Invalid email address", HttpStatus.BAD_REQUEST);
             }
-            log.info("Verified account");
+            //log.info("Verified account");
         }
-        if (codeUserDetailsService.loadUserByUsername(user.getEmail()) != null) {
+        if (retriever.getUserByEmail(user.getEmail()) != null) {
 //            System.out.println("Authenticating");
 
             UsernamePasswordAuthenticationToken authrequest = new UsernamePasswordAuthenticationToken(user.getEmail(), null,
-                    codeUserDetailsService.loadUserByUsername(user.getEmail()).getAuthorities());
+                    retriever.loadUserByUsername(user.getEmail()).getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(authrequest);
 //            System.out.println("Success for login controller");
             return new ResponseEntity("Finished, authenticated", HttpStatus.OK);
@@ -94,7 +96,7 @@ public class UserController {
 //            System.out.println("Attempting user creation");
 //            System.out.println(codeUserDetailsService.loadUserByUsername(user.getEmail()));
             try {
-                codeUserDetailsService.registerNewAccount(user);
+                persistor.insertNewUser(user, "Users");
             } catch (Exception e) {
                 e.printStackTrace();
                 return new ResponseEntity("Invalid email address", HttpStatus.BAD_REQUEST);

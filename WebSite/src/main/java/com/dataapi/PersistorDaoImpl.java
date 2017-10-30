@@ -6,6 +6,8 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
@@ -48,6 +50,12 @@ public class PersistorDaoImpl implements PersistorDao {
 	@Override
 	public void deleteFile(FileEntity file, User user) {
 		//move file for 30 days
+	}
+
+	@Override
+	public UserDetails loadUserByUsername(String arg0) throws UsernameNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	
