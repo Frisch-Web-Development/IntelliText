@@ -5,6 +5,8 @@ import java.util.Date;
 
 public class FileEntity {
 
+	// TODO add server path and user path and thumbnail
+	
 	String path;
 	String name;
 	String owner;

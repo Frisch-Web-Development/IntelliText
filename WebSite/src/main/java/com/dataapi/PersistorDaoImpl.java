@@ -65,5 +65,4 @@ public class PersistorDaoImpl implements PersistorDao {
         return principal;
 	}
 	
-	
 }
