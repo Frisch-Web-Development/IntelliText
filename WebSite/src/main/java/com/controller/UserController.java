@@ -6,6 +6,8 @@ import com.dataapi.RetrieverDao;
 import com.fasterxml.jackson.annotation.JsonView;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -29,8 +31,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.servlet.http.HttpSession;
-
+//import javax.servlet.http.HttpSession;
 
 @RestController
 public class UserController {
@@ -105,10 +106,10 @@ public class UserController {
 
 	}
 
-	@RequestMapping(value = "/conf/user", method = RequestMethod.DELETE)
+	/*@RequestMapping(value = "/conf/user", method = RequestMethod.DELETE)
 	public void logout(HttpSession session) {
 		session.invalidate();
-	}
+	}*/
 
 	@RequestMapping(value = "/conf/user/test", method = RequestMethod.GET)
 	public ResponseEntity test(Authentication authentication) {

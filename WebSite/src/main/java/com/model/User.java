@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.persistence.*;
 
-
-@Entity
 public class User {
 
     private Long id;

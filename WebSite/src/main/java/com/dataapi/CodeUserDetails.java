@@ -7,9 +7,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.model.Role;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
