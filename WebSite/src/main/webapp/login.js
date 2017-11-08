@@ -1,5 +1,5 @@
 function onSignIn(googleUser) {
-	console.log("Success");/*
+	console.log("Success");
     var profile = googleUser.getBasicProfile();
     google = googleUser;
     var user = {"email": profile.getEmail(),
@@ -28,7 +28,7 @@ function onSignIn(googleUser) {
             data: JSON.stringify(user)
         }).done(function(data) {
             result = data;
-        }).error(function(data) {
+        }).fail(function(data) {
             console.log("error: ");
             console.log(data);
         });
@@ -37,6 +37,6 @@ function onSignIn(googleUser) {
         $('#nonfrisch').show();
         console.log("Non-Frisch emails are forbidden to log in and submit jobs");
         googleUser.disconnect();
-    }*/
+    }
 
 }
