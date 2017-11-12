@@ -70,9 +70,10 @@ public class UserController {
 		if (user == null || user.getEmail() == null) {
 			return new ResponseEntity<String>("Invalid data", HttpStatus.BAD_REQUEST);
 		}
-		System.out.println(googleProperties == null);
-		GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(new NetHttpTransport(), jacksonFactory)
+		System.out.println(googleProperties.getClientId());
+		GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(new NetHttpTransport(), jacksonFactory).setIssuer("https://accounts.google.com")
 				.setAudience(Collections.singletonList(googleProperties.getClientId())).build();
+
 		GoogleIdToken idToken = verifier.verify(user.getTokenId());
 		if (idToken == null) {
 			return new ResponseEntity<String>("Invalid token data", HttpStatus.BAD_REQUEST);
