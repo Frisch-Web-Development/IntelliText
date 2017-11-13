@@ -70,11 +70,11 @@ public class UserController {
 		if (user == null || user.getEmail() == null) {
 			return new ResponseEntity<String>("Invalid data", HttpStatus.BAD_REQUEST);
 		}
-		System.out.println(googleProperties.getClientId());
-		GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(new NetHttpTransport(), jacksonFactory).setIssuer("https://accounts.google.com")
+		//System.out.println();
+		GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(new NetHttpTransport(), jacksonFactory)
 				.setAudience(Collections.singletonList(googleProperties.getClientId())).build();
-
 		GoogleIdToken idToken = verifier.verify(user.getTokenId());
+		
 		if (idToken == null) {
 			return new ResponseEntity<String>("Invalid token data", HttpStatus.BAD_REQUEST);
 		} else {
@@ -101,7 +101,7 @@ public class UserController {
 			}
 
 			Set<GrantedAuthority> grant = new HashSet<GrantedAuthority>();
-			grant.add(new SimpleGrantedAuthority(user.getRole().toString()));
+			grant.add(new SimpleGrantedAuthority("ROLE_USER"));
 			UsernamePasswordAuthenticationToken authrequest = new UsernamePasswordAuthenticationToken(user.getEmail(),
 					null, grant);
 			SecurityContextHolder.getContext().setAuthentication(authrequest);

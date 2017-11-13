@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonView;
 import com.intellitext.controller.JsonViews;
 
 public class User {
-
-	private Long id;
 	
 	@JsonView(value = { JsonViews.User.class })
 	private String email;
@@ -26,13 +24,6 @@ public class User {
 	
 	private Role role;
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getEmail() {
 		return email;

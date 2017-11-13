@@ -58,7 +58,7 @@ public class PersistorDaoImpl implements PersistorDao {
 	public UserDetails loadUserByUsername(String arg0) throws UsernameNotFoundException {
 		User user = retriever.getUserByEmail(arg0);
 		CodeUserDetails principal = CodeUserDetails.getBuilder()
-                .firstName(user.getFirstName()).lastName(user.getLastName()).id(user.getId())
+                .firstName(user.getFirstName()).lastName(user.getLastName())
                 .password(user.getPassword()).role(user.getRole()).username(user.getEmail())
                 .build();
 
