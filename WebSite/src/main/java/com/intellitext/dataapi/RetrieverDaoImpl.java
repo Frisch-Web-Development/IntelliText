@@ -50,7 +50,7 @@ public class RetrieverDaoImpl implements RetrieverDao {
 				new Query(Criteria.where("email").is(user.getEmail())
 						.orOperator(Criteria.where("name").is(user.getEmail()))),
 				UserFileStorageEntity.class, "Files");
-		return storage.getFile(file.getPath());
+		return storage.getFile(file.getStoragePath());
 	}
 
 	@Override

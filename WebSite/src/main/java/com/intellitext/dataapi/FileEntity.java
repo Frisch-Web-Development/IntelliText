@@ -6,8 +6,9 @@ import java.util.Date;
 public class FileEntity {
 
 	// TODO add server path and user path and thumbnail
-	
-	String path;
+
+	String userPath;
+	String storagePath;
 	String name;
 	String owner;
 	String type;
@@ -15,10 +16,11 @@ public class FileEntity {
 	Date dateCreated;
 	ArrayList<String> sharedWith;
 
-	public FileEntity(String path, String name, String owner, String type, Date lastModified, Date dateCreated,
-			ArrayList<String> sharedWith) {
+	public FileEntity(String userPath, String storagePath, String name, String owner, String type, Date lastModified,
+			Date dateCreated, ArrayList<String> sharedWith) {
 		super();
-		this.path = path;
+		this.userPath = userPath;
+		this.storagePath = storagePath;
 		this.name = name;
 		this.owner = owner;
 		this.type = type;
@@ -27,12 +29,32 @@ public class FileEntity {
 		this.sharedWith = sharedWith;
 	}
 
-	public String getPath() {
-		return path;
+	public FileEntity(String userPath, String name, String owner, String type, Date lastModified, Date dateCreated,
+			ArrayList<String> sharedWith) {
+		super();
+		this.userPath = userPath;
+		this.name = name;
+		this.owner = owner;
+		this.type = type;
+		this.lastModified = lastModified;
+		this.dateCreated = dateCreated;
+		this.sharedWith = sharedWith;
 	}
 
-	public void setPath(String path) {
-		this.path = path;
+	public String getUserPath() {
+		return userPath;
+	}
+
+	public void setUserPath(String userPath) {
+		this.userPath = userPath;
+	}
+
+	public String getStoragePath() {
+		return storagePath;
+	}
+
+	public void setStoragePath(String storagePath) {
+		this.storagePath = storagePath;
 	}
 
 	public String getName() {

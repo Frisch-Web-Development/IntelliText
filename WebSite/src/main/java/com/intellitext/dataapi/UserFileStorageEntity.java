@@ -41,7 +41,7 @@ public class UserFileStorageEntity {
 
 	public FileEntity getFile(String path) {
 		for (FileEntity file : files) {
-			if (file.getPath().equals(path)) {
+			if (file.getStoragePath().equals(path)) {
 				return file;
 			}
 		}
