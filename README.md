@@ -19,3 +19,7 @@ Login system still works. Working on security and file system.
 
 ### 10/3
 Use an AJAX Post request with Google's tokenID to send to the Controller (Request Mapping) and create the principal object (TODO)
+
+### 11/16
+
+Our User Controller Works, started work on the Storage Controller for sending and recieving files.
