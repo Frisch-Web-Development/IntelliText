@@ -2,6 +2,8 @@ package com.intellitext.dataapi;
 
 import java.util.List;
 
+import com.intellitext.model.FileEntity;
+
 public class UserFileStorageEntity {
 
 	String userName;

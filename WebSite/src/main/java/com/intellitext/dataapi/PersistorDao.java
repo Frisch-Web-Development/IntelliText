@@ -2,6 +2,7 @@ package com.intellitext.dataapi;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
 
+import com.intellitext.model.FileEntity;
 import com.intellitext.model.User;
 
 public interface PersistorDao extends UserDetailsService{

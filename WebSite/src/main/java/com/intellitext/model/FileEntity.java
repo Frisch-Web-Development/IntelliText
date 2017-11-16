@@ -1,19 +1,28 @@
-package com.intellitext.dataapi;
+package com.intellitext.model;
 
 import java.util.ArrayList;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.intellitext.controller.JsonViews;
+
 public class FileEntity {
 
-	// TODO add server path and user path and thumbnail
-
+	@JsonView(value = { JsonViews.File.class })
 	String userPath;
+	@JsonView(value = { JsonViews.File.class })
 	String storagePath;
+	@JsonView(value = { JsonViews.File.class })
 	String name;
+	@JsonView(value = { JsonViews.File.class })
 	String owner;
+	@JsonView(value = { JsonViews.File.class })
 	String type;
+	@JsonView(value = { JsonViews.File.class })
 	Date lastModified;
+	@JsonView(value = { JsonViews.File.class })
 	Date dateCreated;
+	@JsonView(value = { JsonViews.File.class })
 	ArrayList<String> sharedWith;
 
 	public FileEntity(String userPath, String storagePath, String name, String owner, String type, Date lastModified,

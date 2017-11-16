@@ -10,9 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.intellitext.dataapi.FileEntity;
+import com.fasterxml.jackson.annotation.JsonView;
 import com.intellitext.dataapi.PersistorDao;
 import com.intellitext.dataapi.RetrieverDao;
+import com.intellitext.model.FileEntity;
 import com.intellitext.model.User;
 
 
@@ -66,7 +67,9 @@ public class StorageController {
 		
 		
 	}
-	@RequestMapping(value = "/conf/storage/insetFile", method = RequestMethod.GET)
+	
+	@JsonView(value = { JsonViews.File.class })
+	@RequestMapping(value = "/conf/storage/", method = RequestMethod.POST)
 	public void insertFile(@RequestBody FileEntity file,Principal prince)
 	{
 		persistor.insertNewFile(file, (User)prince);

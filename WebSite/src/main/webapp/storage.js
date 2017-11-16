@@ -47,11 +47,11 @@ $(documnet).ready(function(){
                 "Content-Type": "application/json"
             },
             method: 'POST',
-            url: '/conf/user',
+            url: '/conf/storage',
             data: JSON.stringify(
             {
             	 path = getPath(),
-            	 name = "Unkown Doc",
+            	 name = "Unnamed Document",
             	 owner = user,
             	 type = "rtf",
             	 lastModified = {date:getDate(), year:getYear(), month: getMonth()},

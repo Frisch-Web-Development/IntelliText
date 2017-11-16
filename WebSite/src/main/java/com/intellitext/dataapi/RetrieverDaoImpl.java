@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
+import com.intellitext.model.FileEntity;
 import com.intellitext.model.User;
 
 @Repository
