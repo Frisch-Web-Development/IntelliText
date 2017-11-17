@@ -6,10 +6,12 @@
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <meta charset="ISO-8859-1"></meta>
 <meta name="google-signin-client_id"
-	content="657791375399-amgeka1bgktltgh5dbc72bp8654l82vj.apps.googleusercontent.com" ></meta>
-	
-<script src = "login.js"></script>	
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	content="657791375399-amgeka1bgktltgh5dbc72bp8654l82vj.apps.googleusercontent.com"></meta>
+
+<script src="login.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://apis.google.com/js/platform.js?onload=renderButton"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css"></link>
 <link rel="stylesheet" href="main.css"></link>
@@ -18,103 +20,47 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+	<header>
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container-fluid">
 
-<body>
-
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"
-		style="background-clip: black; min-height: 5em">
-		<!-- Brand and toggle get grouped for better mobile display -->
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse"
-				data-target=".navbar-ex1-collapse">
-				<span class="sr-only">Toggle navigation</span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-		</div>
-
-		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse navbar-ex1-collapse">
-			<ul class="nav navbar-nav navbar-brand navbar-left">
-				<li><a href="/home">My Files</a></li>
-				<li><a href="#">My Account</a></li>
-				<li><a href="#">GitHub</a></li>
-			</ul>
-			<div class="navbar-brand navbar-right">
-				<div class="g-signin2"  data-onsuccess="onSignIn" data-theme="dark"></div>
+				<ul class="nav navbar-nav">
+					<li><a href="#">Home</a></li>
+					<li><a href="#">My Files</a></li>
+					<li><a href="#">My Profile</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<p class="navbar-btn">
+							<a href="#" class="g-signin2" data-onsuccess="onSignIn"></a>
+						</p>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+	<main>
+	<section id="WelomePage">
+		<div class="jumbotron">
+			<div class="container">
+				<div class="centertext whitetext">
+					<h1>Welcome to Intellitext</h1>
+				</div>
+				<div class="centertext whitetext">
+					<p>A new, smart text editor, 30 years ahead.</p>
+				</div>
 			</div>
 		</div>
-	</nav>
-	<script
-		src="https://apis.google.com/js/platform.js?onload=renderButton"></script>
-	<div class="bg"></div>
-	<div class="jumbotron text-center" id="aboutUsJ">
-		<h1
-			style="color: white; font-style: normal; font-size: 150px; padding-top: 0.75em">IntelliText</h1>
-		<h2 style="color: white;">A Smart Text Editor, 30 years ahead.</h2>
-	</div>
-	<div class = "container" style = "background-color: white; width : 100%">
-	<div class = "row">
-	<p id="aboutUsP" style="color: grey; font-size: 2em">Throughout
-		many years of writing essays a person might come to realize all word
-		processors are all practically the same. They all possess the same
-		features and do the same thing. Not this one. We have come up with
-		ways to optimize the users performance and make the drag of writing
-		essays or notes that much easier.</p>
-	<div class="well well-lg" id="featuresB" style = "text-align: center;">
-		<h1 id="featuresW">What makes IntelliText Special</h1>
-	</div>
-
-	<div class="container" id="c2">
-		<div class="row" id="featuresR">
-			<div class="col-sm-3" id="Math" style = "text-align: center;">
-						<img src = "/images/004-calculator.png" style = "height : 5em; width : auto;"></img>
-			
-				<h3>Math</h3>
-				<p>When Listening in a math lecture, often students get lost
-				in the fundamentals of what a teacher says. Now with this feature
-				you can type any function and we will graph it for you, as well as
-				solving equations for you. This way we can all understand math class
-				a little better.</p>
-			</div>
-			<div class="col-sm-3" id="Grammer" style = "text-align: center;">
-						<img src = "/images/003-typography.png" style = "height : 5em; width : auto;"></img>
-			
-				<h3>Grammar</h3>
-				<p>When Writing one might forget to find various information
-				to spice up your essay. This feature will read through your writing
-				and find information you might have left out. This way you can
-				consider including it in your paper.</p>
-			</div>
-
-			<div class="col-sm-3" id="Research" style = "text-align: center;">
-						<img src = "/images/002-file.png" style = "height : 5em; width : auto;"></img>
-			
-				<h3>Research</h3>
-				<p>When writing an essay you might forget about the english language. This is where IntelliText
-				comes in, you can type normally and we will find words that are
-				repeated too often, mismatched tenses in a sentence, as well as
-				other useful features. This way you can focus on the writing and
-				leave the grammer to us.</p>
-			</div>
-			<div class="col-sm-3" id="Annotations" style = "text-align: center;">
-			<img src = "/images/001-at-symbol.png" style = "height : 5em; width : auto;"></img>
-				<h3>Annotations</h3>
-				<p>When writing notes or an essay annotations could be really
-				useful. You can set off sections in your paper to be titles, body
-				paragraphs, or any custom thing you can imagine. This way in your
-				notes or essays you can mark important points or confusing points to
-				go back to and re-read/write.</p>
-			</div>
+	</section>
+	<section id="StoragePage"></section>
+	</main>
 
 
-		</div>
 
-</div>
-</div>
-	</div>
 
-</body>
+
+	<footer> </footer>
+
 
 </body>
 </html>

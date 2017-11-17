@@ -70,7 +70,7 @@ public class StorageController {
 	
 	@JsonView(value = { JsonViews.File.class })
 	@RequestMapping(value = "/conf/storage/", method = RequestMethod.POST)
-	public void insertFile(@RequestBody FileEntity file,Principal prince)
+	public void insertFile(@RequestBody FileEntity file, Principal prince)
 	{
 		persistor.insertNewFile(file, (User)prince);
 	}
