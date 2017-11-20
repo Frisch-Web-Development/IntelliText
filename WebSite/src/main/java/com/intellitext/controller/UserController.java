@@ -56,6 +56,13 @@ public class UserController {
 		return retriever.getAllUsers();
 	}
 
+	@RequestMapping(value = "/storage", method = RequestMethod.GET)
+	// "Check user status"
+	public Principal user(Principal user) {
+		System.out.println(user);
+		return user;
+	}
+	
 	@RequestMapping(value = "/conf/user", method = RequestMethod.GET)
 	// "Check user status"
 	public Principal user(Principal user) {

@@ -25,3 +25,7 @@ function onSignIn(googleUser) {
 	});
 
 }
+
+$('#storageButton').click(function () {
+   
+});
