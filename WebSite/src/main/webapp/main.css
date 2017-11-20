@@ -1,15 +1,21 @@
 @charset "ISO-8859-1";
 
-.whitetext{
+.whitetext {
 	color: white;
 }
 
-.centertext{
-	 text-align:center;
+.centertext {
+	text-align: center;
 }
 
 .jumbotron {
 	background: black;
+	background-image: url("images/index.png");
+}
+
+.descImg {
+	height: 5em;
+	width: auto;
 }
 
 #my-signin2 {
