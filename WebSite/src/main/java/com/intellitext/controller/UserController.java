@@ -31,8 +31,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-//import javax.servlet.http.HttpSession;
-
 @RestController
 public class UserController {
 
@@ -49,18 +47,11 @@ public class UserController {
 
 	@Autowired
 	RetrieverDao retriever;
-
+	
 	@RequestMapping(value = "/conf/userlist", method = RequestMethod.GET)
 	// "Retrieve list of all registered users"
 	public List<User> getAll() {
 		return retriever.getAllUsers();
-	}
-
-	@RequestMapping(value = "/storage", method = RequestMethod.GET)
-	// "Check user status"
-	public Principal user(Principal user) {
-		System.out.println(user);
-		return user;
 	}
 	
 	@RequestMapping(value = "/conf/user", method = RequestMethod.GET)
@@ -117,11 +108,7 @@ public class UserController {
 
 	}
 
-	/*
-	 * @RequestMapping(value = "/conf/user", method = RequestMethod.DELETE) public
-	 * void logout(HttpSession session) { session.invalidate(); }
-	 */
-
+	
 	@RequestMapping(value = "/conf/user/test", method = RequestMethod.GET)
 	public ResponseEntity test(Authentication authentication) {
 		// System.out.println(SecurityContextHolder.getContext().getAuthentication().isAuthenticated());
