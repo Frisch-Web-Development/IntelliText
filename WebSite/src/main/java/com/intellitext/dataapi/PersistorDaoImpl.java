@@ -1,5 +1,7 @@
 package com.intellitext.dataapi;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -35,13 +37,11 @@ public class PersistorDaoImpl implements PersistorDao {
 	public void insertNewUser(User user, String collection) {
 		mongo.insert(user, collection);
 	}
-
-	@Override
-	public void insertNewFile(FileEntity file, User user) {
+	public void insertNewFile(FileEntity file,Principal user/* User user*/) {
 		UserFileStorageEntity storage = mongo.findOne(
-				new Query(Criteria.where("email").is(user.getEmail())
-						.orOperator(Criteria.where("name").is(user.getEmail()))), // TODO which ID to use?
-				UserFileStorageEntity.class, "Files");
+				new Query(Criteria.where("email").is(user.getName())
+						.orOperator(Criteria.where("name").is(user.getName()))), // TODO which ID to use?
+				 UserFileStorageEntity.class, "Files");
 		storage.addFile(file);
 	}
 	

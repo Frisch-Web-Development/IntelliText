@@ -1,78 +1,35 @@
-/*$(document).ready(function(){
-	
+var getPath = function()
+{
+	return "/"; 
+}
+
+//$(document).ready(function(){ 
 	var user; 
 	var recentFiles;
 	var files;
 	var filesInLocalPath;
+	var today = new Date(); 
 	
-	$.ajax({
-		
-		type:"GET", 
-		url:"/conf/storage", 
-		contentType: "application/json", 
-		dataType: 'json',
-		sucess: function(data)
-		{files = data;}, 
-		failure: function(resp)
-		{console.log(resp);}
-	});
+	$.ajax({method: "GET",
+        headers: {'Content-Type': 'application/json'},
+        url: "/conf/user"
+        }).done(function(data) {  user = data; console.log(data); });
 	
-	$.ajax({
-		
-		type:"GET", 
-		url:"/conf/user", 
-		contentType: "application/json; ", 
-		dataType: 'json',
-		sucess: function(data)
-		{user = data;}, 
-		failure: function(resp)
-		{console.log(resp);}
-	});
 	
-	$.ajax({
-		
-		type:"GET", 
-		url:"/conf/storage/recent", 
-		contentType: "application/json;", 
-		dataType: 'json',
-		sucess: function(data)
-		{recentFiles = data;}, 
-		failure: function(resp)
-		{console.log(resp);}
-	});	
+	//console.log("Hallo1"); 
+	$.ajax({method: "GET",
+        headers: {'Content-Type': 'application/json'},
+        url: "/conf/storage"
+        }).done(function(data) {  files = data; console.log(data);});
+
+	$.ajax({method: "GET",
+        headers: {'Content-Type': 'application/json'},
+        url: "/conf/storage/recent"
+        }).done(function(data) {  recentFiles = data; console.log(data);});
 	
-	$("#newFile").onClick(function(){
-		$.ajax({
-            headers: {
-                "Content-Type": "application/json"
-            },
-            method: 'POST',
-            url: '/conf/storage',
-            data: JSON.stringify(
-            {
-            	 path = getPath(),
-            	 name = "Unnamed Document",
-            	 owner = user,
-            	 type = "rtf",
-            	 lastModified = {date:getDate(), year:getYear(), month: getMonth()},
-            	 dateCreated = {date:getDate(), year:
-            		 getYear(), month: getMonth()},
-            	 sharedWith = null
-            }		
-            
-            )
-        }).done(function(data) {
-            result = data;
-        }).fail(function(data) {
-            console.log("error: ");
-            console.log(data);
-        });
-		
-		
-	}); 
-	
-});
-*/
+	console.log("Hallo2"); 
+//});
+
 function onSignIn(googleUser) {
 	console.log("Success");
 

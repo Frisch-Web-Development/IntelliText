@@ -1,5 +1,6 @@
 package com.intellitext.dataapi;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,9 +14,9 @@ public interface RetrieverDao extends UserDetailsService{
 
 	boolean userExists(String name);
 
-	FileEntity getFile(FileEntity file, User user);
+	FileEntity getFile(FileEntity file, Principal user);
 
-	List<FileEntity> getAllFiles(User user);
+	List<FileEntity> getAllFiles(Principal user);
 
 	List<User> getAllUsers();
 

@@ -31,13 +31,13 @@ public class StorageController {
 	@RequestMapping(value = "/conf/storage", method = RequestMethod.GET)
 	// "Retrieve list of all registered users"
 	public List<FileEntity> getAllUserFiles(Principal prince) {
-		return retriever.getAllFiles((User)prince); // Un Cast after fix of implementation
+		return retriever.getAllFiles(prince); // unCast after fix of implementation
 	}
 	
 	@RequestMapping(value = "/conf/storage/recent", method = RequestMethod.GET)
 	// "Retrieve list of all registered users"
 	public FileEntity[] getRecentFiles(Principal prince) {
-		List<FileEntity> list =  retriever.getAllFiles((User)prince); // Un Cast after fix of implementation
+		List<FileEntity> list =  retriever.getAllFiles(prince); // Un Cast after fix of implementation
 		FileEntity result[] = new FileEntity[4]; //change length for amount
 		
 		for(FileEntity file: list)
@@ -56,7 +56,7 @@ public class StorageController {
 	public List<FileEntity> getFileInLocalPath (String path, Principal prince)
 	{
 		List<FileEntity> result = new ArrayList<FileEntity>(); 
-		List<FileEntity> all = retriever.getAllFiles((User)prince);
+		List<FileEntity> all = retriever.getAllFiles(prince);
 		
 		for(FileEntity file: all)
 		{
@@ -69,10 +69,10 @@ public class StorageController {
 	}
 	
 	@JsonView(value = { JsonViews.File.class })
-	@RequestMapping(value = "/conf/storage/", method = RequestMethod.POST)
+	@RequestMapping(value = "/conf/storage/insert", method = RequestMethod.POST)
 	public void insertFile(@RequestBody FileEntity file, Principal prince)
 	{
-		persistor.insertNewFile(file, (User)prince);
+		persistor.insertNewFile(file, prince);
 	}
 	
 	
