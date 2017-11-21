@@ -37,12 +37,15 @@ public class PersistorDaoImpl implements PersistorDao {
 	public void insertNewUser(User user, String collection) {
 		mongo.insert(user, collection);
 	}
-	public void insertNewFile(FileEntity file,Principal user/* User user*/) {
-		UserFileStorageEntity storage = mongo.findOne(
+	@Override
+	public void insertNewFile(FileEntity file,Principal user) {
+		/*UserFileStorageEntity storage = mongo.findOne(
 				new Query(Criteria.where("email").is(user.getName())
 						.orOperator(Criteria.where("name").is(user.getName()))), // TODO which ID to use?
 				 UserFileStorageEntity.class, "Files");
-		storage.addFile(file);
+		storage.addFile(file);*/
+		System.out.println(file.getName());
+		mongo.insert(file, "Files");
 	}
 	
 	@Override

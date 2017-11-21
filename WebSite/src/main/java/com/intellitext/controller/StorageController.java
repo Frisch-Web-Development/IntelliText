@@ -72,6 +72,7 @@ public class StorageController {
 	@RequestMapping(value = "/conf/storage/insert", method = RequestMethod.POST)
 	public void insertFile(@RequestBody FileEntity file, Principal prince)
 	{
+		System.out.println("Inserting file");
 		persistor.insertNewFile(file, prince);
 	}
 	

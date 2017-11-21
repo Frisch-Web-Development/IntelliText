@@ -25,7 +25,7 @@ public class FileEntity {
 	@JsonView(value = { JsonViews.File.class })
 	ArrayList<String> sharedWith;
 
-	public FileEntity(String userPath, String storagePath, String name, String owner, String type, Date lastModified,
+/*	public FileEntity(String userPath, String storagePath, String name, String owner, String type, Date lastModified,
 			Date dateCreated, ArrayList<String> sharedWith) {
 		super();
 		this.userPath = userPath;
@@ -36,8 +36,8 @@ public class FileEntity {
 		this.lastModified = lastModified;
 		this.dateCreated = dateCreated;
 		this.sharedWith = sharedWith;
-	}
-
+	}*/
+/*
 	public FileEntity(String userPath, String name, String owner, String type, Date lastModified, Date dateCreated,
 			ArrayList<String> sharedWith) {
 		super();
@@ -48,7 +48,7 @@ public class FileEntity {
 		this.lastModified = lastModified;
 		this.dateCreated = dateCreated;
 		this.sharedWith = sharedWith;
-	}
+	}*/
 
 	public String getUserPath() {
 		return userPath;
