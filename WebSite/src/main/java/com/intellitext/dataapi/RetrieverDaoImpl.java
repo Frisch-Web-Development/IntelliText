@@ -1,5 +1,6 @@
 package com.intellitext.dataapi;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,21 +36,19 @@ public class RetrieverDaoImpl implements RetrieverDao {
 	public boolean userExists(String name) {
 		return (User) mongo.findOne(new Query(Criteria.where("userName").is(name)), User.class) == null;
 	}
-
-	@Override
-	public List<FileEntity> getAllFiles(User user) {
+	
+	public List<FileEntity> getAllFiles(Principal user) {
 		UserFileStorageEntity storage = mongo.findOne(
-				new Query(Criteria.where("email").is(user.getEmail())
-						.orOperator(Criteria.where("name").is(user.getEmail()))),
+				new Query(Criteria.where("email").is(user.getName())
+						.orOperator(Criteria.where("name").is(user.getName()))),
 				UserFileStorageEntity.class, "Files");
 		return storage.getFiles();
 	}
 
-	@Override
-	public FileEntity getFile(FileEntity file, User user) {
+	public FileEntity getFile(FileEntity file, Principal user) {
 		UserFileStorageEntity storage = mongo.findOne(
-				new Query(Criteria.where("email").is(user.getEmail())
-						.orOperator(Criteria.where("name").is(user.getEmail()))),
+				new Query(Criteria.where("email").is(user.getName())
+						.orOperator(Criteria.where("name").is(user.getName()))),
 				UserFileStorageEntity.class, "Files");
 		return storage.getFile(file.getStoragePath());
 	}

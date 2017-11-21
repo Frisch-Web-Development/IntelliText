@@ -1,5 +1,7 @@
 package com.intellitext.dataapi;
 
+import java.security.Principal;
+
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import com.intellitext.model.FileEntity;
@@ -11,7 +13,7 @@ public interface PersistorDao extends UserDetailsService{
 
 	void insertNewUser(User user, String collection);
 
-	void insertNewFile(FileEntity file, User user);
+	void insertNewFile(FileEntity file, Principal user);
 
 	void updateFile(FileEntity file, User user);
 

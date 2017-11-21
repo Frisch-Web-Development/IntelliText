@@ -1,20 +1,48 @@
-$(documnet).ready(function(){
-	
+var getPath = function()
+{
+	return "/"; 
+}
+
+$(document).ready(function(){ 
 	var user; 
 	var recentFiles;
 	var files;
 	var filesInLocalPath;
+	var today = new Date(); 
 	
-	$.ajax({
+	
+	
+	$.ajax({method: "GET",
+        headers: {'Content-Type': 'application/json'},
+        url: "/conf/user"
+        }).done(function(data) {  user = data; console.log(data); });
+	
+	
+	//console.log("Hallo1"); 
+	$.ajax({method: "GET",
+        headers: {'Content-Type': 'application/json'},
+        url: "/conf/storage"
+        }).done(function(data) {  files = data; console.log(data);});
+
+	$.ajax({method: "GET",
+        headers: {'Content-Type': 'application/json'},
+        url: "/conf/storage/recent"
+        }).done(function(data) {  recentFiles = data; console.log(data);});
+	
+	console.log("Hallo2"); 
+	
+	/*$.ajax({
 		
 		type:"GET", 
 		url:"/conf/storage", 
 		contentType: "application/json", 
 		dataType: 'json',
 		sucess: function(data)
-		{files = data;}, 
-		failure: function(resp)
+		{files = data;
+		console.log("Hello"); }, 
+		fail: function(resp)
 		{console.log(resp);}
+		
 	});
 	
 	$.ajax({
@@ -24,8 +52,9 @@ $(documnet).ready(function(){
 		contentType: "application/json; ", 
 		dataType: 'json',
 		sucess: function(data)
-		{user = data;}, 
-		failure: function(resp)
+		{user = data;
+		console.log(data);}, 
+		fail: function(resp)
 		{console.log(resp);}
 	});
 	
@@ -36,12 +65,13 @@ $(documnet).ready(function(){
 		contentType: "application/json;", 
 		dataType: 'json',
 		sucess: function(data)
-		{recentFiles = data;}, 
-		failure: function(resp)
+		{recentFiles = data;
+		console.log(data);}, 
+		fail: function(resp)
 		{console.log(resp);}
 	});	
 	
-	$("#newFile").onClick(function(){
+	$("#newFile").click(function(){
 		$.ajax({
             headers: {
                 "Content-Type": "application/json"
@@ -50,14 +80,14 @@ $(documnet).ready(function(){
             url: '/conf/storage',
             data: JSON.stringify(
             {
-            	 path = getPath(),
-            	 name = "Unnamed Document",
-            	 owner = user,
-            	 type = "rtf",
-            	 lastModified = {date:getDate(), year:getYear(), month: getMonth()},
-            	 dateCreated = {date:getDate(), year:
-            		 getYear(), month: getMonth()},
-            	 sharedWith = null
+            	 path: getPath(),
+            	 name : "Unnamed Document",
+            	 owner : user,
+            	 type : "rtf",
+            	 lastModified : {date:today.getDate(), year:today.getFullYear(), month: today.getMonth()+1},
+            	 dateCreated : {date:today.getDate(), year:
+            		 today.getFullYear(), month: today.getMonth()},
+            	 sharedWith : null
             }		
             
             )
@@ -69,7 +99,7 @@ $(documnet).ready(function(){
         });
 		
 		
-	}); 
+	}); */
 	
-	
-}); 
+
+});
