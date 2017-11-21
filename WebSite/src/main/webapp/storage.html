@@ -1,10 +1,61 @@
 <!DOCTYPE html>
 <html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Welcome to Intellitext</title>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta charset="ISO-8859-1"></meta>
+<meta name="google-signin-client_id"
+	content="657791375399-amgeka1bgktltgh5dbc72bp8654l82vj.apps.googleusercontent.com"></meta>
+
+<script src="storage.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://apis.google.com/js/platform.js?onload=renderButton"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css"></link>
+<link rel="stylesheet" href="storage.css"></link>
+
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <body>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<ul class="nav navbar-nav">
+				<li><a href="/">Home</a></li>
+				<li><a href="#">My Files</a></li>
+				<li><a href="#">My Profile</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<p class="navbar-btn">
+						<a href="#" class="g-signin2" data-onsuccess="onSignIn"></a>
+					</p>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<div id="MyDocs">
 
-<h1>My First Heading</h1>
-
-<p>My first paragraph.</p>
-
+		<div class="container">
+			<div class="row"></div>
+			<div class="col-lg-4">
+					<button class="btn btn-primary dropdown-toggle" id="menu1"
+						type="button" data-toggle="dropdown">New File <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+						<li role="presentation"><a role="menuitem" tabindex="-1"
+							href="#">New Text File</a></li>
+					</ul>
+			</div>
+			<div class="col-lg-4 centertext">
+				<h1>My Documents</h1>
+			</div>
+			<div class="col-lg-4">
+      <input class="right-inner-addon" placeholder="Search" name="srch-term" id="srch-term" type="text">
+        <i class="glyphicon glyphicon-search"></i>
+    </div>
+		</div>
+	</div>
 </body>
 </html>

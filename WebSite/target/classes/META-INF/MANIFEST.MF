@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Implementation-Title: WebSite
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: gkepe
+Built-By: Gavri
 Implementation-Vendor-Id: com.gdev
 Build-Jdk: 1.8.0_144
 Implementation-URL: http://projects.spring.io/spring-boot/WebSite/
