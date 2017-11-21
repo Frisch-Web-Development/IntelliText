@@ -23,3 +23,7 @@ Use an AJAX Post request with Google's tokenID to send to the Controller (Reques
 ### 11/16
 
 Our User Controller Works, started work on the Storage Controller for sending and recieving files.
+
+### 11/20
+
+Storage page is up and running. Just need to connect it to our storage controller.
