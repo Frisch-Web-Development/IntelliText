@@ -27,3 +27,7 @@ Our User Controller Works, started work on the Storage Controller for sending an
 ### 11/20
 
 Storage page is up and running. Just need to connect it to our storage controller.
+
+### 11/24
+
+Storage page needs more work and the controller points to null files. Bug fixes.
