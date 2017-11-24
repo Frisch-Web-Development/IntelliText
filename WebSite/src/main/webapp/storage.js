@@ -9,12 +9,12 @@ var getPath = function()
 	
 	var profile;
 	
-	/*$.ajax({method: "GET",
+	$.ajax({method: "GET",
         headers: {'Content-Type': 'application/json'},
         url: "/conf/storage"
         }).done(function(data) {  files = data; console.log(data);});
 
-	$.ajax({method: "GET",
+	/*$.ajax({method: "GET",
         headers: {'Content-Type': 'application/json'},
         url: "/conf/storage/recent"
         }).done(function(data) {  recentFiles = data; console.log(data);});*/

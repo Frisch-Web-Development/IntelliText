@@ -36,7 +36,7 @@ public class RetrieverDaoImpl implements RetrieverDao {
 	public boolean userExists(String name) {
 		return (User) mongo.findOne(new Query(Criteria.where("userName").is(name)), User.class) == null;
 	}
-	
+	@Override
 	public List<FileEntity> getAllFiles(Principal user) {
 		UserFileStorageEntity storage = mongo.findOne(
 				new Query(Criteria.where("email").is(user.getName())
@@ -44,7 +44,7 @@ public class RetrieverDaoImpl implements RetrieverDao {
 				UserFileStorageEntity.class, "Files");
 		return storage.getFiles();
 	}
-
+	@Override
 	public FileEntity getFile(FileEntity file, Principal user) {
 		UserFileStorageEntity storage = mongo.findOne(
 				new Query(Criteria.where("email").is(user.getName())
