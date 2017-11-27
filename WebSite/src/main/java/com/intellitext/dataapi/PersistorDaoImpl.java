@@ -42,49 +42,19 @@ public class PersistorDaoImpl implements PersistorDao {
 	@Override
 	public void insertNewUser(User user, String collection) {
 		mongo.insert(new UserFileStorageEntity(user.getFirstName() + " " + user.getLastName(), user.getEmail(), new ArrayList<FileEntity>()), "Files");
-		
 		mongo.insert(user, collection);
 	}
 	@Override
 	public void insertNewFile(FileEntity file,Principal user) {
-		
-		/*ArrayList<UserFileStorageEntity> temp = (ArrayList<UserFileStorageEntity>) mongo.findAll(UserFileStorageEntity.class, "Files");
-		UserFileStorageEntity storage = null; 
-		UserFileStorageEntity original = null; 
-		boolean test = false; 
-		for(UserFileStorageEntity i : temp)
-		{
-			System.out.println(i + "stuff1");
-				if(i.getEmail().equals(user.getName())) {
-				System.out.println(i + "stuff2");
-				storage = i; 
-				original = i; 
-				test = true; 
-				break; 
-			}
-		}
-		if(test) {
-			System.out.println(storage + "this is storage");
-			System.out.println(file + " this is the file");
-		storage.addFile(file);	
-		 
-		}
-		else 
-			System.out.println("Error");*/
-		updateDB(file, user); 
-
+		Update update = new Update();
+		System.out.println(update.push("files", file));
+		mongo.updateFirst(new Query(Criteria.where("email").is(user.getName())), update, "Files");
+		//mongo.updateFirst(new Query(Criteria.where("email").is(user.getName())), update, UserFileStorageEntity.class);
 	}
 	
 	@Override
 	public void updateFile(FileEntity file, User user) {
 		
-	}
-	
-	public void updateDB(FileEntity file ,Principal prince)
-	{
-		Update update = new Update();
-		update.push("files", file);
-		mongo.updateFirst(new Query(Criteria.where("email").is(prince.getName())), update, UserFileStorageEntity.class);
 	}
 	
 	@Override
