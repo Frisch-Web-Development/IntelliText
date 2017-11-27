@@ -1,7 +1,11 @@
 package com.intellitext.dataapi;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.bson.Document;
+import org.bson.conversions.Bson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -17,6 +21,8 @@ import org.springframework.stereotype.Service;
 import com.intellitext.model.FileEntity;
 import com.intellitext.model.User;
 import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 
 @Repository
 @Component
@@ -35,22 +41,50 @@ public class PersistorDaoImpl implements PersistorDao {
 
 	@Override
 	public void insertNewUser(User user, String collection) {
+		mongo.insert(new UserFileStorageEntity(user.getFirstName() + " " + user.getLastName(), user.getEmail(), new ArrayList<FileEntity>()), "Files");
+		
 		mongo.insert(user, collection);
 	}
 	@Override
 	public void insertNewFile(FileEntity file,Principal user) {
-		/*UserFileStorageEntity storage = mongo.findOne(
-				new Query(Criteria.where("email").is(user.getName())
-						.orOperator(Criteria.where("name").is(user.getName()))), // TODO which ID to use?
-				 UserFileStorageEntity.class, "Files");
-		storage.addFile(file);*/
-		System.out.println(file.getName());
-		mongo.insert(file, "Files");
+		
+		/*ArrayList<UserFileStorageEntity> temp = (ArrayList<UserFileStorageEntity>) mongo.findAll(UserFileStorageEntity.class, "Files");
+		UserFileStorageEntity storage = null; 
+		UserFileStorageEntity original = null; 
+		boolean test = false; 
+		for(UserFileStorageEntity i : temp)
+		{
+			System.out.println(i + "stuff1");
+				if(i.getEmail().equals(user.getName())) {
+				System.out.println(i + "stuff2");
+				storage = i; 
+				original = i; 
+				test = true; 
+				break; 
+			}
+		}
+		if(test) {
+			System.out.println(storage + "this is storage");
+			System.out.println(file + " this is the file");
+		storage.addFile(file);	
+		 
+		}
+		else 
+			System.out.println("Error");*/
+		updateDB(file, user); 
+
 	}
 	
 	@Override
 	public void updateFile(FileEntity file, User user) {
 		
+	}
+	
+	public void updateDB(FileEntity file ,Principal prince)
+	{
+		Update update = new Update();
+		update.push("files", file);
+		mongo.updateFirst(new Query(Criteria.where("email").is(prince.getName())), update, UserFileStorageEntity.class);
 	}
 	
 	@Override

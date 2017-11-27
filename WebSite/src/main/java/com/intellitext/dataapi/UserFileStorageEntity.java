@@ -1,5 +1,6 @@
 package com.intellitext.dataapi;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.intellitext.model.FileEntity;
@@ -51,7 +52,14 @@ public class UserFileStorageEntity {
 	}
 
 	public void addFile(FileEntity file) {
+		System.out.println(file + "Kill yourlsef you fucking bitch ");
 		files.add(file);
+	}
+	
+	public String toString()
+	{
+		return "User name: " + userName + " email: " + email + " Files" + files;
+		
 	}
 
 }

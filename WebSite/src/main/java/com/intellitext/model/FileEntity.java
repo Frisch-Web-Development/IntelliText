@@ -113,5 +113,10 @@ public class FileEntity {
 	public void setSharedWith(ArrayList<String> sharedWith) {
 		this.sharedWith = sharedWith;
 	}
-
+	
+	
+	public String toString()
+	{
+		return "Name : " + name + " Owner: " + owner + " Type: " + type + " Date Created: " + dateCreated;  
+	}
 }

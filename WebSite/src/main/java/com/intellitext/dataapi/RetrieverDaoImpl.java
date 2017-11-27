@@ -1,6 +1,7 @@
 package com.intellitext.dataapi;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import com.intellitext.model.FileEntity;
+import com.intellitext.model.Role;
 import com.intellitext.model.User;
 
 @Repository
@@ -29,7 +31,13 @@ public class RetrieverDaoImpl implements RetrieverDao {
 	
 	@Override
 	public User getUserByEmail(String email) {
-		return (User) mongo.findOne(new Query(Criteria.where("email").is(email)), User.class);
+		ArrayList<User> temp = (ArrayList<User>) mongo.findAll(User.class, "Users");
+		for(User user : temp) {
+			if(user.getEmail().equals(email)) {
+				return user;
+			}
+		}
+		return null;
 	}
 	
 	@Override
@@ -64,7 +72,7 @@ public class RetrieverDaoImpl implements RetrieverDao {
 		User user = getUserByEmail(arg0);
 		CodeUserDetails principal = CodeUserDetails.getBuilder()
                 .firstName(user.getFirstName()).lastName(user.getLastName())
-                .password(user.getPassword()).role(user.getRole()).username(user.getEmail())
+                .password(user.getPassword()).role(Role.ROLE_USER).username(user.getEmail())
                 .build();
 
         return principal;

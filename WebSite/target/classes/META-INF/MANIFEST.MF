@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: WebSite
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: Gavri
+Built-By: Gregory
 Implementation-Vendor-Id: com.gdev
-Build-Jdk: 1.8.0_144
+Build-Jdk: 1.8.0_111
 Implementation-URL: http://projects.spring.io/spring-boot/WebSite/
 Created-By: Maven Integration for Eclipse
 Implementation-Vendor: Pivotal Software, Inc.
