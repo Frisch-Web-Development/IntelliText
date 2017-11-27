@@ -31,3 +31,7 @@ Storage page is up and running. Just need to connect it to our storage controlle
 ### 11/24
 
 Storage page needs more work and the controller points to null files. Bug fixes.
+
+### 11/27
+
+Storage fetch and send now works, Database keeps track of user files. Bug fixes.
