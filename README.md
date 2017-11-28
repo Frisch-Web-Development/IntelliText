@@ -35,3 +35,9 @@ Storage page needs more work and the controller points to null files. Bug fixes.
 ### 11/27
 
 Storage fetch and send now works, Database keeps track of user files. Bug fixes.
+
+### 11/28 
+
+Cards are now representing files on the files page:
+
+![alt text](/screenshots/screenshot1128.)
