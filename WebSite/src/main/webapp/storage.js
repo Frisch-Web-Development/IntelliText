@@ -32,16 +32,14 @@ function onSignIn(googleUser) {
 		type : 'POST',
 		url : "/conf/user",
 		data : JSON.stringify(user),
+		async : false,
 		error : function(e) {
 			console.log(e);
 		},
 		dataType : "json",
 		contentType : "application/json"
 	});
-
-}
-
-$(document).ready(function() {
+	
 
 	$.ajax({
 		method : "GET",
@@ -53,6 +51,10 @@ $(document).ready(function() {
 		files = data;
 		console.log(data);
 	});
+
+}
+
+$(document).ready(function() {
 
 	$("#newTextFile").click(function() {
 		console.log("New File");
