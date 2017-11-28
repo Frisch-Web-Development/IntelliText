@@ -2,7 +2,7 @@ var getPath = function() {
 	return "/";
 }
 var recentFiles;
-var files;
+var files = {};
 var filesInLocalPath;
 var today = new Date();
 
@@ -49,13 +49,16 @@ function onSignIn(googleUser) {
 		url : "/conf/storage"
 	}).done(function(data) {
 		files = data;
-		console.log(data);
+		console.log(files[0].name);
+		for (var i = 0; i < files.length; i++){
+			$( "#allFileContainer" ).append( "<p>" + files[i].name +"</p>" );
+		}
 	});
 
 }
 
 $(document).ready(function() {
-
+	
 	$("#newTextFile").click(function() {
 		console.log("New File");
 
