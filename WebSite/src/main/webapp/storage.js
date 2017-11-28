@@ -1,24 +1,17 @@
-var getPath = function()
-{
-	return "/"; 
+var getPath = function() {
+	return "/";
 }
-	var recentFiles;
-	var files;
-	var filesInLocalPath;
-	var today = new Date(); 
-	
-	var profile;
-	
-	/*$.ajax({method: "GET",
-        headers: {'Content-Type': 'application/json'},
-        url: "/conf/storage"
-        }).done(function(data) {  files = data; console.log(data);});*/
+var recentFiles;
+var files;
+var filesInLocalPath;
+var today = new Date();
 
-	/*$.ajax({method: "GET",
-        headers: {'Content-Type': 'application/json'},
-        url: "/conf/storage/recent"
-        }).done(function(data) {  recentFiles = data; console.log(data);});*/
-	
+var profile;
+
+/*$.ajax({method: "GET",
+    headers: {'Content-Type': 'application/json'},
+    url: "/conf/storage/recent"
+    }).done(function(data) {  recentFiles = data; console.log(data);});*/
 
 function onSignIn(googleUser) {
 	console.log("Success");
@@ -48,29 +41,41 @@ function onSignIn(googleUser) {
 
 }
 
-$(document).ready(function(){
-	$("#newTextFile").click(function(){
+$(document).ready(function() {
+
+	$.ajax({
+		method : "GET",
+		headers : {
+			'Content-Type' : 'application/json'
+		},
+		url : "/conf/storage"
+	}).done(function(data) {
+		files = data;
+		console.log(data);
+	});
+
+	$("#newTextFile").click(function() {
 		console.log("New File");
-		
+
 		var date = {
-				"Year" : today.getFullYear(),
-				"Month" : today.getMonth() + 1,
-				"Date" : today.getDate(),
-				"Hour" : today.getHours() + 1,
-				"Minute" : today.getMinutes()
+			"Year" : today.getFullYear(),
+			"Month" : today.getMonth() + 1,
+			"Date" : today.getDate(),
+			"Hour" : today.getHours() + 1,
+			"Minute" : today.getMinutes()
 		}
-		
+
 		var file = {
-				"userPath" : getPath(),
-				"storagePath" : null,
-				"name" : "untitled document",
-				"owner" : profile.getEmail(),
-				"type" : "rtf",
-				"lastModified" : null,
-				"dateCreated" : null,
-				"sharedWith" : null		
+			"userPath" : getPath(),
+			"storagePath" : null,
+			"name" : "untitled document",
+			"owner" : profile.getEmail(),
+			"type" : "rtf",
+			"lastModified" : null,
+			"dateCreated" : null,
+			"sharedWith" : null
 		}
-		
+
 		$.ajax({
 			type : 'POST',
 			url : "/conf/storage/insert",
@@ -83,5 +88,3 @@ $(document).ready(function(){
 		});
 	});
 });
-
-

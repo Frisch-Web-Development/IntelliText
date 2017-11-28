@@ -31,6 +31,9 @@ public class StorageController {
 	@RequestMapping(value = "/conf/storage", method = RequestMethod.GET)
 	// "Retrieve list of all registered users"
 	public List<FileEntity> getAllUserFiles(Principal prince) {
+		if(prince == null) {
+			System.out.println("PRINCE IS NULL");
+		}
 		return retriever.getAllFiles(prince); // unCast after fix of implementation
 	}
 	

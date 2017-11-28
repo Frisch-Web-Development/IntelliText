@@ -46,14 +46,20 @@ public class RetrieverDaoImpl implements RetrieverDao {
 	}
 	@Override
 	public List<FileEntity> getAllFiles(Principal user) {
-		UserFileStorageEntity storage = mongo.findOne(
-				new Query(Criteria.where("email").is(user.getName())
-						.orOperator(Criteria.where("name").is(user.getName()))),
-				UserFileStorageEntity.class, "Files");
-		return storage.getFiles();
+		ArrayList<UserFileStorageEntity> temp = (ArrayList<UserFileStorageEntity>) mongo.findAll(UserFileStorageEntity.class, "Files");
+		UserFileStorageEntity tempStorage = new UserFileStorageEntity(null, null, null);
+		// TODO add precautions here
+		for(UserFileStorageEntity userFileStorageEntity : temp) {
+			System.out.println(user.getName());
+			if(userFileStorageEntity.getEmail().equals(user.getName())) {
+				tempStorage = userFileStorageEntity;
+			}
+		}
+		return tempStorage.getFiles();
 	}
 	@Override
 	public FileEntity getFile(FileEntity file, Principal user) {
+		
 		UserFileStorageEntity storage = mongo.findOne(
 				new Query(Criteria.where("email").is(user.getName())
 						.orOperator(Criteria.where("name").is(user.getName()))),
