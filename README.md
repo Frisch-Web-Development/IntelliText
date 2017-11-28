@@ -40,4 +40,4 @@ Storage fetch and send now works, Database keeps track of user files. Bug fixes.
 
 Cards are now representing files on the files page:
 
-![alt text](/screenshots/screenshot1128.)
+![alt text](/screenshots/screenshot1128.png)
