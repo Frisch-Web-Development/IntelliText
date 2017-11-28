@@ -51,7 +51,7 @@ function onSignIn(googleUser) {
 		files = data;
 		console.log(files[0].name);
 		for (var i = 0; i < files.length; i++){
-			$( "#allFileContainer" ).append( "<p>" + files[i].name +"</p>" );
+			$( "#allFileContainer" ).append( "<div class = 'col-md-4 card centertext' style = 'padding-top:20%;'><img src='images/doc_icon.png' /></span><h3>"+files[i].name+"</h3>" +"</div>" );
 		}
 	});
 

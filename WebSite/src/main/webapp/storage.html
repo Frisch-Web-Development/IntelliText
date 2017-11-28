@@ -17,8 +17,7 @@
 
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script src="storage.js"></script>
-	
+<script src="storage.js"></script>
 <body>
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
@@ -40,28 +39,28 @@
 
 		<div class="container">
 			<div class="row">
-			<div class="col-lg-4">
+				<div class="col-lg-4">
 					<button class="btn btn-primary dropdown-toggle" id="menu1"
-						type="button" data-toggle="dropdown">New File <span class="caret"></span>
+						type="button" data-toggle="dropdown">
+						New File <span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
 						<li role="presentation"><a role="menuitem" tabindex="-1"
-							id ="newTextFile">New Text File</a></li>
+							id="newTextFile">New Text File</a></li>
 					</ul>
+				</div>
+				<div class="col-lg-4 centertext">
+					<h1>My Documents</h1>
+				</div>
+				<div class="col-lg-4">
+					<input class="right-inner-addon" placeholder="Search"
+						name="srch-term" id="srch-term" type="text"> <i
+						class="glyphicon glyphicon-search"></i>
+				</div>
 			</div>
-			<div class="col-lg-4 centertext">
-				<h1>My Documents</h1>
-			</div>
-			<div class="col-lg-4">
-      <input class="right-inner-addon" placeholder="Search" name="srch-term" id="srch-term" type="text">
-        <i class="glyphicon glyphicon-search"></i>
-    </div>
-    </div>
-    <div class = "row">
-    
-    <div id = "allFileContainer"></div>
-    
-    </div>
+			<hr style = "padding-top: 3em;">
+			<div id="allFileContainer" class="row"></div>
+
 		</div>
 	</div>
 </body>
