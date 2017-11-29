@@ -49,7 +49,6 @@ public class PersistorDaoImpl implements PersistorDao {
 		Update update = new Update();
 		System.out.println(update.push("files", file));
 		mongo.updateFirst(new Query(Criteria.where("email").is(user.getName())), update, "Files");
-		//mongo.updateFirst(new Query(Criteria.where("email").is(user.getName())), update, UserFileStorageEntity.class);
 	}
 	
 	@Override

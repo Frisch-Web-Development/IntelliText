@@ -3,6 +3,7 @@ package com.intellitext.model;
 import java.util.ArrayList;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.intellitext.controller.JsonViews;
 
@@ -19,8 +20,10 @@ public class FileEntity {
 	@JsonView(value = { JsonViews.File.class })
 	String type;
 	@JsonView(value = { JsonViews.File.class })
+	@JsonFormat(pattern = "yyyy.MM.dd HH:mm")
 	Date lastModified;
 	@JsonView(value = { JsonViews.File.class })
+	@JsonFormat(pattern = "yyyy.MM.dd HH:mm")
 	Date dateCreated;
 	@JsonView(value = { JsonViews.File.class })
 	ArrayList<String> sharedWith;

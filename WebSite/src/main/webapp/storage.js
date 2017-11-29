@@ -8,11 +8,6 @@ var today = new Date();
 
 var profile;
 
-/*$.ajax({method: "GET",
-    headers: {'Content-Type': 'application/json'},
-    url: "/conf/storage/recent"
-    }).done(function(data) {  recentFiles = data; console.log(data);});*/
-
 function onSignIn(googleUser) {
 	console.log("Success");
 
@@ -48,12 +43,16 @@ function onSignIn(googleUser) {
 		},
 		url : "/conf/storage"
 	}).done(function(data) {
-		files = data;
-		console.log(files[0].name);
+		files = data;		
 		for (var i = 0; i < files.length; i++){
 			$( "#allFileContainer" ).append( "<div class = 'col-md-4 card centertext' style = 'padding-top:20%;'><img src='images/doc_icon.png' /></span><h3>"+files[i].name+"</h3>" +"</div>" );
 		}
 	});
+	
+	/*$.ajax({method: "GET",
+	    headers: {'Content-Type': 'application/json'},
+	    url: "/conf/storage/recent"
+	    }).done(function(data) {  recentFiles = data; console.log(data);});*/
 
 }
 
@@ -69,6 +68,8 @@ $(document).ready(function() {
 			"Hour" : today.getHours() + 1,
 			"Minute" : today.getMinutes()
 		}
+		//yyyy.MM.dd HH:mm
+		
 
 		var file = {
 			"userPath" : getPath(),
@@ -77,7 +78,7 @@ $(document).ready(function() {
 			"owner" : profile.getEmail(),
 			"type" : "rtf",
 			"lastModified" : null,
-			"dateCreated" : null,
+			"dateCreated" : today.getFullYear()+"." + (today.getMonth()+1) + "." + today.getDate() + " " + (today.getHours() + 1) + ":" + today.getMinutes(),
 			"sharedWith" : null
 		}
 
