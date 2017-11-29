@@ -5,6 +5,7 @@ import java.security.Principal;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import com.intellitext.model.FileEntity;
+import com.intellitext.model.FolderEntity;
 import com.intellitext.model.User;
 
 public interface PersistorDao extends UserDetailsService{
@@ -17,6 +18,8 @@ public interface PersistorDao extends UserDetailsService{
 
 	void updateFile(FileEntity file, User user);
 
-	void deleteFile(FileEntity file, User user);	
+	void deleteFile(FileEntity file, User user);
+
+	void insertNewFolder(FolderEntity folder, Principal prince);	
 	
 }

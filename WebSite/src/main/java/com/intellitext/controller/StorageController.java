@@ -14,6 +14,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import com.intellitext.dataapi.PersistorDao;
 import com.intellitext.dataapi.RetrieverDao;
 import com.intellitext.model.FileEntity;
+import com.intellitext.model.FolderEntity;
 import com.intellitext.model.User;
 
 
@@ -77,6 +78,14 @@ public class StorageController {
 	{
 		System.out.println("Inserting file");
 		persistor.insertNewFile(file, prince);
+	}
+	
+	@JsonView(value = { JsonViews.File.class })
+	@RequestMapping(value = "/conf/storage/insertfolder", method = RequestMethod.POST)
+	public void insertFolder(@RequestBody FolderEntity folder, Principal prince)
+	{
+		System.out.println("Inserting folder");
+		persistor.insertNewFolder(folder, prince);
 	}
 	
 	

@@ -19,6 +19,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.intellitext.model.FileEntity;
+import com.intellitext.model.FolderEntity;
 import com.intellitext.model.User;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
@@ -42,6 +43,7 @@ public class PersistorDaoImpl implements PersistorDao {
 	@Override
 	public void insertNewUser(User user, String collection) {
 		mongo.insert(new UserFileStorageEntity(user.getFirstName() + " " + user.getLastName(), user.getEmail(), new ArrayList<FileEntity>()), "Files");
+		mongo.insert(new UserFolderStorageEntity(user.getFirstName() + " " + user.getLastName(), user.getEmail(), new ArrayList<FolderEntity>()), "Folders");
 		mongo.insert(user, collection);
 	}
 	@Override
@@ -70,6 +72,13 @@ public class PersistorDaoImpl implements PersistorDao {
                 .build();
 
         return principal;
+	}
+
+	@Override
+	public void insertNewFolder(FolderEntity folder, Principal prince) {
+		Update update = new Update();
+		System.out.println(update.push("folders", folder));
+		mongo.updateFirst(new Query(Criteria.where("email").is(prince.getName())), update, "Folders");
 	}
 	
 }

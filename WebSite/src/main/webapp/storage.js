@@ -73,11 +73,11 @@ $(document).ready(function() {
 
 		var file = {
 			"userPath" : getPath(),
-			"storagePath" : null,
-			"name" : "untitled document",
+			"storagePath" : "/",
+			"name" : "new untitled document",
 			"owner" : profile.getEmail(),
 			"type" : "rtf",
-			"lastModified" : null,
+			"lastModified" : today.getFullYear()+"." + (today.getMonth()+1) + "." + today.getDate() + " " + (today.getHours() + 1) + ":" + today.getMinutes(),
 			"dateCreated" : today.getFullYear()+"." + (today.getMonth()+1) + "." + today.getDate() + " " + (today.getHours() + 1) + ":" + today.getMinutes(),
 			"sharedWith" : null
 		}
@@ -93,4 +93,31 @@ $(document).ready(function() {
 			contentType : "application/json"
 		});
 	});
+	
+	
+	
+	$("#newFolder").click(function() {
+		console.log("New Folder");
+		//yyyy.MM.dd HH:mm
+
+		var folder = {
+			"name" : getPath(),
+			"color" : "/",
+			"path" : "new untitled document",
+			"owner" : profile.getEmail(),
+		}
+
+		$.ajax({
+			type : 'POST',
+			url : "/conf/storage/insertfolder",
+			data : JSON.stringify(folder),
+			error : function(e) {
+				console.log(e);
+			},
+			dataType : "json",
+			contentType : "application/json"
+		});
+	});
+	
+	
 });
