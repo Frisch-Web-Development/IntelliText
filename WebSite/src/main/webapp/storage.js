@@ -72,7 +72,7 @@ $(document).ready(function() {
 		
 
 		var file = {
-			"userPath" : getPath(),
+			"userPath" : "All/",
 			"storagePath" : "/",
 			"name" : "new untitled document",
 			"owner" : profile.getEmail(),

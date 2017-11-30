@@ -42,8 +42,14 @@ public class PersistorDaoImpl implements PersistorDao {
 
 	@Override
 	public void insertNewUser(User user, String collection) {
-		mongo.insert(new UserFileStorageEntity(user.getFirstName() + " " + user.getLastName(), user.getEmail(), new ArrayList<FileEntity>()), "Files");
-		mongo.insert(new UserFolderStorageEntity(user.getFirstName() + " " + user.getLastName(), user.getEmail(), new ArrayList<FolderEntity>()), "Folders");
+		List<FolderEntity> folders = new ArrayList<FolderEntity>();
+		FolderEntity folder = new FolderEntity();
+		folder.setColor("#FFF");
+		folder.setName("All");
+		folder.setOwner(user.getEmail());
+		folder.setPath("/");
+		folders.add(folder);
+		mongo.insert(new UserFileStorageEntity(user.getFirstName() + " " + user.getLastName(), user.getEmail(), new ArrayList<FileEntity>(), folders), "Files");
 		mongo.insert(user, collection);
 	}
 	@Override
@@ -78,7 +84,7 @@ public class PersistorDaoImpl implements PersistorDao {
 	public void insertNewFolder(FolderEntity folder, Principal prince) {
 		Update update = new Update();
 		System.out.println(update.push("folders", folder));
-		mongo.updateFirst(new Query(Criteria.where("email").is(prince.getName())), update, "Folders");
+		mongo.updateFirst(new Query(Criteria.where("email").is(prince.getName())), update, "Files");
 	}
 	
 }

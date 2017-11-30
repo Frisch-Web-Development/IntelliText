@@ -4,18 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.intellitext.model.FileEntity;
+import com.intellitext.model.FolderEntity;
 
 public class UserFileStorageEntity {
 
 	String userName;
 	String email;
 	List<FileEntity> files;
+	List<FolderEntity> folders;
 
-	public UserFileStorageEntity(String userName, String email, List<FileEntity> files) {
+	public UserFileStorageEntity(String userName, String email, List<FileEntity> files, List<FolderEntity> folders) {
 		super();
 		this.userName = userName;
 		this.email = email;
 		this.files = files;
+		this.folders = folders;
 	}
 
 	public String getUserName() {
@@ -58,7 +61,7 @@ public class UserFileStorageEntity {
 	
 	public String toString()
 	{
-		return "User name: " + userName + " email: " + email + " Files" + files;
+		return "User name: " + userName + " email: " + email + " Files" + files + " Folders " + folders;
 		
 	}
 

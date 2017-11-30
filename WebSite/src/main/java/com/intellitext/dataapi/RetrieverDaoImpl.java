@@ -47,7 +47,7 @@ public class RetrieverDaoImpl implements RetrieverDao {
 	@Override
 	public List<FileEntity> getAllFiles(Principal user) {
 		ArrayList<UserFileStorageEntity> temp = (ArrayList<UserFileStorageEntity>) mongo.findAll(UserFileStorageEntity.class, "Files");
-		UserFileStorageEntity tempStorage = new UserFileStorageEntity(null, null, null);
+		UserFileStorageEntity tempStorage = new UserFileStorageEntity(null, null, null, null);
 		// TODO add precautions here
 		for(UserFileStorageEntity userFileStorageEntity : temp) {
 			System.out.println(user.getName());
