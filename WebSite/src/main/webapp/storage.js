@@ -45,7 +45,12 @@ function onSignIn(googleUser) {
 	}).done(function(data) {
 		files = data;		
 		for (var i = 0; i < files.length; i++){
-			$( "#allFileContainer" ).append( "<div class = 'col-md-4 card centertext' style = 'padding-top:20%;'><img src='images/doc_icon.png' /></span><h3>"+files[i].name+"</h3>" +"</div>" );
+			if(files[i].userPath == "All/"){
+				$( "#all" ).append( "<div class = 'col-md-4 card centertext' style = 'padding-top:20%;'><img src='images/doc_icon.png' /></span><h3>"+files[i].name+"</h3>" +"</div>" );
+			}
+			else{
+				
+			}
 		}
 	});
 	
@@ -119,5 +124,18 @@ $(document).ready(function() {
 		});
 	});
 	
-	
+	var acc = document.getElementsByClassName("accordion");
+	var i;
+
+	for (i = 0; i < acc.length; i++) {
+	  acc[i].onclick = function() {
+	    this.classList.toggle("active");
+	    var panel = this.nextElementSibling;
+	    if (panel.style.maxHeight){
+	      panel.style.maxHeight = null;
+	    } else {
+	      panel.style.maxHeight = panel.scrollHeight + "px";
+	    } 
+	  }
+	}
 });
