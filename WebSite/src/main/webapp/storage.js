@@ -1,3 +1,4 @@
+
 var getPath = function() {
 	return "/";
 }
