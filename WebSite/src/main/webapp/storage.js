@@ -42,6 +42,7 @@ function onSignIn(googleUser) {
         headers: {
             'Content-Type': 'application/json'
         },
+        async:false,
         url: "/conf/storage/folders"
     }).done(function(data) {
         folders = data;
@@ -56,12 +57,13 @@ function onSignIn(googleUser) {
         headers: {
             'Content-Type': 'application/json'
         },
-        url: "/conf/storage"
+        url: "/conf/storage",
+        async:false
     }).done(function(data) {
         files = data;
         for (var i = 0; i < files.length; i++) {
             if (files[i].userPath == "All/") {
-                $("#all").append("<div class = 'col-md-4 card centertext' style = 'padding-top:20%;'><img src='images/doc_icon.png' /></span><h3>" + files[i].name + "</h3>" + "</div>");
+                $("#All").append("<div class = 'col-md-4 card centertext' style = 'padding-top:20%;'><img src='images/doc_icon.png' /></span><h3>" + files[i].name + "</h3>" + "</div>");
             } else {
 
             }
@@ -89,6 +91,7 @@ function onSignIn(googleUser) {
 }
 
 $(document).ready(function() {
+    $('.accordion').accordion("refresh"); 
 
     $("#newTextFile").click(function() {
         console.log("New File");
