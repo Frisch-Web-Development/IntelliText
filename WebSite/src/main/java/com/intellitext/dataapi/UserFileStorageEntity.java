@@ -54,6 +54,14 @@ public class UserFileStorageEntity {
 		return null;
 	}
 
+	public List<FolderEntity> getFolders() {
+		return folders;
+	}
+
+	public void setFolders(List<FolderEntity> folders) {
+		this.folders = folders;
+	}
+
 	public void addFile(FileEntity file) {
 		System.out.println(file + "Kill yourlsef you fucking bitch ");
 		files.add(file);

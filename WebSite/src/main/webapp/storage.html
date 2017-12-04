@@ -48,7 +48,8 @@
 						<li role="presentation"><a role="menuitem" tabindex="-1"
 							id="newTextFile">New Text File</a></li>
 						<li role="presentation"><a role="menuitem" tabindex="-1"
-							id="newFolder">New Folder</a></li>
+							id="newFolder" data-toggle="modal" data-target="#myModal">New
+								Folder</a></li>
 					</ul>
 				</div>
 				<div class="col-lg-4 centertext">
@@ -63,7 +64,7 @@
 			<hr style="padding-top: 3em;">
 
 
-			<div style="overflow-y:scroll;  height:70%; position:absolute;">
+			<div style="overflow-y: scroll; height: 70%; position: absolute;">
 				<div id="allFileContainer" class="row">
 
 					<button class="accordion">Recents</button>
@@ -71,6 +72,35 @@
 
 					<button class="accordion">All</button>
 					<div class="row panel" id="all"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<!--  modal confirm new folder -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">Create a New Folder!</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label for="usr">New Folder Name:</label> <input type="text"
+							class="form-control" id="newFolderInput">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal" id = "newFolderConfirm">Create
+						Folder</button>
 				</div>
 			</div>
 		</div>

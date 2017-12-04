@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import com.intellitext.model.FileEntity;
+import com.intellitext.model.FolderEntity;
 import com.intellitext.model.Role;
 import com.intellitext.model.User;
 
@@ -82,6 +83,20 @@ public class RetrieverDaoImpl implements RetrieverDao {
                 .build();
 
         return principal;
+	}
+
+	@Override
+	public List<FolderEntity> getAllFolders(Principal prince) {
+		ArrayList<UserFileStorageEntity> temp = (ArrayList<UserFileStorageEntity>) mongo.findAll(UserFileStorageEntity.class, "Files");
+		UserFileStorageEntity tempStorage = new UserFileStorageEntity(null, null, null, null);
+		// TODO add precautions here
+		for(UserFileStorageEntity userFileStorageEntity : temp) {
+			System.out.println(prince.getName());
+			if(userFileStorageEntity.getEmail().equals(prince.getName())) {
+				tempStorage = userFileStorageEntity;
+			}
+		}
+		return tempStorage.getFolders();
 	}
 
 }

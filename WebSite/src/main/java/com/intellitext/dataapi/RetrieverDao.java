@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import com.intellitext.model.FileEntity;
+import com.intellitext.model.FolderEntity;
 import com.intellitext.model.User;
 
 public interface RetrieverDao extends UserDetailsService{
@@ -21,5 +22,7 @@ public interface RetrieverDao extends UserDetailsService{
 	List<User> getAllUsers();
 
 	User getUserByEmail(String email);
+
+	List<FolderEntity> getAllFolders(Principal prince);
 
 }

@@ -37,13 +37,22 @@ public class StorageController {
 		return retriever.getAllFiles(prince); // unCast after fix of implementation
 	}
 	
+	@RequestMapping(value = "/conf/storage/folders", method = RequestMethod.GET)
+	// "Retrieve list of all registered users"
+	public List<FolderEntity> getAllUserFolders(Principal prince) {
+		if(prince == null) {
+			System.out.println("PRINCE IS NULL");
+		}
+		return retriever.getAllFolders(prince); // unCast after fix of implementation
+	}
+	
 	@RequestMapping(value = "/conf/storage/recent", method = RequestMethod.GET)
 	// "Retrieve list of all registered users"
 	public FileEntity[] getRecentFiles(Principal prince) {
-		List<FileEntity> list =  retriever.getAllFiles(prince); // Un Cast after fix of implementation
+		List<FileEntity> allFiles =  retriever.getAllFiles(prince); // Un Cast after fix of implementation
 		FileEntity result[] = new FileEntity[4]; //change length for amount
 		
-		for(FileEntity file: list)
+		for(FileEntity file: allFiles)
 		{
 			for(int i = 0; i<result.length; i++)
 			{
