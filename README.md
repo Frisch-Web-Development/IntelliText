@@ -45,3 +45,7 @@ Cards are now representing files on the files page:
 ### 11/29
 
 Starting work on folders
+
+### 12/4
+
+Added folder creation UI, added https://github.com/Frisch-Web-Development/FilePageTests, and started work on the Files page.
