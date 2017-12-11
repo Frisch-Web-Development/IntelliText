@@ -5,7 +5,7 @@ var recentFiles;
 var files = {};
 var filesInLocalPath;
 var today = new Date();
-
+var user;
 var profile;
 
 /** Google Verification **/
@@ -17,8 +17,7 @@ function onSignIn(googleUser) {
     google = googleUser;
     
     // set user
-    
-    var user = {
+    user = {
         "email": profile.getEmail(),
         "firstName": profile.getGivenName(),
         "lastName": profile.getFamilyName(),
@@ -27,79 +26,78 @@ function onSignIn(googleUser) {
     };
 
     console.log(user);
-
-    $.ajax({
-        type: 'POST',
-        url: "/conf/user",
-        data: JSON.stringify(user),
-        async: false,
-        error: function(e) {
-            console.log(e);
-        },
-        dataType: "json",
-        contentType: "application/json"
-    });
-
-    
-    
-    $.ajax({
-        method: "GET",
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        async:false,
-        url: "/conf/storage/folders"
-    }).done(function(data) {
-        folders = data;
-        for (var i = 0; i < folders.length; i++) {
-        	//$("#allFileContainer").append("<button class='accordion'>" + folders[i].name +"</button><div class='row panel' id='" + folders[i].name + "'></div>");
-        }
-    });
-    
-
-    $.ajax({
-        method: "GET",
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        url: "/conf/storage",
-        async:false
-    }).done(function(data) {
-        files = data;
-        for (var i = 0; i < files.length; i++) {
-            if (files[i].userPath == "All/") {
-               // $("#All").append("<div class = 'col-md-4 card centertext' style = 'padding-top:20%;'><img src='images/doc_icon.png' /></span><h3>" + files[i].name + "</h3>" + "</div>");
-            } else {
-
-            }
-        }
-    });
-
-    $.ajax({
-        method: "GET",
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        url: "/conf/storage/recent"
-    }).done(function(data) {
-        recentFiles = data;
-        console.log(data);
-
-        for (var i = 0; i < recentFiles.length; i++) {
-            //$("#recents").append("<div class = 'col-md-3 card centertext' style = 'padding-top:20%;'><img src='images/doc_icon.png' /></span><h3>" + recentFiles[i].name + "</h3>" + "</div>");
-
-        }
-
-
-    });
-
 }
 
 
+function ajaxCalls(){
+	
 
+	$.ajax({
+	    type: 'POST',
+	    url: "/conf/user",
+	    data: JSON.stringify(user),
+	    async: false,
+	    error: function(e) {
+	        console.log(e);
+	    },
+	    dataType: "json",
+	    contentType: "application/json"
+	});
+
+
+
+	$.ajax({
+	    method: "GET",
+	    headers: {
+	        'Content-Type': 'application/json'
+	    },
+	    async:false,
+	    url: "/conf/storage/folders"
+	}).done(function(data) {
+	    folders = data;
+	    for (var i = 0; i < folders.length; i++) {
+	    	console.log(folders[i].name);
+	    	$("#folderContainer").append("<li><a class='toggle' href='javascript:void(0);'>"+folders[i].name+"<i class='fa fa-question-circle pull-right plus'>&#43;</i></a><div class='row inner' id = '" + folders[i].name  +"'></div>");
+	    }
+	});
+
+
+	$.ajax({
+	    method: "GET",
+	    headers: {
+	        'Content-Type': 'application/json'
+	    },
+	    url: "/conf/storage",
+	    async:false
+	}).done(function(data) {
+	    files = data;
+	    for (var i = 0; i < files.length; i++) {
+	        $("#" + files[i].userPath.substring(0, files[i].userPath.indexOf("/"))).append("<div class = 'col-md-3 card centertext' style = 'height:auto'><img src='images/doc_icon.png'/><h4>"+files[i].name+"</h4></div>");
+	    }
+	});
+
+	$.ajax({
+	    method: "GET",
+	    headers: {
+	        'Content-Type': 'application/json'
+	    },
+	    url: "/conf/storage/recent"
+	}).done(function(data) {
+	    recentFiles = data;
+	    console.log(data);
+
+	    for (var i = 0; i < recentFiles.length; i++) {
+	        $("#recentsDiv").append("<div class='col-md-3 card centertext' style='height: auto'><img src='images/doc_icon.png' /><h4>"+recentFiles[i].name+"</h4></div>");
+	    }
+
+
+	});
+	
+}
 
 $(document).ready(function() {
-    
+    ajaxCalls();
+
     $('.toggle').parent().parent().find('li .inner').slideUp(0);
 	
 $('.toggle').click(function(e) {
