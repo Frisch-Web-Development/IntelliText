@@ -3,20 +3,20 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Welcome to Intellitext</title>
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-<meta charset="ISO-8859-1"></meta>
+<meta charset="ISO-8859-1">
+</meta>
 <meta name="google-signin-client_id"
 	content="657791375399-amgeka1bgktltgh5dbc72bp8654l82vj.apps.googleusercontent.com"></meta>
+<script src="https://apis.google.com/js/platform.js?onload=renderButton"></script>
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src = "jquery-ui-1.12.1.custom/jquery-ui.js"></script>
-<script src="https://apis.google.com/js/platform.js?onload=renderButton"></script>
+<script src="jquery-ui-1.12.1.custom/jquery-ui.js"></script>
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css"></link>
-	
-<link rel="stylesheet" href="storage.css"></link>
-
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+</link>
+<link rel="stylesheet" href="storage.css">
+</link>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="storage.js"></script>
@@ -36,49 +36,258 @@
 				</li>
 			</ul>
 		</div>
+		<div class="row">
+			<div class="col-lg-4">
+				<button class="btn btn-primary dropdown-toggle" id="menu1"
+					type="button" data-toggle="dropdown">
+					New <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+					<li role="presentation"><a role="menuitem" tabindex="-1"
+						id="newTextFile">New Text File</a></li>
+					<li role="presentation"><a role="menuitem" tabindex="-1"
+						id="newFolder" data-toggle="modal" data-target="#myModal">New
+							Folder</a></li>
+				</ul>
+			</div>
+			<div class="col-lg-4 centertext">
+				<h1>My Documents</h1>
+			</div>
+			<div class="col-lg-4 centertext" style="vertical-align: middle;">
+				<input class="right-inner-addon" placeholder="Search"
+					name="srch-term" id="srch-term" type="text"> <i
+					class="glyphicon glyphicon-search"></i>
+			</div>
+		</div>
 	</nav>
 	<div id="MyDocs">
-
 		<div class="container">
-			<div class="row">
-				<div class="col-lg-4">
-					<button class="btn btn-primary dropdown-toggle" id="menu1"
-						type="button" data-toggle="dropdown">
-						New <span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-						<li role="presentation"><a role="menuitem" tabindex="-1"
-							id="newTextFile">New Text File</a></li>
-						<li role="presentation"><a role="menuitem" tabindex="-1"
-							id="newFolder" data-toggle="modal" data-target="#myModal">New
-								Folder</a></li>
-					</ul>
+
+			<hr style="padding-top: 3em;">
+			<h3 style="padding-bottom: 1.5em">Recents</h3>
+			<div class="row" id="recentsDiv">
+				<div class='col-md-3 card centertext' style='height: auto'>
+					<img src='images/doc_icon.png' /></span>
+					<h4>Homework</h4>
 				</div>
-				<div class="col-lg-4 centertext">
-					<h1>My Documents</h1>
+				<div class='col-md-3 card centertext' style='height: auto'>
+					<img src='images/doc_icon.png' /></span>
+					<h4>Essay</h4>
 				</div>
-				<div class="col-lg-4">
-					<input class="right-inner-addon" placeholder="Search"
-						name="srch-term" id="srch-term" type="text"> <i
-						class="glyphicon glyphicon-search"></i>
+				<div class='col-md-3 card centertext' style='height: auto'>
+					<img src='images/doc_icon.png' /></span>
+					<h4>Review Sheet</h4>
+				</div>
+				<div class='col-md-3 card centertext' style='height: auto'>
+					<img src='images/doc_icon.png' /></span>
+					<h4>Untitled Doc</h4>
 				</div>
 			</div>
 			<hr style="padding-top: 3em;">
 
+			<div id="allFileContainer" class="row">
+				<ul class="accordion">
+					<li><a class="toggle" href="javascript:void(0);">All Files<i
+							class="fa fa-question-circle pull-right plus">&#43;</i></a>
+						<div class="row inner">
+							<div class='col-md-3 card centertext' style='height: auto'>
+								<img src='images/doc_icon.png' /></span>
+								<h4>Essay</h4>
+							</div>
+							<div class='col-md-3 card centertext' style='height: auto'>
+								<img src='images/doc_icon.png' /></span>
+								<h4>Essay</h4>
+							</div>
+							<div class='col-md-3 card centertext' style='height: auto'>
+								<img src='images/doc_icon.png' /></span>
+								<h4>Essay</h4>
+							</div>
+							<div class='col-md-3 card centertext' style='height: auto'>
+								<img src='images/doc_icon.png' /></span>
+								<h4>Essay</h4>
+							</div>
+							<div class='col-md-3 card centertext' style='height: auto'>
+								<img src='images/doc_icon.png' /></span>
+								<h4>Essay</h4>
+							</div>
+							<div class='col-md-3 card centertext' style='height: auto'>
+								<img src='images/doc_icon.png' /></span>
+								<h4>Essay</h4>
+							</div>
+							<div class='col-md-3 card centertext' style='height: auto'>
+								<img src='images/doc_icon.png' /></span>
+								<h4>Essay</h4>
+							</div>
+							<div class='col-md-3 card centertext' style='height: auto'>
+								<img src='images/doc_icon.png' /></span>
+								<h4>Essay</h4>
+							</div>
+							<div class='col-md-3 card centertext' style='height: auto'>
+								<img src='images/doc_icon.png' /></span>
+								<h4>Essay</h4>
+							</div>
+							<div class='col-md-3 card centertext' style='height: auto'>
+								<img src='images/doc_icon.png' /></span>
+								<h4>Essay</h4>
+							</div>
+							<div class='col-md-3 card centertext' style='height: auto'>
+								<img src='images/doc_icon.png' /></span>
+								<h4>Essay</h4>
+							</div>
+							<div class='col-md-3 card centertext' style='height: auto'>
+								<img src='images/doc_icon.png' /></span>
+								<h4>Essay</h4>
+							</div>
+							<div class='col-md-3 card centertext' style='height: auto'>
+								<img src='images/doc_icon.png' /></span>
+								<h4>Essay</h4>
+							</div>
+							<div class='col-md-3 card centertext' style='height: auto'>
+								<img src='images/doc_icon.png' /></span>
+								<h4>Essay</h4>
+							</div>
+							<div class='col-md-3 card centertext' style='height: auto'>
+								<img src='images/doc_icon.png' /></span>
+								<h4>Essay</h4>
+							</div>
+							<div class='col-md-3 card centertext' style='height: auto'>
+								<img src='images/doc_icon.png' /></span>
+								<h4>Essay</h4>
+							</div>
+							<div class='col-md-3 card centertext' style='height: auto'>
+								<img src='images/doc_icon.png' /></span>
+								<h4>Essay</h4>
+							</div>
+							<div class='col-md-3 card centertext' style='height: auto'>
+								<img src='images/doc_icon.png' /></span>
+								<h4>Essay</h4>
+							</div>
+							<div class='col-md-3 card centertext' style='height: auto'>
+								<img src='images/doc_icon.png' /></span>
+								<h4>Essay</h4>
+							</div>
+							<div class='col-md-3 card centertext' style='height: auto'>
+								<img src='images/doc_icon.png' /></span>
+								<h4>Essay</h4>
+							</div>
+							<div class='col-md-3 card centertext' style='height: auto'>
+								<img src='images/doc_icon.png' /></span>
+								<h4>Essay</h4>
+							</div>
+							<div class='col-md-3 card centertext' style='height: auto'>
+								<img src='images/doc_icon.png' /></span>
+								<h4>Essay</h4>
+							</div>
+							<div class='col-md-3 card centertext' style='height: auto'>
+								<img src='images/doc_icon.png' /></span>
+								<h4>Essay</h4>
+							</div>
+							<div class='col-md-3 card centertext' style='height: auto'>
+								<img src='images/doc_icon.png' /></span>
+								<h4>Essay</h4>
+							</div>
+							<div class='col-md-3 card centertext' style='height: auto'>
+								<img src='images/doc_icon.png' /></span>
+								<h4>Essay</h4>
+							</div>
+							<div class='col-md-3 card centertext' style='height: auto'>
+								<img src='images/doc_icon.png' /></span>
+								<h4>Essay</h4>
+							</div>
+							<div class='col-md-3 card centertext' style='height: auto'>
+								<img src='images/doc_icon.png' /></span>
+								<h4>Essay</h4>
+							</div>
+							<div class='col-md-3 card centertext' style='height: auto'>
+								<img src='images/doc_icon.png' /></span>
+								<h4>Essay</h4>
+							</div>
+							<div class='col-md-3 card centertext' style='height: auto'>
+								<img src='images/doc_icon.png' /></span>
+								<h4>Essay</h4>
+							</div>
+							<div class='col-md-3 card centertext' style='height: auto'>
+								<img src='images/doc_icon.png' /></span>
+								<h4>Essay</h4>
+							</div>
+							<div class='col-md-3 card centertext' style='height: auto'>
+								<img src='images/doc_icon.png' /></span>
+								<h4>Essay</h4>
+							</div>
+							<div class='col-md-3 card centertext' style='height: auto'>
+								<img src='images/doc_icon.png' /></span>
+								<h4>Essay</h4>
+							</div>
+						</div></li>
+					<li><a class="toggle" href="javascript:void(0);">School<i
+							class="fa fa-question-circle pull-right plus">&#43;</i></a>
+						<div class="row inner">
+							<div class='col-md-3 card centertext' style='height: auto'>
+								<img src='images/doc_icon.png' /></span>
+								<h4>Essay</h4>
+							</div>
+							<div class='col-md-3 card centertext' style='height: auto'>
+								<img src='images/doc_icon.png' /></span>
+								<h4>Essay</h4>
+							</div>
+							<div class='col-md-3 card centertext' style='height: auto'>
+								<img src='images/doc_icon.png' /></span>
+								<h4>Essay</h4>
+							</div>
+							<div class='col-md-3 card centertext' style='height: auto'>
+								<img src='images/doc_icon.png' /></span>
+								<h4>Essay</h4>
+							</div>
+						</div></li>
+					<li><a class="toggle" href="javascript:void(0);">Code<i
+							class="fa fa-question-circle pull-right plus">&#43;</i></a>
+						<ul class="inner">
 
-			<div style="overflow-y: scroll; height: 70%; position: absolute;">
-				<div id="allFileContainer" class="row">
+							<li><a href="#" class="toggle">AP Comp Sci<i
+									class="fa fa-question-circle pull-right plus">&#43;</i></a>
+								<div class="row inner">
+									<div class='col-md-3 card centertext' style='height: auto'>
+										<img src='images/doc_icon.png' /></span>
+										<h4>Essay</h4>
+									</div>
+									<div class='col-md-3 card centertext' style='height: auto'>
+										<img src='images/doc_icon.png' /></span>
+										<h4>Essay</h4>
+									</div>
+									<div class='col-md-3 card centertext' style='height: auto'>
+										<img src='images/doc_icon.png' /></span>
+										<h4>Essay</h4>
+									</div>
+									<div class='col-md-3 card centertext' style='height: auto'>
+										<img src='images/doc_icon.png' /></span>
+										<h4>Essay</h4>
+									</div>
+								</div></li>
 
-					<button class="accordion">Recents</button>
-					<div class="row panel" id="recents"></div>
+							<li>
+								<div class='col-md-3 card centertext' style='height: auto'>
+									<img src='images/doc_icon.png' /></span>
+									<h4>Essay</h4>
+								</div>
+								<div class='col-md-3 card centertext' style='height: auto'>
+									<img src='images/doc_icon.png' /></span>
+									<h4>Essay</h4>
+								</div>
+								<div class='col-md-3 card centertext' style='height: auto'>
+									<img src='images/doc_icon.png' /></span>
+									<h4>Essay</h4>
+								</div>
+								<div class='col-md-3 card centertext' style='height: auto'>
+									<img src='images/doc_icon.png' /></span>
+									<h4>Essay</h4>
+								</div>
+							</li>
 
-				</div>
+						</ul></li>
+				</ul>
 			</div>
 		</div>
 	</div>
-
-
-
 	<!--  modal confirm new folder -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel">
@@ -99,11 +308,39 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-					<button type="button" class="btn btn-primary" data-dismiss="modal" id = "newFolderConfirm">Create
-						Folder</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal"
+						id="newFolderConfirm">Create Folder</button>
 				</div>
 			</div>
 		</div>
 	</div>
+	<!-- confirm move file/folder modal -->
+	<div class="modal fade" id="myMovingModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">Are you sure you
+						would like to move this item?</h4>
+				</div>
+				<div class="modal-body centertext">
+					<h3>Moving X into X</h3>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal"
+						id="newFolderConfirm">Move Item</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<a href="#" id="back-to-top" title="Back to top">&uarr;</a>
 </body>
 </html>
+

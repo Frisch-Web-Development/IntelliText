@@ -1,63 +1,75 @@
 @charset "ISO-8859-1";
 
+html {
+  overflow-y: scroll;
+}
 
 .whitetext {
-	color: white;
+    color: white;
 }
-
 .centertext {
-	text-align: center;
+    text-align: center;
 }
-
-#MyDocs{
-	
-	    padding-top: 70px;
-	
-	
+#MyDocs {
+    padding-top: 70px;
 }
-
 .card {
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
 }
-
 .card:hover {
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+ul {
+    list-style: none;
+    padding: 0;
+}
+.inner {
+    padding-left: 2em;
+    overflow: hidden;
+}
+li {
+    margin: .5em 0;
+}
+a.toggle {
+    width: 100%;
+    display: block;
+    background: rgba(0, 0, 0, 0.75);
+	bottom-margin:50px;
+    color: #fefefe;
+    padding: .75em;
+    border-radius: 0.15em;
+	border:2px solid red;
+    transition: background .3s ease;
+	text-decoration: none !important;
 }
 
-button.accordion {
-    background-color: #eee;
+a.toggle:hover{
+	        background: rgba(255, 0, 0, 0.9);
+			
+}
+#back-to-top {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 9999;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    line-height: 30px;
+    background: #f5f5f5;
     color: #444;
     cursor: pointer;
-    padding: 18px;
-    width: 100%;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 15px;
-    transition: 0.4s;
+    border: 0;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: opacity 0.2s ease-out;
+    opacity: 0;
 }
-
-button.accordion.active, button.accordion:hover {
-    background-color: #ccc;
+#back-to-top:hover {
+    background: black;
+	color : white;
 }
-
-button.accordion:after {
-    content: '\002B';
-    color: #777;
-    font-weight: bold;
-    float: right;
-    margin-left: 5px;
-}
-
-button.accordion.active:after {
-    content: "\2212";
-}
-
-div.panel {
-    padding: 0 18px;
-    background-color: white;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.2s ease-out;
+#back-to-top.show {
+    opacity: 1;
 }
