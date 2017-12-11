@@ -51,7 +51,6 @@ public class RetrieverDaoImpl implements RetrieverDao {
 		UserFileStorageEntity tempStorage = new UserFileStorageEntity(null, null, null, null);
 		// TODO add precautions here
 		for(UserFileStorageEntity userFileStorageEntity : temp) {
-			System.out.println(user.getName());
 			if(userFileStorageEntity.getEmail().equals(user.getName())) {
 				tempStorage = userFileStorageEntity;
 			}

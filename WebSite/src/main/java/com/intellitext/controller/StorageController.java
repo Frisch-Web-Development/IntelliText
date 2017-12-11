@@ -16,86 +16,77 @@ import com.intellitext.dataapi.RetrieverDao;
 import com.intellitext.model.FileEntity;
 import com.intellitext.model.FolderEntity;
 
-
 @RestController
 public class StorageController {
-	
-	
+
 	@Autowired
 	PersistorDao persistor;
 
 	@Autowired
 	RetrieverDao retriever;
-	
-	
+
 	@RequestMapping(value = "/conf/storage", method = RequestMethod.GET)
 	// "Retrieve list of all registered users"
 	public List<FileEntity> getAllUserFiles(Principal prince) {
-		if(prince == null) {
+		if (prince == null) {
 			System.out.println("PRINCE IS NULL");
 		}
 		return retriever.getAllFiles(prince); // unCast after fix of implementation
 	}
-	
+
 	@RequestMapping(value = "/conf/storage/folders", method = RequestMethod.GET)
 	// "Retrieve list of all registered users"
 	public List<FolderEntity> getAllUserFolders(Principal prince) {
-		if(prince == null) {
+		if (prince == null) {
 			System.out.println("PRINCE IS NULL");
 		}
 		return retriever.getAllFolders(prince); // unCast after fix of implementation
 	}
-	
+
 	@RequestMapping(value = "/conf/storage/recent", method = RequestMethod.GET)
 	// "Retrieve list of all registered users"
 	public FileEntity[] getRecentFiles(Principal prince) {
-		List<FileEntity> allFiles =  retriever.getAllFiles(prince); // Un Cast after fix of implementation
-		FileEntity result[] = new FileEntity[4]; //change length for amount
-		
-		for(FileEntity file: allFiles)
-		{
-			for(int i = 0; i<result.length; i++)
-			{
-				if(result[i] == null || file.getLastModified().after(result[i].getLastModified()))
-				{
-					result[i] = file; 
+		List<FileEntity> allFiles = retriever.getAllFiles(prince); // Un Cast after fix of implementation
+		FileEntity result[] = new FileEntity[4]; // change length for amount
+		try {
+			for (FileEntity file : allFiles) {
+				for (int i = 0; i < result.length; i++) {
+					if (result[i] == null || file.getLastModified().after(result[i].getLastModified())) {
+						result[i] = file;
+					}
 				}
 			}
+		} catch (Error e) {
+
 		}
-		return result; 	
+		return result;
 	}
+
 	@RequestMapping(value = "/conf/storage/localPath", method = RequestMethod.GET)
-	public List<FileEntity> getFileInLocalPath (String path, Principal prince)
-	{
-		List<FileEntity> result = new ArrayList<FileEntity>(); 
+	public List<FileEntity> getFileInLocalPath(String path, Principal prince) {
+		List<FileEntity> result = new ArrayList<FileEntity>();
 		List<FileEntity> all = retriever.getAllFiles(prince);
-		
-		for(FileEntity file: all)
-		{
-			if(file.getUserPath().equals(path)) // Method needs to be created
-				result.add(file); 
+
+		for (FileEntity file : all) {
+			if (file.getUserPath().equals(path)) // Method needs to be created
+				result.add(file);
 		}
-		return result; 
-		
-		
+		return result;
+
 	}
-	
+
 	@JsonView(value = { JsonViews.File.class })
 	@RequestMapping(value = "/conf/storage/insert", method = RequestMethod.POST)
-	public void insertFile(@RequestBody FileEntity file, Principal prince)
-	{
+	public void insertFile(@RequestBody FileEntity file, Principal prince) {
 		System.out.println("Inserting file");
 		persistor.insertNewFile(file, prince);
 	}
-	
+
 	@JsonView(value = { JsonViews.File.class })
 	@RequestMapping(value = "/conf/storage/insertfolder", method = RequestMethod.POST)
-	public void insertFolder(@RequestBody FolderEntity folder, Principal prince)
-	{
+	public void insertFolder(@RequestBody FolderEntity folder, Principal prince) {
 		System.out.println("Inserting folder");
 		persistor.insertNewFolder(folder, prince);
 	}
-	
-	
 
 }
