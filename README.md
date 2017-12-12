@@ -53,3 +53,7 @@ Added folder creation UI, added https://github.com/Frisch-Web-Development/FilePa
 ### 12/11
 
 Storage page is fully implemented, working on dynamic folders and Greg started the editor page!
+
+### 12/12
+
+Need to work on unique IDs for the files
