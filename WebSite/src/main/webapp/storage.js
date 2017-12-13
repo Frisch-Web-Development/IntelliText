@@ -92,6 +92,65 @@ function ajaxCalls(){
 	
 }
 
+function refreshFolders(){
+	$.ajax({
+	    method: "GET",
+	    headers: {
+	        'Content-Type': 'application/json'
+	    },
+	    async:false,
+	    url: "/conf/storage/folders"
+	}).done(function(data) {
+	    folders = data;
+	    for (var i = 0; i < folders.length; i++) {
+	    	console.log(folders[i].name);
+	    	$("#folderContainer").append("<li><a class='toggle' href='javascript:void(0);'>"+folders[i].name+"<i class='fa fa-question-circle pull-right plus'>&#43;</i></a><div class='row inner' id = '" + folders[i].name  +"'></div>");
+	    }
+	});
+
+
+	$.ajax({
+	    method: "GET",
+	    headers: {
+	        'Content-Type': 'application/json'
+	    },
+	    url: "/conf/storage",
+	    async:false
+	}).done(function(data) {
+	    files = data;
+	    for (var i = 0; i < files.length; i++) {
+	        $("#" + files[i].userPath.substring(0, files[i].userPath.indexOf("/"))).append("<div id='" + files[i].name +"' class = 'col-md-3 card centertext' style = 'height:auto'><img src='images/doc_icon.png'/><h4>"+files[i].name+"</h4></div>");
+	    }
+	});
+}
+
+function refreshUI(){
+	 $('.toggle').parent().parent().find('li .inner').slideUp(0);
+		
+	 $('.toggle').click(function(e) {
+	   	e.preventDefault();
+	   
+	     var $this = $(this);
+	   
+	     if ($this.next().hasClass('show')) {
+
+	         $this.next().removeClass('show');
+	         $this.next().slideUp(350);
+	 		$('.plus').text("\u002B");
+	     } else {
+	         $this.parent().parent().find('li .inner').removeClass('show');
+	         $this.parent().parent().find('li .inner').slideUp(350);
+	 		$this.children().text("\u2212");
+	         $this.next().toggleClass('show');
+	         $this.next().slideToggle(350);
+	     }
+	 }); 
+
+	
+}
+
+
+
 $(document).ready(function() {
     ajaxCalls();
 
@@ -140,6 +199,9 @@ $('.toggle').click(function(e) {
             contentType: "application/json"
         });
         $("#newFolderInput").val("");
+        $('#folderContainer').empty();
+        refreshFolders();
+        refreshUI();
     });
 
    if ($('#back-to-top').length) {
