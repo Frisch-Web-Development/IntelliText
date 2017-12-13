@@ -79,14 +79,36 @@ public class StorageController {
 	@RequestMapping(value = "/conf/storage/insert", method = RequestMethod.POST)
 	public void insertFile(@RequestBody FileEntity file, Principal prince) {
 		System.out.println("Inserting file");
+		FileEntity tempFile = file;
+		ArrayList<FileEntity> files = (ArrayList<FileEntity>) this.getAllUserFiles(prince);
+		int counter = 0;
+		for (FileEntity f : files) {
+			if (f.getUserPath().equals(f.getUserPath())) {
+				if (f.getName().contains(tempFile.getName() + " ") || f.getName().equals(tempFile.getName())) {
+					counter += 1;
+				}
+			}
+		}
+		tempFile.setName(tempFile.getName() + " " + ((counter == 0) ? "" : counter));
 		persistor.insertNewFile(file, prince);
 	}
 
 	@JsonView(value = { JsonViews.File.class })
 	@RequestMapping(value = "/conf/storage/insertfolder", method = RequestMethod.POST)
 	public void insertFolder(@RequestBody FolderEntity folder, Principal prince) {
+		FolderEntity tempFolder = folder;
 		System.out.println("Inserting folder");
-		persistor.insertNewFolder(folder, prince);
+		ArrayList<FolderEntity> folders = (ArrayList<FolderEntity>) this.getAllUserFolders(prince);
+		int counter = 0;
+		for (FolderEntity f : folders) {
+			if (f.getPath().equals(tempFolder.getPath())) {
+				if (f.getName().contains(tempFolder.getName() + " ") || f.getName().equals(tempFolder.getName())) {
+					counter += 1;
+				}
+			}
+		}
+		tempFolder.setName(tempFolder.getName() + " " + ((counter == 0) ? "" : counter));
+		persistor.insertNewFolder(tempFolder, prince);
 	}
 
 }

@@ -52,7 +52,7 @@ function ajaxCalls(){
 	    url: "/conf/storage/folders"
 	}).done(function(data) {
 	    folders = data;
-	    for (var i = 0; i < folders.length-1; i++) {
+	    for (var i = 0; i < folders.length; i++) {
 	    	console.log(folders[i].name);
 	    	$("#folderContainer").append("<li><a class='toggle' href='javascript:void(0);'>"+folders[i].name+"<i class='fa fa-question-circle pull-right plus'>&#43;</i></a><div class='row inner' id = '" + folders[i].name  +"'></div>");
 	    }
@@ -68,7 +68,7 @@ function ajaxCalls(){
 	    async:false
 	}).done(function(data) {
 	    files = data;
-	    for (var i = 0; i < files.length-1; i++) {
+	    for (var i = 0; i < files.length; i++) {
 	        $("#" + files[i].userPath.substring(0, files[i].userPath.indexOf("/"))).append("<div id='" + files[i].name +"' class = 'col-md-3 card centertext' style = 'height:auto'><img src='images/doc_icon.png'/><h4>"+files[i].name+"</h4></div>");
 	    }
 	});
@@ -83,7 +83,7 @@ function ajaxCalls(){
 	    recentFiles = data;
 	    console.log(data);
 
-	    for (var i = 0; i < recentFiles.length-1; i++) {
+	    for (var i = 0; i < recentFiles.length; i++) {
 	        $("#recentsDiv").append("<div class='col-md-3 card centertext' style='height: auto'><img src='images/doc_icon.png' /><h4>"+recentFiles[i].name+"</h4></div>");
 	    }
 
@@ -212,30 +212,5 @@ $("#newTextFile").click(function() {
         contentType: "application/json"
     });
 });
-
-$("#newFolderConfirm").click(function() {
-    console.log("New Folder");
-    //yyyy.MM.dd HH:mm
-
-    var folder = {
-        "name": $("#newFolderInput").val(),
-        "color": "#fff",
-        "path": "/",
-        "owner": profile.getEmail(),
-    }
-
-    $.ajax({
-        type: 'POST',
-        url: "/conf/storage/insertfolder",
-        data: JSON.stringify(folder),
-        error: function(e) {
-            console.log(e);
-        },
-        dataType: "json",
-        contentType: "application/json"
-    });
-    $("#newFolderInput").val("");
-});
-
 
 });
