@@ -8,6 +8,9 @@ var today = new Date();
 var user;
 var profile;
 
+var drag;
+var drop;
+
 /** Google Verification **/
 
 function onSignIn(googleUser) {
@@ -54,7 +57,7 @@ function ajaxCalls(){
 	    folders = data;
 	    for (var i = 0; i < folders.length; i++) {
 	    	console.log(folders[i].name);
-	    	$("#folderContainer").append("<li><a class='toggle' href='javascript:void(0);'>"+folders[i].name+"<i class='fa fa-question-circle pull-right plus'>&#43;</i></a><div class='row inner' id = '" + folders[i].name  +"'></div>");
+	    	$("#folderContainer").append("<li><a class='toggle' id = '" + folders[i].path + "' href='javascript:void(0);'>"+folders[i].name+"<i class='fa fa-question-circle pull-right plus'>&#43;</i></a><div class='row inner' id = '" + folders[i].name  +"'></div>");
 	    }
 	});
 
@@ -104,7 +107,7 @@ function refreshFolders(){
 	    folders = data;
 	    for (var i = 0; i < folders.length; i++) {
 	    	console.log(folders[i].name);
-	    	$("#folderContainer").append("<li><a class='toggle' href='javascript:void(0);'>"+folders[i].name+"<i class='fa fa-question-circle pull-right plus'>&#43;</i></a><div class='row inner' id = '" + folders[i].name  +"'></div>");
+	    	$("#folderContainer").append("<li><a class='toggle' id = '" + folders[i].path + "' href='javascript:void(0);'>"+folders[i].name+"<i class='fa fa-question-circle pull-right plus'>&#43;</i></a><div class='row inner' id = '" + folders[i].name  +"'></div>");
 	    }
 	});
 
@@ -146,6 +149,19 @@ function refreshUI(){
 	     }
 	 }); 
 
+	 $(function() {
+         $('.card').draggable({ revert: true });
+			            $('.toggle').draggable({ revert: true });
+
+         $('.toggle').droppable({
+            hoverClass: 'active',
+            drop: function(e, ui) {
+				  $('#myMovingModal').modal('toggle');
+				  drag = ui.draggable;
+				  drop = $(this);
+            }
+         });
+      });
 	
 }
 
@@ -177,6 +193,17 @@ $('.toggle').click(function(e) {
 
 
 
+
+
+
+$("#moveFolderConfirm").click(function() {
+	console.log("Drag'n'drop");
+    console.log(drag);
+    console.log(drop);
+
+});
+
+
     $("#newFolderConfirm").click(function() {
         console.log("New Folder");
         //yyyy.MM.dd HH:mm
@@ -184,7 +211,7 @@ $('.toggle').click(function(e) {
         var folder = {
             "name": $("#newFolderInput").val(),
             "color": "#fff",
-            "path": "/",
+            "path": $("#newFolderInput").val() + "/",
             "owner": profile.getEmail(),
         }
 
@@ -234,7 +261,8 @@ $(function() {
                hoverClass: 'active',
                drop: function(e, ui) {
 				  $('#myMovingModal').modal('toggle');
-				  console.log( ui.draggable.attr("id"));
+				  drag = ui.draggable;
+				  drop = $(this);
                }
             });
          });
