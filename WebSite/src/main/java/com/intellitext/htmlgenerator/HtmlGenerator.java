@@ -45,6 +45,20 @@ public class HtmlGenerator {
 
 		/* to sort, run through every string and make every folder/file necessary if it doesnt already exist */
 		
+		
+		for(HtmlObject object : htmlObjects) {
+			boolean newObject = true;
+			for(HtmlObject finalObject : hierarchy) {
+				if(finalObject.getPath().equals(object.getPath())) {
+					newObject = false;
+				}
+			}
+			if(newObject) {
+				//add the file
+			}
+		}
+		
+		
 		int count = 1;
 		while(htmlObjects.size() > 0) {
 		for(HtmlObject object : htmlObjects) {
