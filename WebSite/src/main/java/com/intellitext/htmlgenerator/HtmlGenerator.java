@@ -15,6 +15,9 @@ public class HtmlGenerator {
 	
 	ArrayList<HtmlFolder> htmlFolders;
 	ArrayList<HtmlFile> htmlFiles;
+	ArrayList<HtmlObject> htmlObjects;
+	ArrayList<HtmlObject> hierarchy;
+
 	
 	public HtmlGenerator(String html, ArrayList<FolderEntity> folders, ArrayList<FileEntity> files) {
 		super();
@@ -32,10 +35,30 @@ public class HtmlGenerator {
 		for(FileEntity file : files) {
 			htmlFiles.add(new HtmlFile(file.getName(), file.getUserPath(),  StringUtils.countMatches(file.getUserPath(), "/"), HtmlObjectType.FILE));
 		}
+		htmlObjects.addAll(htmlFolders);
+		htmlObjects.addAll(htmlFiles);
+
 	}
 	
 	public void sort() {
 		/* do the sorty thingy here (i cant think right now)*/
+
+		/* to sort, run through every string and make every folder/file necessary if it doesnt already exist */
+		
+		int count = 1;
+		while(htmlObjects.size() > 0) {
+		for(HtmlObject object : htmlObjects) {
+			if(object.getType() == HtmlObjectType.FOLDER && object.getParents() == count) {
+				//hierarchy.add(e)
+			}
+			else if(object.getType() == HtmlObjectType.FILE && object.getParents() == count-1) {
+				
+			}
+		}
+		count += 1;
+		}
+		
+		
 	}
 	
 
