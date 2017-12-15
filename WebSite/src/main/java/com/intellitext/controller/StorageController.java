@@ -4,6 +4,7 @@ import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,8 @@ import com.intellitext.dataapi.PersistorDao;
 import com.intellitext.dataapi.RetrieverDao;
 import com.intellitext.model.FileEntity;
 import com.intellitext.model.FolderEntity;
+
+
 
 @RestController
 public class StorageController {
@@ -110,5 +113,75 @@ public class StorageController {
 		tempFolder.setName(tempFolder.getName() + " " + ((counter == 0) ? "" : counter));
 		persistor.insertNewFolder(tempFolder, prince);
 	}
+	
+	
+	class HtmlFolder {
+		ArrayList<HtmlFolder> htmlFolders;		
+		ArrayList<HtmlFolder> htmlFiles;
+		String name;
+		String path;
+
+		public HtmlFolder(ArrayList<HtmlFolder> htmlFolders, ArrayList<HtmlFolder> htmlFiles, String name, String path) {
+			this.htmlFiles = htmlFiles;
+			this.htmlFolders = htmlFolders;
+			this.name = name;
+			this.path = path;
+		}
+		
+	}
+	class HtmlFile {
+		String name;
+		String path;
+	}
+	
+	class HtmlString{
+		ArrayList<HtmlFolder> html;
+		
+		public void setHtml(ArrayList<HtmlFolder> html) {
+			this.html = html;
+		}
+		
+	}
+	
+	
+	public void generateHtml(ArrayList<FileEntity> files, ArrayList<FolderEntity> folders) {
+		
+		HtmlString html = new HtmlString();
+		ArrayList<HtmlFolder> firstHtml = new ArrayList<HtmlFolder>();
+
+		
+		for(FolderEntity folder : folders) {
+			if(StringUtils.countMatches(folder.getPath(), "/") == 1) {
+				firstHtml.add(new HtmlFolder(null, null, folder.getName(), folder.getPath()));
+			}
+		}
+		
+		html.setHtml(firstHtml);
+		
+		boolean run = true;
+		int count = 2;
+
+		while(run) {
+			run = false;
+			
+			for(FolderEntity folder : folders) {
+				if(StringUtils.countMatches(folder.getPath(), "/") == count) {
+					
+					
+					run = true;
+				}
+			}
+			
+		}
+		
+		
+		
+		
+		
+		"li><a class='toggle' id = '" + folders[i].path + "' href='javascript:void(0);'>"+folders[i].name+"<i class='fa fa-question-circle pull-right plus'>&#43;</i></a><div class='row inner' id = '" + folders[i].name  +"'></div>"
+	}
+	
+	
+	
 
 }
