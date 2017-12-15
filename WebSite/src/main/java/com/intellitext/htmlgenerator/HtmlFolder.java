@@ -5,10 +5,10 @@ import java.util.ArrayList;
 public class HtmlFolder extends HtmlObject{
 
 
-
-	public HtmlFolder(String name, String path, HtmlObjectType type, String color, ArrayList<HtmlFolder> folders,
-			ArrayList<HtmlFile> files) {
-		super(name, path, type);
+	
+	public HtmlFolder(String name, String path, int parents, HtmlObjectType type, String color,
+			ArrayList<HtmlFolder> folders, ArrayList<HtmlFile> files) {
+		super(name, path, parents, type);
 		this.color = color;
 		this.folders = folders;
 		this.files = files;
