@@ -57,3 +57,8 @@ Storage page is fully implemented, working on dynamic folders and Greg started t
 ### 12/12
 
 Need to work on unique IDs for the files
+
+### 12/14
+
+Sorting is harder than we thought. Added a new package dedicated to generating the HTML for the accordion folder.
+
