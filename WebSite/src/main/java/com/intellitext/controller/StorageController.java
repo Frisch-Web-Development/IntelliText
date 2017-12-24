@@ -36,9 +36,9 @@ public class StorageController {
 			System.out.println("PRINCE IS NULL");
 		}
 				
-		/*HtmlGenerator h = new HtmlGenerator("null", retriever.getAllFolders(prince), retriever.getAllFiles(prince));
+		HtmlGenerator h = new HtmlGenerator("null", retriever.getAllFolders(prince), retriever.getAllFiles(prince));
 		h.normalize();
-		h.sort();*/
+		h.sort();
 		return retriever.getAllFiles(prince); // unCast after fix of implementation
 	}
 

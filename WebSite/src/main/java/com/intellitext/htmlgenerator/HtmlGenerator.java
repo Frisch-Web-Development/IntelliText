@@ -58,52 +58,32 @@ public class HtmlGenerator {
 
 	}
 		
-	public void sort() {
+	public void sort() {	
+		int highestParent = 0;
+		for(HtmlObject o : htmlObjects) {
+			if(o.getParents() >= highestParent) {
+				highestParent = o.getParents();
+			}
+		}
+		
+		for(int i = 0; i <= highestParent; i++) {
+			for(HtmlObject o : htmlObjects) {
+				
+			}
+		}
 		
 		
+		ArrayList<String> parents = new ArrayList<String>();
 		
-		for(HtmlObject object : htmlObjects) {
-			for(HtmlObject parent : htmlObjects) {
-				if(parent.getParents() + 1 == object.getParents() && object.getPath().contains(parent.getPath())) {
-					TreeMap<HtmlFolder, HtmlObject> temp = parent.getTree();
-					temp.put(key, value)
-				}
+		for(HtmlObject o : htmlObjects) {
+			if(o.getParents() == 0) {
 			}
 		}
 		
 		
 		
-		
-		/*
-		for (HtmlObject object : htmlObjects) {
-			if (object.getParents() == 0) {
-				hierarchy.add(object);
-				System.out.println("Adding " + object.getName() + " with parents " + object.getParents());
-			}
-		}
-
-		int parentCounter = 0;
-		boolean run = true;
-
-		while (run) {
-			parentCounter += 1;
-			run = false;
-			for (HtmlObject object : htmlObjects) {
-				for (HtmlObject h : hierarchy) {
-					if (object.getParents() != 0 && h.getParents() == parentCounter - 1
-							&& h.getPath().contains(object.getPath())) {
-						h.addObject(object);
-						System.out.println("Adding " + object.getName() + " to " + h.getName() + " with parents "
-								+ object.getParents());
-						run = true;
-					}
-				}
-
-			}
-		}*/
 	}
 
-	
 	
 	
 	public String generateHtml() {

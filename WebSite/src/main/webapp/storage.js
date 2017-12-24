@@ -41,6 +41,8 @@ function onSignIn(googleUser) {
 	});
     
     console.log(user);
+    
+   
 }
 
 
@@ -59,6 +61,33 @@ function ajaxCalls(){
 	    	console.log(folders[i].name);
 	    	$("#folderContainer").append("<li><a class='toggle' id = '" + folders[i].path + "' href='javascript:void(0);'>"+folders[i].name+"<i class='fa fa-question-circle pull-right plus'>&#43;</i></a><div class='row inner' id = '" + folders[i].name  +"'></div>");
 	    }
+	    $(function(){
+	        var menuItems = [
+	            { name: "Store", url: "/store" },
+	            { name: "Travel", url: "/store/travel" },
+	            { name: "Gardening", url: "/store/gardening" },
+	            { name: "Healthy Eating", url: "/store/healthy-eating" },
+	            { name: "Cook Books", url: "/store/healthy-eating/cook-books" },
+	            { name: "Single Meal Gifts", url: "/store/healthy-eating/single-meal-gifts" },
+	            { name: "Outdoor Recreation", url: "/store/outdoor-recreation" },
+	            { name: "Hiking", url: "/store/outdoor-recreation/hiking" },
+	            { name: "Snowshoeing", url: "/store/outdoor-recreation/hiking/snowshoeing" },
+	            { name: "Skiing", url: "/store/outdoor-recreation/skiing" },
+	            { name: "Physical Fitness", url: "/store/physical-fitness" },
+	            { name: "Provident Living", url: "/store/provident-living"}
+	        ];
+	        var rootList = $("<ul class='accordion' id = 'folderContainer'>").appendTo("#allFileContainer");
+	        var elements = {};
+	        $.each(menuItems, function() {
+	            var parent = elements[this.url.substr(0, this.url.lastIndexOf("/"))];
+	            var list = parent ? parent.children("div") : rootList;
+	            if (!list.length) {
+	                list = $("<li>").appendTo(parent);
+	            }
+	            var item = $("<li><a class='toggle' id = '" + this.name + "' href='javascript:void(0);'>"+this.name+"<i class='fa fa-question-circle pull-right plus'>&#43;</i></a><div class='row inner' id = '" + this.name  +"'></div>").appendTo(list);
+	            elements[this.url] = item;
+	        });
+	    });
 	});
 
 
@@ -168,6 +197,7 @@ function refreshUI(){
 
 
 $(document).ready(function() {
+		
     ajaxCalls();
 
     $('.toggle').parent().parent().find('li .inner').slideUp(0);
