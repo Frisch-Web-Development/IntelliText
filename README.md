@@ -62,3 +62,7 @@ Need to work on unique IDs for the files
 
 Sorting is harder than we thought. Added a new package dedicated to generating the HTML for the accordion folder.
 
+### 2/6
+
+Accordion.js (https://github.com/gkgkgkgk/Accordion.js) is implemented into the project. Further Improvements on the editor itself were made.
+
