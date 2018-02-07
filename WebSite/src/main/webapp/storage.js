@@ -54,13 +54,14 @@ function ajaxCalls(){
 	    url: "/conf/storage/folders",
 	    async:false
 	}).done(function(data) {
-		console.log(data);
-	   files.push(data);
-	    generateAccordion({listP : data, parentDiv : "#content"});
-
+		console.log("Finished Folder");
+	   for(var i = 0; i < data.length; i++){
+		   files.push(data[i]);
+	   }
 });
-}
 
+	console.log(files);
+}
 
 function refreshUI(){
 	 $('.toggle').parent().parent().find('li .inner').slideUp(0);
@@ -100,10 +101,12 @@ function refreshUI(){
 	
 }
 
-
+$( document ).ajaxComplete(function() {
+	});
 
 $(document).ready(function() {
     ajaxCalls();
+    generateAccordion({listP : files, parentDiv : "#content"});
 
 
 	$("#newFolderConfirm").click(function() {

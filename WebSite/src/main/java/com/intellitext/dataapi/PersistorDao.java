@@ -16,10 +16,10 @@ public interface PersistorDao extends UserDetailsService{
 
 	void insertNewFile(FileEntity file, Principal user);
 
-	void updateFile(FileEntity file, User user);
-
 	void deleteFile(FileEntity file, User user);
-
-	void insertNewFolder(FolderEntity folder, Principal prince);	
+	
+	void insertNewFolder(FolderEntity folder, Principal prince);
+	
+	void updateFile(FileEntity file, Principal user);	
 	
 }

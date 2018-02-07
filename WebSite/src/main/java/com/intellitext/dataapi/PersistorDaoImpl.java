@@ -60,7 +60,7 @@ public class PersistorDaoImpl implements PersistorDao {
 	}
 	
 	@Override
-	public void updateFile(FileEntity file, User user) {
+	public void updateFile(FileEntity file, Principal user) {
 		
 	}
 	

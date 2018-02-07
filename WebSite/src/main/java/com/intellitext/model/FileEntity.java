@@ -27,6 +27,8 @@ public class FileEntity {
 	Date dateCreated;
 	@JsonView(value = { JsonViews.File.class })
 	ArrayList<String> sharedWith;
+	@JsonView(value = { JsonViews.File.class })
+	String contents;
 
 /*	public FileEntity(String userPath, String storagePath, String name, String owner, String type, Date lastModified,
 			Date dateCreated, ArrayList<String> sharedWith) {
