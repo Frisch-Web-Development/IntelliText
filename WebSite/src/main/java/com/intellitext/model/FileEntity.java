@@ -10,7 +10,7 @@ import com.intellitext.controller.JsonViews;
 public class FileEntity {
 
 	@JsonView(value = { JsonViews.File.class })
-	String userPath;
+	String path;
 	@JsonView(value = { JsonViews.File.class })
 	String storagePath;
 	@JsonView(value = { JsonViews.File.class })
@@ -55,12 +55,12 @@ public class FileEntity {
 		this.sharedWith = sharedWith;
 	}*/
 
-	public String getUserPath() {
-		return userPath;
+	public String getPath() {
+		return path;
 	}
 
-	public void setUserPath(String userPath) {
-		this.userPath = userPath;
+	public void setPath(String path) {
+		this.path = path;
 	}
 
 	public String getStoragePath() {

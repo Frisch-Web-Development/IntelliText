@@ -67,7 +67,7 @@ function generateAccordion(properties) {
                     return "white";
                 }
             }).appendTo(list);
-            var mySpan = $("<span>").text(this.name).attr("id", this.path).hover(function() {
+            var mySpan = $("<span>").text(this.name).attr("id", this.path).attr("class", (this.type == "file" ? "file" : "folder")).hover(function() {
                     if (prop.theme == "dark") {
                         if (blackText) {
                             $(this).css("color", "black");

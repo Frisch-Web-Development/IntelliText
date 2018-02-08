@@ -1,3 +1,4 @@
+
 package com.intellitext.controller;
 
 import java.security.Principal;
@@ -76,7 +77,7 @@ public class StorageController {
 		List<FileEntity> all = retriever.getAllFiles(prince);
 
 		for (FileEntity file : all) {
-			if (file.getUserPath().equals(path)) // Method needs to be created
+			if (file.getPath().equals(path)) // Method needs to be created
 				result.add(file);
 		}
 		return result;
@@ -91,7 +92,7 @@ public class StorageController {
 		ArrayList<FileEntity> files = (ArrayList<FileEntity>) this.getAllUserFiles(prince);
 		int counter = 0;
 		for (FileEntity f : files) {
-			if (f.getUserPath().equals(f.getUserPath())) {
+			if (f.getPath().equals(f.getPath())) {
 				if (f.getName().contains(tempFile.getName() + " ") || f.getName().equals(tempFile.getName())) {
 					counter += 1;
 				}

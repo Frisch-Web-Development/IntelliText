@@ -50,8 +50,8 @@ public class HtmlGenerator {
 					new TreeMap<HtmlFolder, HtmlObject>(), folder.getColor(), new ArrayList<HtmlFolder>(), new ArrayList<HtmlFile>()));
 		}
 		for (FileEntity file : files) {
-			htmlFiles.add(new HtmlFile(file.getName(), file.getUserPath(),
-					StringUtils.countMatches(file.getUserPath(), "/"), HtmlObjectType.FILE, idCounter, new TreeMap<HtmlFolder, HtmlObject>()));
+			htmlFiles.add(new HtmlFile(file.getName(), file.getPath(),
+					StringUtils.countMatches(file.getPath(), "/"), HtmlObjectType.FILE, idCounter, new TreeMap<HtmlFolder, HtmlObject>()));
 		}
 		htmlObjects.addAll(htmlFolders);
 		htmlObjects.addAll(htmlFiles);

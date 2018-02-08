@@ -59,7 +59,19 @@ function ajaxCalls(){
 		   files.push(data[i]);
 	   }
 });
-
+	$.ajax({
+	    method: "GET",
+	    headers: {
+	        'Content-Type': 'application/json'
+	    },
+	    url: "/conf/storage",
+	    async:false
+	}).done(function(data) {
+			console.log("Finished Files");
+	   for(var i = 0; i < data.length; i++){
+		   files.push(data[i]);
+	   }
+});
 	console.log(files);
 }
 
@@ -108,6 +120,9 @@ $(document).ready(function() {
     ajaxCalls();
     generateAccordion({listP : files, parentDiv : "#content"});
 
+    $( "#file" ).dblclick(function() {
+    	  alert( "Handler for .dblclick() called." );
+    	});
 
 	$("#newFolderConfirm").click(function() {
 		//console.log("New Folder");

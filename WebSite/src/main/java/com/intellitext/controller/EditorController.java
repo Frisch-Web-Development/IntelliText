@@ -23,7 +23,7 @@ public class EditorController {
 	@Autowired
 	RetrieverDao retriever;
 	
-	@RequestMapping(value = "/file/{usernmae}/{filePath}", method = RequestMethod.POST)
+	@RequestMapping(value = "/file/{username}/{filePath}", method = RequestMethod.POST)
 	public void getBlob( @RequestBody FileEntity file, @PathVariable String filePath, @PathVariable String username, Principal prince)
 	{
 		if(prince.getName().equals(username))
