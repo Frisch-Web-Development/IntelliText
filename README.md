@@ -66,3 +66,6 @@ Sorting is harder than we thought. Added a new package dedicated to generating t
 
 Accordion.js (https://github.com/gkgkgkgk/Accordion.js) is implemented into the project. Further Improvements on the editor itself were made.
 
+### 2/8
+
+@googledrive we're coming for you.
