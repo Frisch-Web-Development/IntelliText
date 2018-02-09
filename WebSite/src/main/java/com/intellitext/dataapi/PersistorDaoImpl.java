@@ -44,10 +44,10 @@ public class PersistorDaoImpl implements PersistorDao {
 	public void insertNewUser(User user, String collection) {
 		List<FolderEntity> folders = new ArrayList<FolderEntity>();
 		FolderEntity folder = new FolderEntity();
-		folder.setColor("#FFF");
+		folder.setColor("#ffffff");
 		folder.setName("All");
 		folder.setOwner(user.getEmail());
-		folder.setPath("All/");
+		folder.setPath("/All");
 		folders.add(folder);
 		mongo.insert(new UserFileStorageEntity(user.getFirstName() + " " + user.getLastName(), user.getEmail(), new ArrayList<FileEntity>(), folders), "Files");
 		mongo.insert(user, collection);

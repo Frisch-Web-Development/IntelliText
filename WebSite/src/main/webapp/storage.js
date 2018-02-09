@@ -11,6 +11,7 @@ var profile;
 var drag;
 var drop;
 
+
 /** Google Verification **/
 
 function onSignIn(googleUser) {
@@ -120,9 +121,9 @@ $(document).ready(function() {
     ajaxCalls();
     generateAccordion({listP : files, parentDiv : "#content"});
 
-    $( "#file" ).dblclick(function() {
-    	  alert( "Handler for .dblclick() called." );
-    	});
+    $( ".file" ).dblclick(function() {
+    	// open page here
+    });
 
 	$("#newFolderConfirm").click(function() {
 		//console.log("New Folder");
@@ -130,8 +131,8 @@ $(document).ready(function() {
 
         var folder = {
             "name": $("#newFolderInput").val(),
-            "color": "#fff",
-            "path": $("#newFolderInput").val() + "/",
+            "color": "#ffffff",
+            "path": "/" + $("#newFolderInput").val(),
             "owner": profile.getEmail(),
         }
 
@@ -187,11 +188,12 @@ $("#newTextFile").click(function() {
 
 
     var file = {
-        "userPath": "All/",
+        "path": "/All/new untitled document",
         "storagePath": "/",
         "name": "new untitled document",
         "owner": profile.getEmail(),
         "type": "rtf",
+        "color" : "#ffffff",
         "lastModified": today.getFullYear() + "." + (today.getMonth() + 1) + "." + today.getDate() + " " + (today.getHours() + 1) + ":" + today.getMinutes(),
         "dateCreated": today.getFullYear() + "." + (today.getMonth() + 1) + "." + today.getDate() + " " + (today.getHours() + 1) + ":" + today.getMinutes(),
         "sharedWith": null

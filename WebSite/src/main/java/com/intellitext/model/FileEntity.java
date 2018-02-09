@@ -29,6 +29,8 @@ public class FileEntity {
 	ArrayList<String> sharedWith;
 	@JsonView(value = { JsonViews.File.class })
 	String contents;
+	@JsonView(value = { JsonViews.File.class })
+	String color;
 
 /*	public FileEntity(String userPath, String storagePath, String name, String owner, String type, Date lastModified,
 			Date dateCreated, ArrayList<String> sharedWith) {
@@ -55,8 +57,27 @@ public class FileEntity {
 		this.sharedWith = sharedWith;
 	}*/
 
+	
+	
+	
 	public String getPath() {
 		return path;
+	}
+
+	public String getContents() {
+		return contents;
+	}
+
+	public void setContents(String contents) {
+		this.contents = contents;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
 	}
 
 	public void setPath(String path) {
