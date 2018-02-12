@@ -1,6 +1,7 @@
 var letters = 0; 
 var contents;
-
+var blob;
+var quill;
 
 function onSignIn(googleUser) {
     console.log("Success");
@@ -33,8 +34,23 @@ function onSignIn(googleUser) {
         
     if(temp.substring(0, temp.indexOf("/")) == user.email){
     	console.log("URL Matches Prince");
+    	$.ajax({
+    	    method: "GET",
+    	    headers: {
+    	        'Content-Type': 'application/json'
+    	    },
+    	    url: "/getfile?path=/All/new untitled document",
+    	    async:false
+    	}).done(function(data) {
+    			console.log(data + " ");
+    			blob = JSON.parse(data);
+    			quill.setContents([
+    				  blob
+    				]);
+    			
+    });
     	// load file here
-    	// remember to create new pages if it doesnt exist and prompt them.
+    	// remember to create new pages if it doesn't exist and prompt them.
     }
     else {
     	console.log("HACKER");
@@ -70,7 +86,7 @@ $(document).ready(function(){
 	[{'indent': '+1'}, {'indent': '-1'}	]
 	];
 	
-	var quill = new Quill('#editor', 	{
+	quill = new Quill('#editor', 	{
 		modules: { toolbar: toolbarOptions}, 
 		theme: "snow"
 	});

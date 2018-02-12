@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -43,6 +44,16 @@ public class EditorController {
 		}
 		
 	}
+	
+	
+	@RequestMapping(value = "/getfile", method = RequestMethod.GET)
+	public @ResponseBody String returnBlob(
+	            @RequestParam("path") String path) {
+	        String response = "{"+"\"insert\"" + ":" + " \"Shut up\"" + "}";
+	        
+	        return response;
+	    }
+	
 	
 	@RequestMapping(value = "/file/save/{username}/{filePath}", method = RequestMethod.GET)
 	public void saveBlob( @RequestBody String file, @PathVariable String filePath, @PathVariable String username, Principal prince)

@@ -53,7 +53,7 @@ public class PersistorDaoImpl implements PersistorDao {
 		mongo.insert(user, collection);
 	}
 	@Override
-	public void insertNewFile(FileEntity file,Principal user) {
+	public void insertNewFile(FileEntity file, Principal user) {
 		Update update = new Update();
 		System.out.println(update.push("files", file));
 		mongo.updateFirst(new Query(Criteria.where("email").is(user.getName())), update, "Files");
