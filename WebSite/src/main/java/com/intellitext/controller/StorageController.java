@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.intellitext.dataapi.PersistorDao;
 import com.intellitext.dataapi.RetrieverDao;
-import com.intellitext.htmlgenerator.HtmlGenerator;
 import com.intellitext.model.FileEntity;
 import com.intellitext.model.FolderEntity;
 
@@ -36,10 +35,6 @@ public class StorageController {
 		if (prince == null) {
 			System.out.println("PRINCE IS NULL");
 		}
-				
-		HtmlGenerator h = new HtmlGenerator("null", retriever.getAllFolders(prince), retriever.getAllFiles(prince));
-		h.normalize();
-		h.sort();
 		return retriever.getAllFiles(prince); // unCast after fix of implementation
 	}
 

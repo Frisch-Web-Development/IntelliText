@@ -29,6 +29,20 @@ function onSignIn(googleUser) {
 	    contentType: "application/json"
 	});
     
+    console.log(window.location.href);
+    
+    $.ajax({
+	    type: 'POST',
+	    url: "/conf/user",
+	    data: JSON.stringify(user),
+	    async: false,
+	    error: function(e) {
+	        console.log(e);
+	    },
+	    dataType: "json",
+	    contentType: "application/json"
+	});
+    
     console.log(user);
     
    

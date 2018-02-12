@@ -122,7 +122,7 @@ $(document).ready(function() {
     generateAccordion({listP : files, parentDiv : "#content"});
 
     $( ".file" ).dblclick(function() {
-    	// open page here
+    	//window.location.replace("http://localhost:8080/editorPage/myquill.html");
     });
 
 	$("#newFolderConfirm").click(function() {

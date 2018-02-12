@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.intellitext.dataapi.PersistorDao;
@@ -24,6 +25,7 @@ public class EditorController {
 
 	@Autowired
 	RetrieverDao retriever;
+	
 	
 	@RequestMapping(value = "/file/{username}/{filePath}", method = RequestMethod.POST)
 	public ResponseEntity<String> getBlob( @PathVariable String filePath, @PathVariable String username, Principal prince)
