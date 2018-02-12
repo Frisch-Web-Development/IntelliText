@@ -66,6 +66,22 @@ public class RetrieverDaoImpl implements RetrieverDao {
 				UserFileStorageEntity.class, "Files");
 		return storage.getFile(file.getStoragePath());
 	}
+	@Override
+	public String getFileContentsByPath(String filePath,Principal user)
+	{
+		String contents = ""; 
+		List<FileEntity> temp = getAllFiles(user); 
+		for(FileEntity item: temp)
+		{
+			if(item.getPath().equals(filePath))
+			{
+				contents = item.getContents();
+				break; 
+			}
+		}
+		
+		return contents;
+	}
 
 	@Override
 	public List<User> getAllUsers() {

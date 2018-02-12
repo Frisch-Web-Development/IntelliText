@@ -60,7 +60,17 @@ public class PersistorDaoImpl implements PersistorDao {
 	}
 	
 	@Override
-	public void updateFile(FileEntity file, Principal user) {
+	public void updateFile(String file,String filePath, Principal user) {
+		List<FileEntity> files = retriever.getAllFiles(user); 
+		for(FileEntity item: files)
+		{
+			if (item.getPath().equals(filePath))
+			{
+				item.setContents(file);
+				break; 
+			}
+				
+		}
 		
 	}
 	

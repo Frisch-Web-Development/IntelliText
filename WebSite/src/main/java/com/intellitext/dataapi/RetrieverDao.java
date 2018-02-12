@@ -16,6 +16,8 @@ public interface RetrieverDao extends UserDetailsService{
 	boolean userExists(String name);
 
 	FileEntity getFile(FileEntity file, Principal user);
+	
+	String getFileContentsByPath(String filePath,Principal user);
 
 	List<FileEntity> getAllFiles(Principal user);
 

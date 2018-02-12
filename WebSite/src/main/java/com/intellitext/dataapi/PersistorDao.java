@@ -20,6 +20,6 @@ public interface PersistorDao extends UserDetailsService{
 	
 	void insertNewFolder(FolderEntity folder, Principal prince);
 	
-	void updateFile(FileEntity file, Principal user);	
+	void updateFile(String file,String filePath, Principal user);	
 	
 }
