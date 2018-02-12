@@ -28,9 +28,19 @@ function onSignIn(googleUser) {
 	    dataType: "json",
 	    contentType: "application/json"
 	});
-    
-    console.log(window.location.href);
-    
+       
+    var temp = window.location.href.substring(window.location.href.indexOf("=") + 1, window.location.href.length);
+        
+    if(temp.substring(0, temp.indexOf("/")) == user.email){
+    	console.log("URL Matches Prince");
+    	// load file here
+    	// remember to create new pages if it doesnt exist and prompt them.
+    }
+    else {
+    	console.log("HACKER");
+    	// redirect
+    }
+        
     $.ajax({
 	    type: 'POST',
 	    url: "/conf/user",

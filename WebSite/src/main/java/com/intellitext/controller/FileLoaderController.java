@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class FileLoaderController {
 	
 	  @RequestMapping(value = "/file", method = RequestMethod.GET)
-	  public String index(@RequestParam(value="param", required=false) String param) {
+	  public String index(@RequestParam(value="intellitext", required=false) String param) {
 		  System.out.println(param);
 		  String userName = param.substring(0, param.indexOf("/"));
 		  System.out.println(userName);
