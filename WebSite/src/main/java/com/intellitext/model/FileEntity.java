@@ -143,6 +143,7 @@ public class FileEntity {
 	
 	public String toString()
 	{
-		return "Name : " + name + " Owner: " + owner + " Type: " + type + " Date Created: " + dateCreated;  
+		return "Path " + path +  " Name : " + name + " Owner: " + owner + " Type: " + type + " Date Created: " + dateCreated + " | Contents: " + contents;  
+		 
 	}
 }

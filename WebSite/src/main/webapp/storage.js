@@ -194,7 +194,7 @@ $("#newTextFile").click(function() {
         "owner": profile.getEmail(),
         "type": "rtf",
         "color" : "#ffffff",
-        "contents" : "{ insert: '' }",
+        "contents" : "{" + '"insert"' + ":" + '"Test"' + "}",
         "lastModified": today.getFullYear() + "." + (today.getMonth() + 1) + "." + today.getDate() + " " + (today.getHours() + 1) + ":" + today.getMinutes(),
         "dateCreated": today.getFullYear() + "." + (today.getMonth() + 1) + "." + today.getDate() + " " + (today.getHours() + 1) + ":" + today.getMinutes(),
         "sharedWith": null

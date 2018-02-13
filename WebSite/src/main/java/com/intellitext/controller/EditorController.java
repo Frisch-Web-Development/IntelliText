@@ -49,8 +49,8 @@ public class EditorController {
 	@RequestMapping(value = "/getfile", method = RequestMethod.GET)
 	public @ResponseBody String returnBlob(
 	            @RequestParam("path") String path, Principal prince) {
-	        String response = "{"+"\"insert\"" + ":" + " \"Shut up\"" + "}";
-	        //String contents = retriever.getFileContentsByPath(path, prince);
+	        //String response = "{"+"\"insert\"" + ":" + " \"Shut up\"" + "}";
+	        String response = retriever.getFileContentsByPath(path, prince);
 	        	        
 	        return response;
 	    }
@@ -59,6 +59,7 @@ public class EditorController {
 	@RequestMapping(value = "/file/save", method = RequestMethod.POST)
 	public void saveBlob( @RequestBody String file, @RequestParam("path") String path, Principal prince)
 	{
+			System.out.println("Saving file " + file + "   " + path);
 			persistor.updateFile(file, path ,prince); 
 				
 	}

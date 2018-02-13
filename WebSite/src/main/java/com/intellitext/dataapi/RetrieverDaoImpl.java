@@ -47,7 +47,7 @@ public class RetrieverDaoImpl implements RetrieverDao {
 	}
 	@Override
 	public List<FileEntity> getAllFiles(Principal user) {
-		ArrayList<UserFileStorageEntity> temp = (ArrayList<UserFileStorageEntity>) mongo.findAll(UserFileStorageEntity.class, "Files");
+		List<UserFileStorageEntity> temp = (ArrayList<UserFileStorageEntity>) mongo.findAll(UserFileStorageEntity.class, "Files");
 		UserFileStorageEntity tempStorage = new UserFileStorageEntity(null, null, null, null);
 		// TODO add precautions here
 		for(UserFileStorageEntity userFileStorageEntity : temp) {
@@ -70,7 +70,7 @@ public class RetrieverDaoImpl implements RetrieverDao {
 	public String getFileContentsByPath(String filePath,Principal user)
 	{
 		String contents = ""; 
-		List<FileEntity> temp = getAllFiles(user); 
+		ArrayList<FileEntity> temp = (ArrayList<FileEntity>) getAllFiles(user); 
 		for(FileEntity item: temp)
 		{
 			if(item.getPath().equals(filePath))

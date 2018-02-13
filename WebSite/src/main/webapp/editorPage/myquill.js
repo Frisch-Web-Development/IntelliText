@@ -46,7 +46,7 @@ function onSignIn(googleUser) {
     	    url: "/getfile?path=" + path,
     	    async:false
     	}).done(function(data) {
-    			console.log(data + " ");
+    			console.log(data + " data");
     			blob = JSON.parse(data);
     			quill.setContents([
     				  blob
