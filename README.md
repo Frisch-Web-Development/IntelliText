@@ -73,3 +73,7 @@ Accordion.js (https://github.com/gkgkgkgk/Accordion.js) is implemented into the 
 ### 2/13
 
 Ok, the system officially works (most of the time). Needs to be cleaned up
+
+### 2/13 #2
+
+The "text" part of IntelliText is fully functioning.
