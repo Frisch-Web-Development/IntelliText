@@ -48,24 +48,19 @@ public class EditorController {
 	
 	@RequestMapping(value = "/getfile", method = RequestMethod.GET)
 	public @ResponseBody String returnBlob(
-	            @RequestParam("path") String path) {
+	            @RequestParam("path") String path, Principal prince) {
 	        String response = "{"+"\"insert\"" + ":" + " \"Shut up\"" + "}";
-	        
+	        //String contents = retriever.getFileContentsByPath(path, prince);
+	        	        
 	        return response;
 	    }
 	
 	
-	@RequestMapping(value = "/file/save/{username}/{filePath}", method = RequestMethod.GET)
-	public void saveBlob( @RequestBody String file, @PathVariable String filePath, @PathVariable String username, Principal prince)
+	@RequestMapping(value = "/file/save", method = RequestMethod.POST)
+	public void saveBlob( @RequestBody String file, @RequestParam("path") String path, Principal prince)
 	{
-		if(prince.getName().equals(username))
-		{
-			persistor.updateFile(file, filePath,prince); 
-		}
-		else 
-		{
-			System.out.println("hacker");
-		}
+			persistor.updateFile(file, path ,prince); 
+				
 	}
 }
 

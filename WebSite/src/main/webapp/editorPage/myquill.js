@@ -2,6 +2,8 @@ var letters = 0;
 var contents;
 var blob;
 var quill;
+var temp;
+var path;
 
 function onSignIn(googleUser) {
     console.log("Success");
@@ -30,7 +32,9 @@ function onSignIn(googleUser) {
 	    contentType: "application/json"
 	});
        
-    var temp = window.location.href.substring(window.location.href.indexOf("=") + 1, window.location.href.length);
+    temp = window.location.href.substring(window.location.href.indexOf("=") + 1, window.location.href.length);
+    
+    path = temp.substring(temp.indexOf("/"), temp.length);
         
     if(temp.substring(0, temp.indexOf("/")) == user.email){
     	console.log("URL Matches Prince");
@@ -39,7 +43,7 @@ function onSignIn(googleUser) {
     	    headers: {
     	        'Content-Type': 'application/json'
     	    },
-    	    url: "/getfile?path=/All/new untitled document",
+    	    url: "/getfile?path=" + path,
     	    async:false
     	}).done(function(data) {
     			console.log(data + " ");
@@ -105,6 +109,18 @@ $(document).ready(function(){
 		{
 			letters = 0; 
 			// save and ajax
+			
+			$.ajax({
+			    type: 'POST',
+			    url: "/file/save?path=" + path,
+			    data: "{"+"\"insert\"" + ":" + " \"Shut up\"" + "}",
+			    async: false,
+			    error: function(e) {
+			        console.log(e);
+			    },
+			    contentType: "application/json"
+			});
+			
 			contents = JSON.stringify(quill.getContents());
 			console.log(contents); 
 		}
@@ -119,10 +135,5 @@ $(document).ready(function(){
 			}
 		
 	}
-	
-		
-	
-
-	
 	
 });
