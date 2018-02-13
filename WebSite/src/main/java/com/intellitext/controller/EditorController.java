@@ -51,7 +51,6 @@ public class EditorController {
 	            @RequestParam("path") String path, Principal prince) {
 	        //String response = "{"+"\"insert\"" + ":" + " \"Shut up\"" + "}";
 	        String response = retriever.getFileContentsByPath(path, prince);
-	        	        
 	        return response;
 	    }
 	

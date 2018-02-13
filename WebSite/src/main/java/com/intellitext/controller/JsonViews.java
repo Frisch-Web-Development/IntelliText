@@ -4,4 +4,5 @@ public class JsonViews {
 	public static interface User {}
 	public static interface File {}
 	public static interface Folder {}
+	public static interface UserFileStorageEntity{}
 }

@@ -62,21 +62,18 @@ public class PersistorDaoImpl implements PersistorDao {
 	@Override
 	public void updateFile(String file, String filePath, Principal user) {
 		List<FileEntity> files = retriever.getAllFiles(user); 
-		FileEntity newFile = new FileEntity();
 		System.out.println(files.size() + " file size");
 		for(FileEntity item: files)
 		{
 			if (item.getPath().equals(filePath))
 			{
-				newFile = item;
-				System.out.println("found file");
-				newFile.setContents(file);
+				item.setContents(file);
 				break; 
 			}
 				
 		}
 		Update update = new Update();
-		System.out.println(update.set("files", newFile));
+		System.out.println(update.set("files", files));
 		System.out.println(user.getName());
 		System.out.println(mongo.updateFirst(new Query(Criteria.where("email").is(user.getName())), update, "Files"));
 		

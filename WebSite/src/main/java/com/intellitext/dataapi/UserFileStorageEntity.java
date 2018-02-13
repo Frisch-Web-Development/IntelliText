@@ -3,14 +3,19 @@ package com.intellitext.dataapi;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.intellitext.controller.JsonViews;
 import com.intellitext.model.FileEntity;
 import com.intellitext.model.FolderEntity;
 
 public class UserFileStorageEntity {
-
+	@JsonView(value = { JsonViews.UserFileStorageEntity.class })
 	String userName;
+	@JsonView(value = { JsonViews.UserFileStorageEntity.class })
 	String email;
+	@JsonView(value = { JsonViews.UserFileStorageEntity.class })
 	List<FileEntity> files;
+	@JsonView(value = { JsonViews.UserFileStorageEntity.class })
 	List<FolderEntity> folders;
 
 	public UserFileStorageEntity(String userName, String email, List<FileEntity> files, List<FolderEntity> folders) {

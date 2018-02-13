@@ -48,9 +48,9 @@ function onSignIn(googleUser) {
     	}).done(function(data) {
     			console.log(data + " data");
     			blob = JSON.parse(data);
-    			quill.setContents([
+    			quill.setContents(
     				  blob
-    				]);
+    				);
     			
     });
     	// load file here
@@ -113,7 +113,7 @@ $(document).ready(function(){
 			$.ajax({
 			    type: 'POST',
 			    url: "/file/save?path=" + path,
-			    data: "{"+"\"insert\"" + ":" + " \"Shut up\"" + "}",
+			    data: JSON.stringify(quill.getContents()),
 			    async: false,
 			    error: function(e) {
 			        console.log(e);
