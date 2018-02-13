@@ -69,3 +69,7 @@ Accordion.js (https://github.com/gkgkgkgk/Accordion.js) is implemented into the 
 ### 2/8
 
 @googledrive we're coming for you.
+
+### 2/13
+
+Ok, the system officially works (most of the time). Needs to be cleaned up
