@@ -10,7 +10,6 @@ function onSignIn(googleUser) {
 
     profile = googleUser.getBasicProfile();
     google = googleUser;
-    
     // set user
     user = {
         "email": profile.getEmail(),

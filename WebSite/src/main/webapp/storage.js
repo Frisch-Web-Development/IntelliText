@@ -5,7 +5,7 @@ var recentFiles;
 var files = [];
 var filesInLocalPath;
 var today = new Date();
-var user;
+var username;
 var profile;
 
 var drag;
@@ -19,7 +19,7 @@ function onSignIn(googleUser) {
 
     profile = googleUser.getBasicProfile();
     google = googleUser;
-    
+    username = profile.getEmail();
     // set user
     user = {
         "email": profile.getEmail(),
@@ -122,7 +122,7 @@ $(document).ready(function() {
     generateAccordion({listP : files, parentDiv : "#content"});
 
     $( ".file" ).dblclick(function() {
-    	//window.location.replace("http://localhost:8080/editorPage/myquill.html");
+    	window.location.replace("http://localhost:8080/file?intellitext=" + username + $(this).attr("id"));
     });
 
 	$("#newFolderConfirm").click(function() {
@@ -194,7 +194,7 @@ $("#newTextFile").click(function() {
         "owner": profile.getEmail(),
         "type": "rtf",
         "color" : "#ffffff",
-        "contents" : "{" + '"insert"' + ":" + '"Shut up"' + "}",
+        "contents" : "{" + '"insert"' + ":" + '""' + "}",
         "lastModified": today.getFullYear() + "." + (today.getMonth() + 1) + "." + today.getDate() + " " + (today.getHours() + 1) + ":" + today.getMinutes(),
         "dateCreated": today.getFullYear() + "." + (today.getMonth() + 1) + "." + today.getDate() + " " + (today.getHours() + 1) + ":" + today.getMinutes(),
         "sharedWith": null
