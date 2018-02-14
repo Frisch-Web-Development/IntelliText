@@ -31,14 +31,14 @@ function generateAccordion(properties) {
     }
 
     if (prop.type == "accordion") {
-        var root = $("<ul id = 'tree'>").appendTo(prop.parentDiv);
+        var root = $("<ul class = 'accordion' id = 'tree'>").appendTo(prop.parentDiv);
         var elements = {};
         $.each(list, function() {
             var parent = elements[this.path.substr(0, this.path.lastIndexOf("/"))];
             var list = parent ? parent.next("ul") : root;
 
             if (!list.length) {
-                list = $("<ul>").insertAfter(parent);
+                list = $("<ul>").attr("class", "accordion").insertAfter(parent);
             }
 
             var color = this.color;
@@ -66,9 +66,9 @@ function generateAccordion(properties) {
                 } else if (prop.theme == "light") {
                     return "white";
                 }
-            }).appendTo(list);
+            }).attr("class", "accordion").appendTo(list);
             console.log(this.type);
-            var mySpan = $("<span>").text(this.name).attr("id", this.path).attr("class", (this.type == "rtf" ? "file" : "folder")).hover(function() {
+            var mySpan = $("<span>").text(this.name).attr("id", this.path).attr("class", "accordion").attr("class", (this.type == "rtf" ? "file" : "folder")).hover(function() {
                     if (prop.theme == "dark") {
                         if (blackText) {
                             $(this).css("color", "black");
@@ -101,9 +101,9 @@ function generateAccordion(properties) {
 
             var icon;
             if (this.type == "folder") {
-                icon = $("<i class='fa fa-folder'></i>").appendTo(mySpan);
+                icon = $("<i class='fa fa-folder accordion'></i>").appendTo(mySpan);
             } else if (this.type == "file") {
-                icon = $("<i class='fa fa-file'></i>").appendTo(mySpan);
+                icon = $("<i class='fa fa-file accordion'></i>").appendTo(mySpan);
             }
             elements[this.path] = item;
         });

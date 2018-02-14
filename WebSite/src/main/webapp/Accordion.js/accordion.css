@@ -2,22 +2,30 @@
 	display : none;
 }
 
-ul {
+.accordion ul {
 	list-style-type : none;
 	margin: 0;
 	padding: 0 0 0 40px;
 	margin: 0;
 }
 
-span {
+.accordion span {
 	color: white;
 	display: block;
 	width:100%;
 	transition: 0.2s;
+	cursor: pointer;
+	-webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
 }
 
 
-li{
+.accordion li{
 	list-style-position:inside;
 	border-radius: 3px;
 	transition: 0.2s;
@@ -29,7 +37,7 @@ li{
 
 }
 
-i{
+.accordion i{
 	float: right;
 	margin-right: 5px;
 }
