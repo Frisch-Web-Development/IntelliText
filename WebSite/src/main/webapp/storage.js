@@ -175,41 +175,43 @@ $(document).ready(function() {
 }
 
 $("#newTextFile").click(function() {
-    console.log("New File");
 
-    var date = {
-        "Year": today.getFullYear(),
-        "Month": today.getMonth() + 1,
-        "Date": today.getDate(),
-        "Hour": today.getHours() + 1,
-        "Minute": today.getMinutes()
-    }
-    //yyyy.MM.dd HH:mm
-
-
-    var file = {
-        "path": "/All/new untitled document",
-        "storagePath": "/",
-        "name": "new untitled document",
-        "owner": profile.getEmail(),
-        "type": "rtf",
-        "color" : "#ffffff",
-        "contents" : "{" + '"insert"' + ":" + '""' + "}",
-        "lastModified": today.getFullYear() + "." + (today.getMonth() + 1) + "." + today.getDate() + " " + (today.getHours() + 1) + ":" + today.getMinutes(),
-        "dateCreated": today.getFullYear() + "." + (today.getMonth() + 1) + "." + today.getDate() + " " + (today.getHours() + 1) + ":" + today.getMinutes(),
-        "sharedWith": null
-    }
-
-    $.ajax({
-        type: 'POST',
-        url: "/conf/storage/insert",
-        data: JSON.stringify(file),
-        error: function(e) {
-            console.log(e);
-        },
-        dataType: "json",
-        contentType: "application/json"
-    });
+	$('#newFileModal').modal('toggle');
 });
 
+$("#newFileConfirm").click(function() {
+    console.log("New File");
+
+	var date = {
+	        "Year": today.getFullYear(),
+	        "Month": today.getMonth() + 1,
+	        "Date": today.getDate(),
+	        "Hour": today.getHours() + 1,
+	        "Minute": today.getMinutes()
+	    }
+
+	    var file = {
+	        "path": "/All/new untitled document",
+	        "storagePath": "/",
+	        "name": "new untitled document",
+	        "owner": profile.getEmail(),
+	        "type": "rtf",
+	        "color" : "#ffffff",
+	        "contents" : "{" + '"insert"' + ":" + '""' + "}",
+	        "lastModified": today.getFullYear() + "." + (today.getMonth() + 1) + "." + today.getDate() + " " + (today.getHours() + 1) + ":" + today.getMinutes(),
+	        "dateCreated": today.getFullYear() + "." + (today.getMonth() + 1) + "." + today.getDate() + " " + (today.getHours() + 1) + ":" + today.getMinutes(),
+	        "sharedWith": null
+	    }
+
+	    $.ajax({
+	        type: 'POST',
+	        url: "/conf/storage/insert",
+	        data: JSON.stringify(file),
+	        error: function(e) {
+	            console.log(e);
+	        },
+	        dataType: "json",
+	        contentType: "application/json"
+	    });
+	});
 });

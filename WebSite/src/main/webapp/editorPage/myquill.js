@@ -79,6 +79,25 @@ function onSignIn(googleUser) {
 
 
 $(document).ready(function(){
+	
+	
+	$('body').on('click', '[data-editable]', function(){
+		  
+		  var $el = $(this);
+		              
+		  var $input = $('<input/>').css({'font-size': '200%'}).val( $el.text() );
+		  $el.replaceWith( $input );
+		  
+		  var save = function(){
+		    var $p = $('<p style = "font-size: 200%;" data-editable />').text( $input.val() );
+		    $input.replaceWith( $p );
+		  };
+		  
+		  $input.one('blur', save).focus();
+		  
+		});
+	
+	
 	var toolbarOptions = [ 
 	[{'font' : []}],
 	[ {'size': []}],
