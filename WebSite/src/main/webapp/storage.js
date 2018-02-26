@@ -180,8 +180,6 @@ $("#newTextFile").click(function() {
 });
 
 $("#newFileConfirm").click(function() {
-    console.log("New File");
-
 	var date = {
 	        "Year": today.getFullYear(),
 	        "Month": today.getMonth() + 1,
@@ -191,9 +189,9 @@ $("#newFileConfirm").click(function() {
 	    }
 
 	    var file = {
-	        "path": "/All/new untitled document",
+	        "path": "/"+$("#fileParentInput").val()+"/"+$("#fileNameInput").val(),
 	        "storagePath": "/",
-	        "name": "new untitled document",
+	        "name": $("#fileNameInput").val(),
 	        "owner": profile.getEmail(),
 	        "type": "rtf",
 	        "color" : "#ffffff",
