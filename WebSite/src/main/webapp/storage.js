@@ -98,19 +98,7 @@ function refreshUI(){
 	     }
 	 }); 
 
-	 $(function() {
-         $('.card').draggable({ revert: true });
-			            $('.toggle').draggable({ revert: true });
-
-         $('.toggle').droppable({
-            hoverClass: 'active',
-            drop: function(e, ui) {
-				  $('#myMovingModal').modal('toggle');
-				  drag = ui.draggable;
-				  drop = $(this);
-            }
-         });
-      });
+	 
 	
 }
 
@@ -121,6 +109,20 @@ $(document).ready(function() {
     ajaxCalls();
     generateAccordion({listP : files, parentDiv : "#content"});
 
+    $(function() {
+        $('.accordion').draggable({ revert: true });
+			            $('.toggle').draggable({ revert: true });
+
+        $('ul .accordion').droppable({
+           hoverClass: 'active',
+           drop: function(e, ui) {
+				  $('#myMovingModal').modal('toggle');
+				  drag = ui.draggable;
+				  drop = $(this);
+           }
+        });
+     });
+    
     $( ".file" ).dblclick(function() {
     	window.location.replace("http://localhost:8080/file?intellitext=" + username + $(this).attr("id"));
     });
