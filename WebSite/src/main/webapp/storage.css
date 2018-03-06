@@ -45,8 +45,7 @@ a.toggle {
 }
 
 a.toggle:hover{
-	        background: rgba(255, 0, 0, 0.9);
-			
+	background: rgba(255, 0, 0, 0.9);	
 }
 #back-to-top {
     position: fixed;

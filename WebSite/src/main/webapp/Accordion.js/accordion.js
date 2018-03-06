@@ -100,10 +100,11 @@ function generateAccordion(properties) {
             }).appendTo(item);
 
             var icon;
-            if (this.type == "folder") {
-                icon = $("<i class='fa fa-folder accordion'></i>").appendTo(mySpan);
-            } else if (this.type == "file") {
+            if (this.type == "rtf") {
                 icon = $("<i class='fa fa-file accordion'></i>").appendTo(mySpan);
+            } else {
+            	console.log("folder");
+                icon = $("<i class='fa fa-folder accordion'></i>").appendTo(mySpan);
             }
             elements[this.path] = item;
         });

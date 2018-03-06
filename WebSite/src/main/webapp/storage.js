@@ -108,7 +108,7 @@ $( document ).ajaxComplete(function() {
 $(document).ready(function() {
     ajaxCalls();
     generateAccordion({listP : files, parentDiv : "#content"});
-
+    
     $(function() {
         $('.accordion').draggable({ revert: true });
 			            $('.toggle').draggable({ revert: true });
@@ -135,7 +135,7 @@ $(document).ready(function() {
             "name": $("#newFolderInput").val(),
             "color": "#ffffff",
             "path": "/" + $("#newFolderInput").val(),
-            "owner": profile.getEmail(),
+            "owner": profile.getEmail()            
         }
 
         $.ajax({
