@@ -77,3 +77,13 @@ Ok, the system officially works (most of the time). Needs to be cleaned up
 ### 2/13 \#2
 
 The "text" part of IntelliText is fully functioning.
+
+### 3/6
+
+*TODO:*
+-Clean up file system
+  -Add items amount, size, details 
+-Custom Context Menu
+-Cards system
+-APIs
+
