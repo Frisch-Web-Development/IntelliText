@@ -17,10 +17,8 @@
       		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
       <link rel="stylesheet" href="storage.css">
-      <link rel="stylesheet" href="Accordion.js/accordion.css">
       <script
          src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-      <script src="Accordion.js/accordion.js"></script>
       <script src="storage.js"></script>
    <body>
       <nav class="navbar navbar-default navbar-fixed-top">
@@ -70,12 +68,13 @@
             <div class="row" id="recentsDiv">
             </div>
             <hr style="padding-top: 3em;">
-            <div id="content" class="row">
-               <!-- <ul class="accordion" id = "folderContainer">
-                  </ul> -->
+            <div id="content">
+               <div class = "folderContainer">
+               <div class = "folderDiv"></div>
+               </div>
+               </div>
             </div>
          </div>
-      </div>
       <!--  modal confirm new folder -->
       <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
          aria-labelledby="myModalLabel">
