@@ -14,6 +14,23 @@ html {
 	height:50px;
 	width:200px;
 	background:black;
+	width : 100%;
+}
+
+.fileText{
+	color: white;
+}
+
+.folderDiv .listView {
+	width : 100%;
+}
+
+.folderDiv .gridView {
+	width : 100%;
+}
+
+.fileText:hover{
+	color: red;
 }
 
 .whitetext {

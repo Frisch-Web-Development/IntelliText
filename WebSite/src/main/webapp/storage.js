@@ -7,6 +7,7 @@ var drag;
 var drop;
 
 function init() {
+	console.log("Init Jquery.")
 	$(".file").dblclick(
 			function() {
 				window.location
@@ -171,9 +172,36 @@ function ajaxCalls() {
 	console.log(files);
 }
 
-$(document).ready(function() {
 
-	console.log("Username not null");
+function generateFirstFolders(){
+	for(let i = 0; i < files.length; i++){
+		if(files[i].path.replace(/[^/]/g, "").length == 1){
+			console.log("First Folder! " + files[i].path);
+			generateFileType(files[i]);
+		}
+	}
+}
+
+function generateNewFolders(){
+	
+}
+
+function generateFileType(file){
+	var myDiv;
+	var mySpan;
+	
+	if(file.type == "rtf"){
+		
+	}
+	else{
+		myDiv = $("<div>").attr("id", file.path).attr("class", "folderDiv").appendTo(".folderContainer");
+		mySpan = $("<span>").text(file.name).attr("class", "fileText").appendTo(myDiv);
+	}
+}
+
+
+$(document).ready(function() {
 	ajaxCalls();
 	init();
+	generateFirstFolders();
 });
