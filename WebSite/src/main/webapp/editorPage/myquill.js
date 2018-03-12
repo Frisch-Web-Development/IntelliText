@@ -109,7 +109,10 @@ $(document).ready(function(){
 	];
 	
 	quill = new Quill('#editor', 	{
-		modules: { toolbar: toolbarOptions}, 
+		modules: { 
+			formula: true, 
+			toolbar: toolbarOptions
+			}, 
 		theme: "snow"
 	});
 	
