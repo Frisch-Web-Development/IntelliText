@@ -14,6 +14,10 @@ function init() {
 						.replace("http://localhost:8080/file?intellitext="
 								+ username + $(this).attr("id"));
 			});
+	$(".folderDiv").dblclick(
+			function() {
+				alert(" folder was clicked");
+			});
 
 	$("#newFolderConfirm").click(function() {
 		//console.log("New Folder");
@@ -191,10 +195,11 @@ function generateFileType(file){
 	var mySpan;
 	
 	if(file.type == "rtf"){
-		
+		myDiv = $("<div>").attr("id", file.path).attr("class", "folderDiv").addClass("listView").appendTo(".folderContainer");
+		mySpan = $("<span>").text(file.name).attr("class", "fileText").appendTo(myDiv);
 	}
 	else{
-		myDiv = $("<div>").attr("id", file.path).attr("class", "folderDiv").appendTo(".folderContainer");
+		myDiv = $("<div>").attr("id", file.path).attr("class", "folderDiv").addClass("listView").appendTo(".folderContainer");
 		mySpan = $("<span>").text(file.name).attr("class", "fileText").appendTo(myDiv);
 	}
 }
