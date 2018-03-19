@@ -7,6 +7,9 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,6 +32,26 @@ public class StorageController {
 	@Autowired
 	RetrieverDao retriever;
 
+	
+	@RequestMapping(value = "/storage/{username}/{filePath}", method = RequestMethod.POST)
+	public ResponseEntity<String> getBlob( @PathVariable String filePath, @PathVariable String username, Principal prince)
+	{
+		String contents = ""; 
+		if(prince.getName().equals(username))
+		{
+			contents = retriever.getFileContentsByPath(filePath, prince);
+			return new ResponseEntity<String>(contents, HttpStatus.OK);
+		}
+		else 
+		{
+			System.out.println("hacker");
+			return new ResponseEntity<String>("Error User not Authenticated", HttpStatus.CONFLICT);
+		}
+		
+	}
+	
+	
+	
 	@RequestMapping(value = "/conf/storage", method = RequestMethod.GET)
 	// "Retrieve list of all registered users"
 	public List<FileEntity> getAllUserFiles(Principal prince) {

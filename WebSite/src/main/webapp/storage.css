@@ -75,6 +75,19 @@
 }
 
 
+#recentFilesContainer{
+	
+	
+}
+
+.recentFile{
+	
+}
+
+.recentFile h4{
+	
+}
+
 .folderContainer {
 	width:100%;
 	height:100%;
@@ -82,7 +95,8 @@
 
 .folderDiv {
 	background:#ECEFF1;
-	padding : 10px 20px;	
+	padding : 10px 20px;
+	transition : background 0.25s;	
 }
 .folderDiv:hover {
 	background:#cfd3d6;
@@ -91,6 +105,12 @@
 .fileText{
 	color: black;
 	font-size: 20px;
+}
+
+.folderDiv i {
+	float: left;
+ 	position: relative;
+ 	margin-right : 20px;
 }
 
 .folderDiv.listView {
@@ -105,10 +125,6 @@
 
 .folderDiv .gridView {
 	width : 100%;
-}
-
-.fileText:hover{
-	color: red;
 }
 
 .whitetext {

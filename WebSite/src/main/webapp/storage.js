@@ -147,6 +147,7 @@ function onSignIn(googleUser) {
 		contentType : "application/json"
 	});
 
+	$("#welcomeMsg").text("Welcome " + profile.getGivenName() + "!");
 	console.log(user);
 
 }
@@ -206,14 +207,17 @@ function generateFileType(file){
 	console.log("Generating File");
 	var myDiv;
 	var mySpan;
+	var myIcon;
 	
 	if(file.type == "rtf"){
 		myDiv = $("<div>").attr("id", file.path).attr("class", "folderDiv").addClass("listView").appendTo(".folderContainer");
 		mySpan = $("<span>").text(file.name).attr("class", "fileText").appendTo(myDiv);
+		myIcon = $("<i>").addClass("material-icons").text("assignment").appendTo(mySpan);
 	}
 	else{
 		myDiv = $("<div>").attr("id", file.path).attr("class", "folderDiv").addClass("listView").appendTo(".folderContainer");
 		mySpan = $("<span>").text(file.name).attr("class", "fileText").appendTo(myDiv);
+		myIcon = $("<i>").addClass("material-icons").text("folder").appendTo(mySpan);
 	}
 }
 
