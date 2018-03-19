@@ -19,7 +19,9 @@ function init() {
 			});
 	$(".folderDiv").dblclick(
 			function() {
+				console.log("new path");
 				generateNewLayer(currentPath);
+				currentPath += $(this).attr("id");
 	});
 
 	$("#newFolderConfirm").click(function() {

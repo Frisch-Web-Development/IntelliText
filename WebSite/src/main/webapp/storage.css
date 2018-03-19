@@ -84,6 +84,9 @@
 	background:#ECEFF1;
 	padding : 10px 20px;	
 }
+.folderDiv:hover {
+	background:#cfd3d6;
+}
 
 .fileText{
 	color: black;
