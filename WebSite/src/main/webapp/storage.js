@@ -5,9 +5,12 @@ var username;
 var profile;
 var drag;
 var drop;
+var testVar = 0;
+var currentPath = "/";
 
 function init() {
-	console.log("Init Jquery.")
+	testVar = 5;
+	console.log("Init Jquery");
 	$(".file").dblclick(
 			function() {
 				window.location
@@ -16,8 +19,8 @@ function init() {
 			});
 	$(".folderDiv").dblclick(
 			function() {
-				alert(" folder was clicked");
-			});
+				generateNewLayer(currentPath);
+	});
 
 	$("#newFolderConfirm").click(function() {
 		//console.log("New Folder");
@@ -186,11 +189,19 @@ function generateFirstFolders(){
 	}
 }
 
-function generateNewFolders(){
-	
+function generateNewLayer(path){
+	console.log("New Layer");
+	$(".folderContainer").empty();
+	for(let i = 0; i < files.length; i++){
+		if(files[i].path.replace(/[^/]/g, "").length == path.replace(/[^/]/g, "").length + 1 && files[i].path.includes(path)){
+			console.log(files[i].path);
+			generateFileType(files[i]);
+		}
+	}
 }
 
 function generateFileType(file){
+	console.log("Generating File");
 	var myDiv;
 	var mySpan;
 	
@@ -207,6 +218,6 @@ function generateFileType(file){
 
 $(document).ready(function() {
 	ajaxCalls();
-	init();
 	generateFirstFolders();
+	init();
 });

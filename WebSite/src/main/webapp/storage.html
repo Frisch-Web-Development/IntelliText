@@ -40,6 +40,32 @@
 	<div class="jumbotron">
 		<h3>Recent Files</h3>
 	</div>
+	
+	<nav class="navbar navbar-dark bg-dark">
+		<div class="container-fluid">
+			<ul class="nav navbar-nav">
+				<li><button class="btn btn-primary dropdown-toggle" id="menu1"
+                  type="button" data-toggle="dropdown">
+               New <span class="caret"></span>
+               </button>
+               <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                  <li role="presentation"><a role="menuitem" tabindex="-1"
+                     id="newTextFile">New Text File</a></li>
+                  <li role="presentation"><a role="menuitem" tabindex="-1"
+                     id="newFolder" data-toggle="modal" data-target="#myModal">New
+                     Folder</a>
+                  </li>
+        </ul></li>
+				
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					
+				</li>
+			</ul>
+		</div>
+	</nav>
+	
 	<div id="content">
 		<div class="folderContainer"></div>
 	</div>
