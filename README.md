@@ -90,4 +90,5 @@ The "text" part of IntelliText is fully functioning.
 ### 3/14
 New file system underway, working on a per level generation system. Main editor is getting a cards system soon.
 
-
+### 3/20
+Storage system is getting a url parameter feature.
