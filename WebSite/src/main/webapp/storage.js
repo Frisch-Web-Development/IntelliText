@@ -7,6 +7,8 @@ var drag;
 var drop;
 var testVar = 0;
 var currentPath = "/";
+var temp;
+var path;
 
 function init() {
 	testVar = 5;
@@ -147,6 +149,24 @@ function onSignIn(googleUser) {
 		contentType : "application/json"
 	});
 
+	
+		if(window.location.href.includes("=")){
+			temp = window.location.href.substring(window.location.href.indexOf("=") + 1, window.location.href.length);
+			path = temp.substring(temp.indexOf("/"), temp.length);
+		    currentPath += path;
+		}
+	    
+	    console.log(path + "   current Path");
+	    
+	    if(temp.substring(0, temp.indexOf("/")) == user.email){
+	    	console.log("URL Matches Prince");
+	    }
+	    else {
+	    	console.log("HACKER");
+	    	// redirect
+	    }
+	
+	
 	$("#welcomeMsg").text("Welcome " + profile.getGivenName() + "!");
 	console.log(user);
 

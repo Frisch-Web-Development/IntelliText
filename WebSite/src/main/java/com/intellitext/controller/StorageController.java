@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -20,8 +21,6 @@ import com.intellitext.dataapi.PersistorDao;
 import com.intellitext.dataapi.RetrieverDao;
 import com.intellitext.model.FileEntity;
 import com.intellitext.model.FolderEntity;
-
-
 
 @RestController
 public class StorageController {
@@ -32,26 +31,6 @@ public class StorageController {
 	@Autowired
 	RetrieverDao retriever;
 
-	
-	@RequestMapping(value = "/storage/{username}/{filePath}", method = RequestMethod.POST)
-	public ResponseEntity<String> getBlob( @PathVariable String filePath, @PathVariable String username, Principal prince)
-	{
-		String contents = ""; 
-		if(prince.getName().equals(username))
-		{
-			contents = retriever.getFileContentsByPath(filePath, prince);
-			return new ResponseEntity<String>(contents, HttpStatus.OK);
-		}
-		else 
-		{
-			System.out.println("hacker");
-			return new ResponseEntity<String>("Error User not Authenticated", HttpStatus.CONFLICT);
-		}
-		
-	}
-	
-	
-	
 	@RequestMapping(value = "/conf/storage", method = RequestMethod.GET)
 	// "Retrieve list of all registered users"
 	public List<FileEntity> getAllUserFiles(Principal prince) {
