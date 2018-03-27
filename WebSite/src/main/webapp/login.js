@@ -26,6 +26,8 @@ function onSignIn(googleUser) {
 
 }
 $( document ).ready(function() {
+	$(".fileLink").attr("href","folder?path=gkepets@gmail.com/All");
+	$(".fileLink").attr("href","folder?path=gkepets@gmail.com/All");
     $('.flip').hover(function(){
         $(this).find('.card').toggleClass('flipped');
 
