@@ -6,7 +6,7 @@ var profile;
 var drag;
 var drop;
 var testVar = 0;
-var currentPath = "/";
+var currentPath = "";
 var temp;
 var path;
 
@@ -24,6 +24,7 @@ function init() {
 				console.log("new path");
 				generateNewLayer(currentPath);
 				currentPath += $(this).attr("id");
+				console.log("clicked folder " + currentPath);
 	});
 
 	$("#newFolderConfirm").click(function() {
@@ -204,8 +205,10 @@ function ajaxCalls() {
 
 
 function generateFirstFolders(){
+	let temp = window.location.href.substring(window.location.href.indexOf("=") + 1, window.location.href.length);
+	let tempPath = temp.substring(temp.indexOf("/"), temp.length);
 	for(let i = 0; i < files.length; i++){
-		if(files[i].path.replace(/[^/]/g, "").length == 1){
+		if(files[i].path.replace(/[^/]/g, "").length == tempPath.replace(/[^/]/g, "").length && files[i].path.includes(tempPath)){
 			console.log("First Folder! " + files[i].path);
 			generateFileType(files[i]);
 		}
@@ -213,10 +216,12 @@ function generateFirstFolders(){
 }
 
 function generateNewLayer(path){
+	let temp = window.location.href.substring(window.location.href.indexOf("=") + 1, window.location.href.length);
+	let tempPath = temp.substring(temp.indexOf("/"), temp.length);
 	console.log("New Layer");
 	$(".folderContainer").empty();
 	for(let i = 0; i < files.length; i++){
-		if(files[i].path.replace(/[^/]/g, "").length == path.replace(/[^/]/g, "").length + 1 && files[i].path.includes(path)){
+		if(files[i].path.replace(/[^/]/g, "").length == tempPath.replace(/[^/]/g, "").length + 1 && files[i].path.includes(tempPath)){
 			console.log(files[i].path);
 			generateFileType(files[i]);
 		}
