@@ -195,3 +195,7 @@ a.toggle:hover{
 #back-to-top.show {
     opacity: 1;
 }
+
+.emptyText{
+	text-align:center;
+}

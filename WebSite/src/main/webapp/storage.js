@@ -22,8 +22,11 @@ function init() {
 	$(".folderDiv").dblclick(
 			function() {
 				console.log("new path");
-				generateNewLayer(currentPath);
 				currentPath += $(this).attr("id");
+				history.pushState({
+				    id: 'file explorer'
+				}, 'Explorer | IntelliText', window.location.href + currentPath.substring(1, currentPath.length));
+				generateNewLayer(currentPath);
 				console.log("clicked folder " + currentPath);
 	});
 
@@ -154,7 +157,7 @@ function onSignIn(googleUser) {
 		if(window.location.href.includes("=")){
 			temp = window.location.href.substring(window.location.href.indexOf("=") + 1, window.location.href.length);
 			path = temp.substring(temp.indexOf("/"), temp.length);
-		    currentPath += path;
+		    currentPath += path.substring(1, path.length);
 		}
 	    
 	    console.log(path + "   current Path");
@@ -207,24 +210,41 @@ function ajaxCalls() {
 function generateFirstFolders(){
 	let temp = window.location.href.substring(window.location.href.indexOf("=") + 1, window.location.href.length);
 	let tempPath = temp.substring(temp.indexOf("/"), temp.length);
+	//console.log(tempPath.trim().charAt(tempPath.length-1));
+	if(tempPath.trim().charAt(tempPath.length-1) != "/"){
+		tempPath += "/";
+		//console.log("Added slash" );
+	}
+	let emptyCheck = 0;
 	for(let i = 0; i < files.length; i++){
 		if(files[i].path.replace(/[^/]/g, "").length == tempPath.replace(/[^/]/g, "").length && files[i].path.includes(tempPath)){
-			console.log("First Folder! " + files[i].path);
+			//console.log("First Folder! " + files[i].path);
 			generateFileType(files[i]);
+			emptyCheck += 1;
 		}
+	}
+	if(emptyCheck == 0){
+		generateEmptyMessage();
 	}
 }
 
-function generateNewLayer(path){
-	let temp = window.location.href.substring(window.location.href.indexOf("=") + 1, window.location.href.length);
-	let tempPath = temp.substring(temp.indexOf("/"), temp.length);
-	console.log("New Layer");
+function generateNewLayer(localPath){
+	/*let temp = window.location.href.substring(window.location.href.indexOf("=") + 1, window.location.href.length);
+	let tempPath = temp.substring(temp.indexOf("/"), temp.length);*/
+	console.log("New Layer " + localPath);
 	$(".folderContainer").empty();
+	let emptyCheck = 0;
 	for(let i = 0; i < files.length; i++){
-		if(files[i].path.replace(/[^/]/g, "").length == tempPath.replace(/[^/]/g, "").length + 1 && files[i].path.includes(tempPath)){
+		console.log(files[i].path +" : "+ localPath + "/" +files[i].name);
+		console.log(files[i].path === localPath + "/" +files[i].name);
+		if(files[i].path.replace(/[^/]/g, "").length == localPath.replace(/[^/]/g, "").length + 1 && files[i].path.trim() == (localPath + "/" +files[i].name).trim()){
 			console.log(files[i].path);
 			generateFileType(files[i]);
+			emptyCheck += 1;
 		}
+	}
+	if(emptyCheck == 0){
+		generateEmptyMessage();
 	}
 }
 
@@ -246,6 +266,9 @@ function generateFileType(file){
 	}
 }
 
+function generateEmptyMessage(){
+	myText = $("<p>").attr("class", "emptyText").addClass("font-weight-light").text("this folder is empty").appendTo(".folderContainer");
+}
 
 $(document).ready(function() {
 	ajaxCalls();
