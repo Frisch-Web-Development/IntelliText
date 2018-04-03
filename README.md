@@ -92,3 +92,6 @@ New file system underway, working on a per level generation system. Main editor 
 
 ### 3/20
 Storage system is getting a url parameter feature.
+
+### 4/3
+Cards are making a lot of progress, over @ https://github.com/Frisch-Web-Development/javascript-library-for-cards. The file system is very close to finished, just some features such as drag and drop need to be fleshed out.
