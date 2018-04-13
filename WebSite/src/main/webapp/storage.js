@@ -301,6 +301,20 @@ $(document).ready(function() {
     ajaxCalls();
     generateFirstFolders();
     init();
+    window.addEventListener('popstate', function(e){
+    	console.log("Changed");
+    	currentPath = "";
+        $(".folderContainer").empty();
+        if (window.location.href.includes("=")) {
+            temp = window.location.href.substring(
+                window.location.href.indexOf("=") + 1,
+                window.location.href.length);
+            path = temp.substring(temp.indexOf("/"), temp.length);
+            currentPath += path.substring(1, path.length);
+        }
+    	generateFirstFolders(currentPath);
+    	init();
+    	});
 });
 
 // context menu setup
