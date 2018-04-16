@@ -281,3 +281,11 @@ a.toggle:hover{
 	background: #284570;
 	border-radius: 2px;
 }
+
+#pathNav{
+	margin-left : 50px;
+}
+
+.pathElement:hover{
+	background:black;
+}

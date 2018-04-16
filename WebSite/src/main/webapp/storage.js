@@ -13,12 +13,6 @@ var path;
 function init() {
     testVar = 5;
     console.log("Init Jquery");
-    $(".file").dblclick(
-        function() {
-            window.location
-                .replace("http://localhost:8080/file?intellitext=" +
-                    username + $(this).attr("id"));
-        });
     $(".folderDiv").dblclick(
         function() {
             console.log("new path");
@@ -282,6 +276,12 @@ function generateFileType(file) {
             .appendTo(myDiv);
         myIcon = $("<i>").addClass("material-icons").text("assignment")
             .appendTo(mySpan);
+        myDiv.dblclick(
+                function() {
+                	console.log("Double Click");
+                    window.location
+                        .replace("http://localhost:8080/file?intellitext=" +
+                            username + $(this).attr("id"));});
     } else {
         myDiv = $("<div>").attr("id", file.path).attr("class", "folderDiv")
             .addClass("listView").appendTo(".folderContainer");
