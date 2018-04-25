@@ -16,11 +16,11 @@ function init() {
     $(".folderDiv").dblclick(
         function() {
             //console.log("new path");
-            currentPath += $(this).attr("id");
+            currentPath = $(this).attr("id");
             history.pushState({
                     id: 'file explorer'
-                }, 'Explorer | IntelliText', window.location.href +
-                currentPath.substring(1, currentPath.length));
+                }, 'Explorer | IntelliText', window.location.href.split('/', 4).join('/') + 
+                (currentPath.charAt(0) == '/' ? currentPath : "/" + currentPath));
             generateNewLayer(currentPath);
             //console.log("clicked folder " + currentPath);
         });
@@ -29,11 +29,16 @@ function init() {
         // console.log("New Folder");
         // yyyy.MM.dd HH:mm
 
+    	console.log(currentPath + "/" + $("#newFolderInput").val());
+    	
+    	let tempPath = (currentPath.charAt(0) == '/' ? "": "/") + currentPath + "/" + $("#newFolderInput").val()
+    	
         var folder = {
             "name": $("#newFolderInput").val(),
             "color": "#ffffff",
-            "path": "/" + $("#newFolderInput").val(),
-            "owner": profile.getEmail()
+            "path": tempPath,
+            "owner": profile.getEmail(),
+            "type" : "folder"
         }
 
         $.ajax({
@@ -89,8 +94,12 @@ function init() {
                 "Minute": today.getMinutes()
             }
 
+            console.log("new file" + currentPath);
+            
+            let tempPath = (currentPath.charAt(0) == '/' ? "" : "/") + currentPath + "/" + $("#fileNameInput").val();
+            
             var file = {
-                "path": (currentPath.charAt(0) == '/' ? "" : "/") + currentPath + "/" + $("#fileNameInput").val(),
+                "path": tempPath,
                 "storagePath": "/",
                 "name": $("#fileNameInput").val().trim(),
                 "owner": profile.getEmail(),
@@ -285,6 +294,7 @@ function generateFileType(file) {
                         .replace("http://localhost:8080/file?intellitext=" +
                             username + $(this).attr("id"));});
     } else {
+    	console.log("Generating Folder");
         myDiv = $("<div>").attr("id", file.path).attr("class", "folderDiv")
             .addClass("listView").appendTo(".folderContainer");
         mySpan = $("<span>").text(file.name).attr("class", "fileText")
