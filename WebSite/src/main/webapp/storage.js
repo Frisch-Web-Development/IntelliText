@@ -15,14 +15,14 @@ function init() {
     console.log("Init Jquery");
     $(".folderDiv").dblclick(
         function() {
-            console.log("new path");
+            //console.log("new path");
             currentPath += $(this).attr("id");
             history.pushState({
                     id: 'file explorer'
                 }, 'Explorer | IntelliText', window.location.href +
                 currentPath.substring(1, currentPath.length));
             generateNewLayer(currentPath);
-            console.log("clicked folder " + currentPath);
+            //console.log("clicked folder " + currentPath);
         });
 
     $("#newFolderConfirm").click(function() {
@@ -92,7 +92,7 @@ function init() {
             var file = {
                 "path": (currentPath.charAt(0) == '/' ? "" : "/") + currentPath + "/" + $("#fileNameInput").val(),
                 "storagePath": "/",
-                "name": $("#fileNameInput").val(),
+                "name": $("#fileNameInput").val().trim(),
                 "owner": profile.getEmail(),
                 "type": "rtf",
                 "color": "#ffffff",
@@ -120,13 +120,14 @@ function init() {
             });
         });
 
-    $("#items > li").click(function() {
+    $("#items>li").click(function() {
         console.log($(this).text());
-        if($(this).text().toLowerCase() == "assignment new file"){
+        if($(this).text().includes("assignment")){
             $('#newFileModal').modal('toggle');
         }
-        else if($(this).text().toLowerCase() == "folder new folder"){
+        else if($(this).text().includes("folder")){
             $('#myModal').modal('toggle');
+        	console.log(currentPath);
         }
     });
 
@@ -134,7 +135,7 @@ function init() {
 /** Google Verification * */
 
 function onSignIn(googleUser) {
-    console.log("Success");
+    //console.log("Success");
 
     profile = googleUser.getBasicProfile();
     google = googleUser;
@@ -168,18 +169,18 @@ function onSignIn(googleUser) {
         currentPath += path.substring(1, path.length);
     }
 
-    console.log(path + "   current Path");
+    //console.log(path + "   current Path");
 
     if (temp.substring(0, temp.indexOf("/")) == user.email) {
-        console.log("URL Matches Prince");
+        //console.log("URL Matches Prince");
     } else {
-        console.log("HACKER");
+        //console.log("HACKER");
         // redirect
     }
 
     $("#welcomeMsg").text("Welcome " + profile.getGivenName() + "!");
-    console.log(user);
-
+    //console.log(user);
+    init();
 }
 
 function ajaxCalls() {
@@ -191,7 +192,7 @@ function ajaxCalls() {
         url: "/conf/storage/folders",
         async: false
     }).done(function(data) {
-        console.log("Finished Folder");
+        //console.log("Finished Folder");
         for (var i = 0; i < data.length; i++) {
             files.push(data[i]);
         }
@@ -204,12 +205,12 @@ function ajaxCalls() {
         url: "/conf/storage",
         async: false
     }).done(function(data) {
-        console.log("Finished Files");
+        //console.log("Finished Files");
         for (var i = 0; i < data.length; i++) {
             files.push(data[i]);
         }
     });
-    console.log(files);
+    //console.log(files);
 }
 
 function generateFirstFolders() {
@@ -234,6 +235,7 @@ function generateFirstFolders() {
     if (emptyCheck == 0) {
         generateEmptyMessage();
     }
+    generatePath(tempPath);
 }
 
 function generateNewLayer(localPath) {
@@ -243,17 +245,17 @@ function generateNewLayer(localPath) {
      * window.location.href.length); let tempPath =
      * temp.substring(temp.indexOf("/"), temp.length);
      */
-    console.log("New Layer " + localPath);
+    //console.log("New Layer " + localPath);
     $(".folderContainer").empty();
     let emptyCheck = 0;
     for (let i = 0; i < files.length; i++) {
-        console.log(files[i].path + " : " + localPath + "/" + files[i].name);
-        console.log(files[i].path === localPath + "/" + files[i].name);
+        //console.log(files[i].path + " : " + localPath + "/" + files[i].name);
+        //console.log(files[i].path === localPath + "/" + files[i].name);
         if (files[i].path.replace(/[^/]/g, "").length == localPath.replace(
                 /[^/]/g, "").length + 1 &&
             files[i].path.trim() == (localPath + "/" + files[i].name)
             .trim()) {
-            console.log(files[i].path);
+            //console.log(files[i].path);
             generateFileType(files[i]);
             emptyCheck += 1;
         }
@@ -264,7 +266,7 @@ function generateNewLayer(localPath) {
 }
 
 function generateFileType(file) {
-    console.log("Generating File");
+    //console.log("Generating File");
     var myDiv;
     var mySpan;
     var myIcon;
@@ -278,7 +280,7 @@ function generateFileType(file) {
             .appendTo(mySpan);
         myDiv.dblclick(
                 function() {
-                	console.log("Double Click");
+                	//console.log("Double Click");
                     window.location
                         .replace("http://localhost:8080/file?intellitext=" +
                             username + $(this).attr("id"));});
@@ -292,6 +294,31 @@ function generateFileType(file) {
     }
 }
 
+function generatePath(path){
+	console.log("Generating Path: " + path);
+	
+	let back = $("<div>").attr("id", "backButton");
+	let backText = $("<p>").text("back to top ");
+	let myIcon = $("<i>").addClass("material-icons").text("keyboard_return").appendTo(backText);
+	
+	backText.appendTo(back);
+	back.appendTo("#pathNav");
+	
+	
+	for(let i = 1; i < path.replace(/[^/]/g, "").length-1; i ++){
+		//console.log("Layer " + i);
+		let currentName = path.substring(path.indexOf("/") + 1, path.length - 1);
+		let myDiv = $("<div>").addClass("pathElement");
+		let myP = $("<p>").text(currentName).appendTo(myDiv);
+		myDiv.appendTo("#pathNav");
+		let spacerDiv = $("<div>").addClass("pathSpacer");
+		let spacer = $("<p>").text("/");
+		spacer.appendTo(spacerDiv);
+		spacerDiv.appendTo("#pathNav");
+	}
+}
+
+
 function generateEmptyMessage() {
     myText = $("<p>").attr("class", "emptyText").addClass("font-weight-light")
         .text("this folder is empty").appendTo(".folderContainer");
@@ -300,9 +327,8 @@ function generateEmptyMessage() {
 $(document).ready(function() {
     ajaxCalls();
     generateFirstFolders();
-    init();
     window.addEventListener('popstate', function(e){
-    	console.log("Changed");
+    	//console.log("Changed");
     	currentPath = "";
         $(".folderContainer").empty();
         if (window.location.href.includes("=")) {

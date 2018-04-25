@@ -41,33 +41,28 @@
 		</div>
 	</nav>
 	<div class="jumbotron">
-		<h3 id = "welcomeMsg" style = "padding-left : 20px;">Loading Profile...</h3>
-		<h2 style = "padding-left : 20px;">Recent Files</h2>
-		<div id = "recentFilesContainer">
-		</div>
+		<h3 id="welcomeMsg" style="padding-left: 20px;">Loading
+			Profile...</h3>
+		<h2 style="padding-left: 20px;">Recent Files</h2>
+		<div id="recentFilesContainer"></div>
 	</div>
 
-	<nav class="navbar navbar-dark bg-dark">
-		<div class="container-fluid">
-			<ul class="nav navbar-nav">
-				<li><button class="btn btn-primary dropdown-toggle" id="menu1"
-						type="button" data-toggle="dropdown">
-						New <span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-						<li role="presentation"><a role="menuitem" tabindex="-1"
-							id="newTextFile">New Text File</a></li>
-						<li role="presentation"><a role="menuitem" tabindex="-1"
-							id="newFolder">New
-								Folder</a></li>
-					</ul></li>
-					<li id = "pathNav"><div class = "pathElement"><p>Test</p></div></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li></li>
-			</ul>
+	<div class="container-fluid" style="width: 100%">
+		<button class="btn btn-primary dropdown-toggle" id="menu1"
+			type="button" data-toggle="dropdown">
+			New <span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+			<li role="presentation"><a role="menuitem" tabindex="-1"
+				id="newTextFile">New Text File</a></li>
+			<li role="presentation"><a role="menuitem" tabindex="-1"
+				id="newFolder">New Folder</a></li>
+		</ul>
+		<div id="pathNav">
+		
+		
 		</div>
-	</nav>
+	</div>
 
 	<div id="content">
 		<div class="folderContainer"></div>
@@ -154,12 +149,14 @@
 	</div>
 	<a href="#" id="back-to-top" title="Back to top">&uarr;</a>
 	<!-- Context Menu Code -->
-	 <div id='menu'>
-    <ul id='items'>
-      <li><i class = "material-icons" style = "vertical-align: middle;">assignment</i> New File</li>
-      <li><i class = "material-icons" style = "vertical-align: middle;">folder</i> New Folder</li>  
-    </ul>
-  </div>
+	<div id='menu'>
+		<ul id='items'>
+			<li><i class="material-icons" style="vertical-align: middle;">assignment</i>
+				New File</li>
+			<li><i class="material-icons" style="vertical-align: middle;">folder</i>
+				New Folder</li>
+		</ul>
+	</div>
 </body>
 </html>
 

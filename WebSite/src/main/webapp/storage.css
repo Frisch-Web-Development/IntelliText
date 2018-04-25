@@ -283,9 +283,54 @@ a.toggle:hover{
 }
 
 #pathNav{
-	margin-left : 50px;
+	  margin-top : 20px;
+	  display: flex;
+	  flex-direction: row;
+  	  flex-wrap: wrap;
+      justify-content: center;
+}
+
+.pathElement {
+	border-radius : 3px;
+	transition : all 0.1s;
+	margin:5px;
+	display: table;
+    text-align: center;
 }
 
 .pathElement:hover{
-	background:black;
+	background: #B2B2B2;
+	cursor: pointer;
+}
+
+.pathElement>p {
+	display: table-cell;
+}
+
+.pathSpacer {
+	margin : 5px;
+}
+
+#backButton{
+	border-radius : 3px;
+	border : 1px solid red;
+	transition : all 0.1s;
+	margin:5px;
+	display: table;
+    text-align: center;
+}
+
+#backButton>p{
+	    display: table-cell;
+	
+}
+
+
+#backButton>p>i {
+	vertical-align: middle;
+}
+
+#backButton:hover{
+	background: #F44336;
+	cursor: pointer;
 }
