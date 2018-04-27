@@ -10,9 +10,8 @@ var currentPath = "";
 var temp;
 var path;
 
-function init() {
-	testVar = 5;
-	console.log("Init Jquery");
+
+function initFolders(){
 	$(".folderDiv").dblclick(
 			function() {
 				//console.log("new path");
@@ -26,7 +25,13 @@ function init() {
 				generateNewLayer(currentPath);
 				//console.log("clicked folder " + currentPath);
 			});
+}
 
+
+
+function init() {
+	testVar = 5;
+	console.log("Init Jquery");
 	$("#newFolderConfirm").click(
 			function() {
 				// console.log("New Folder");
@@ -83,9 +88,11 @@ function init() {
 
 	$("#newTextFile").click(function() {
 		$('#newFileModal').modal('toggle');
+		console.log("toggle!");
 	});
 	$("#newFolder").click(function() {
 		$('#myModal').modal('toggle');
+		console.log("toggle!");
 	});
 
 	$("#newFileConfirm").click(
@@ -138,8 +145,10 @@ function init() {
 		console.log($(this).text());
 		if ($(this).text().includes("assignment")) {
 			$('#newFileModal').modal('toggle');
+			console.log("toggle!");
 		} else if ($(this).text().includes("folder")) {
 			$('#myModal').modal('toggle');
+			console.log("toggle!");
 			console.log(currentPath);
 		}
 	});
@@ -194,6 +203,7 @@ function onSignIn(googleUser) {
 	$("#welcomeMsg").text("Welcome " + profile.getGivenName() + "!");
 	//console.log(user);
 	init();
+	initFolders();
 }
 
 function ajaxCalls() {
@@ -284,7 +294,7 @@ function generateNewLayer(localPath) {
 	if (emptyCheck == 0) {
 		generateEmptyMessage();
 	}
-	init();
+	initFolders();
 }
 
 function generateFileType(file) {
@@ -318,6 +328,12 @@ function generateFileType(file) {
 
 function generatePath(path) {
 
+	let usePath = path;
+	
+	if(path.charAt(path.length-1) == '/'){
+		usePath = path.substring(0, usePath.length - 1);
+	}
+	
 	$("#pathNav").empty();
 
 	if (path != "/") {
@@ -329,8 +345,8 @@ function generatePath(path) {
 		back.appendTo("#pathNav");
 	}
 
-	let strings = path.split("/");
-	console.log(strings);
+	let strings = usePath.split("/");
+	//console.log(usePath);
 	for (let i = 1; i < strings.length-1; i++) {
 		//console.log("Layer " + i);
 		let currentName = strings[i];
@@ -365,6 +381,7 @@ $(document).ready(
 				}
 				generateFirstFolders(currentPath);
 				init();
+				initFolders();
 			});
 		});
 
@@ -379,6 +396,5 @@ $(document).bind("contextmenu", function(e) {
 function startFocusOut() {
 	$(document).on("click", function() {
 		$("#menu").hide();
-		$(document).off("click");
 	});
 }
