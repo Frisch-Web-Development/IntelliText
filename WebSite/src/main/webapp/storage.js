@@ -36,11 +36,8 @@ function init() {
 			function() {
 				// console.log("New Folder");
 				// yyyy.MM.dd HH:mm
-
-				console.log(currentPath + "/" + $("#newFolderInput").val());
-
-				let tempPath = (currentPath.charAt(0) == '/' ? "" : "/")
-						+ currentPath + "/" + $("#newFolderInput").val()
+				
+				let tempPath = (currentPath.charAt(0) === "/" ? "" : "") + currentPath + (currentPath == '/' ? "" : "/") + $("#newFolderInput").val();
 
 				var folder = {
 					"name" : $("#newFolderInput").val(),
@@ -343,6 +340,16 @@ function generatePath(path) {
 				.text("keyboard_return").appendTo(backText);
 		backText.appendTo(back);
 		back.appendTo("#pathNav");
+		back.click(function() {
+			currentPath = "";
+			history.pushState({
+				id : 'file explorer'
+			}, 'Explorer | IntelliText', window.location.href.split('/', 4)
+					.join('/')
+					+ (currentPath.charAt(0) == '/' ? currentPath : "/"
+							+ currentPath));
+			generateNewLayer(currentPath);
+		});
 	}
 
 	let strings = usePath.split("/");
