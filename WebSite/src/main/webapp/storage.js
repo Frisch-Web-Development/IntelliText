@@ -358,10 +358,10 @@ function generatePath(path) {
         for(let z = 0; z < i + 1; z++){
         	tempPathArr.push(tempStrings[z]);
         }
+        console.log(tempPathArr);
         
-        
-        let temp = tempPathArr.join('');
-        console.log(temp);
+        let temp = tempPathArr.join('/');
+        console.log(temp + " temp");
 
         console.log(temp + " szdxghjkljffds;kpl''h");
         let myDiv = $("<div>").addClass("pathElement").attr("id", temp);
@@ -377,9 +377,10 @@ function generatePath(path) {
                     id: 'file explorer'
                 }, 'Explorer | IntelliText', window.location.href.split('/', 4)
                 .join('/') +
-                ($(this).attr("id") == '/' ? $(this).attr("id") : "/" +
+                ($(this).attr("id") == '/' ? $(this).attr("id") :
                 		$(this).attr("id")));
-            generateNewLayer($(this).attr("id"));
+            console.log($(this).attr("id") == "/" ? $(this).attr("id") : $(this).attr("id"));
+            generateNewLayer($(this).attr("id") == "/" ? $(this).attr("id") : $(this).attr("id"));
         });
     }
 }
