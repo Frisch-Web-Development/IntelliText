@@ -33,7 +33,7 @@ function init() {
             // console.log("New Folder");
             // yyyy.MM.dd HH:mm
 
-            let tempPath = (currentPath.charAt(0) === "/" ? "" : "") + currentPath + (currentPath == '/' ? "" : "/") + $("#newFolderInput").val();
+            let tempPath = (currentPath.charAt(0) === "/" ? "" : "/") + currentPath + (currentPath == '/' ? "" : "/") + $("#newFolderInput").val();
 
             var folder = {
                 "name": $("#newFolderInput").val(),
@@ -100,9 +100,16 @@ function init() {
 
             console.log("new file" + currentPath);
 
-            let tempPath = (currentPath.charAt(0) == '/' ? "" : "/") +
+            let tempPath = "";
+            
+            if(currentPath == "/" || currentPath == ""){
+            	tempPath = "/All" + "/" + $("#fileNameInput").val();
+            }
+            else{
+            	tempPath = (currentPath.charAt(0) == '/' ? "" : "/") +
                 currentPath + "/" + $("#fileNameInput").val();
-
+            }
+            
             var file = {
                 "path": tempPath,
                 "storagePath": "/",
@@ -249,8 +256,21 @@ function generateFirstFolders() {
             emptyCheck += 1;
         }
     }
-    if (emptyCheck == 0) {
-        generateEmptyMessage();
+    
+    let existCheck = 1;
+
+    if(tempPath != "/"){
+     existCheck = 0;
+    for (let i = 0; i < files.length; i++) {
+    	console.log("Exist check" + tempPath + "test" + files[i].path);
+        if (tempPath == files[i].path + "/") {
+        	existCheck += 1;
+        }
+    }
+    }
+    console.log("exist chec" + existCheck);
+    if (emptyCheck == 0 || existCheck == 0) {
+        generateEmptyMessage((existCheck == 0 ? "This folder path does not exist." : "This folder is empty."));
     }
 }
 
@@ -385,9 +405,9 @@ function generatePath(path) {
     }
 }
 
-function generateEmptyMessage() {
+function generateEmptyMessage(text) {
     myText = $("<p>").attr("class", "emptyText").addClass("font-weight-light")
-        .text("this folder is empty").appendTo(".folderContainer");
+        .text(text).appendTo(".folderContainer");
 }
 
 $(document).ready(
