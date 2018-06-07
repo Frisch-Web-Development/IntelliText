@@ -187,7 +187,7 @@ $(document).ready(function(){
 		clearInterval(myTimer); 
 		myTimer = setInterval(timer, 100);
 		checkAnnotation(quill.getText(),quill.getContents()); 
-		//checkCards(quill.getContents(), quill.getText(),id);
+		checkCards(quill.getContents(), quill.getText(),id);
 	});	
 	function timer()  {
 		if(letters > 0) 
