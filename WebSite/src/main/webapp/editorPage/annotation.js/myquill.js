@@ -4,8 +4,7 @@ var blob;
 var quill;
 var temp;
 var path;
-var id = "cards";
-
+/*
 function onSignIn(googleUser) {
     console.log("Success");
 
@@ -75,12 +74,12 @@ function onSignIn(googleUser) {
     
    
 }
-
+*/
 
 $(document).ready(function(){
 
 			
-	$("#annotation").hide(0);
+	
 	$('body').on('click', '[data-editable]', function(){
 		  
 		  var $el = $(this);
@@ -96,19 +95,6 @@ $(document).ready(function(){
 		  $input.one('blur', save).focus();
 		  
 		});
-		
-		
-		$("#annotationB").click(function(){
-			console.log("ann"); 
-			$("#annotation").show(200);
-			$("#cards").hide(200); 
-		});
-		$("#cardB").click(function(){
-			console.log("card"); 
-			$("#annotation").hide(200);
-			$("#cards").show(200);
-		});
-			
 	
 	
 	var toolbarOptions = [ 
@@ -140,8 +126,6 @@ $(document).ready(function(){
 	Quill.register(CustomClass, true);
 	Quill.register(CustomClass2, true);
 //	$("button.ql-annotation").append('<svg viewBox="0 0 18 18"> <text font-size="15" font-family="Verdana" x="0" y="11"> @</text></svg>');
-	//type,title,image,text,id
-	//addCard("math","f(x) = 3x^3",null,"stuff and things", "cards");
 	
 	var content; 
 	var Range; 
@@ -185,9 +169,7 @@ $(document).ready(function(){
 		letters++; 
 //		timer(); 
 		clearInterval(myTimer); 
-		myTimer = setInterval(timer, 100);
 		checkAnnotation(quill.getText(),quill.getContents()); 
-		//checkCards(quill.getContents(), quill.getText(),id);
 	});	
 	function timer()  {
 		if(letters > 0) 
@@ -195,7 +177,7 @@ $(document).ready(function(){
 			letters = 0; 
 			// save and ajax
 			
-			$.ajax({
+			/*$.ajax({
 			    type: 'POST',
 			    url: "/file/save?path=" + path,
 			    data: JSON.stringify(quill.getContents()),
@@ -204,11 +186,10 @@ $(document).ready(function(){
 			        console.log(e);
 			    },
 			    contentType: "application/json"
-			});
+			});*/
 			
 			contents = JSON.stringify(quill.getContents());
-		//	console.log(contents); 
-			getResarch(quill.getText(), id); 
+			console.log(contents); 
 		}
 	}
 	function timer2()
@@ -223,6 +204,7 @@ $(document).ready(function(){
 	}
 	
 });
+
 
 function setContent(input)
 {

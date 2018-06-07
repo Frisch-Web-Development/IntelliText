@@ -58,7 +58,7 @@ public class EditorController {
 	@RequestMapping(value = "/file/save", method = RequestMethod.POST)
 	public void saveBlob( @RequestBody String file, @RequestParam("path") String path, Principal prince)
 	{
-			System.out.println("Saving file " + file + "   " + path);
+			//System.out.println("Saving file " + file + "   " + path);
 			persistor.updateFile(file, path ,prince); 
 				
 	}
