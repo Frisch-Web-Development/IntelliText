@@ -1,0 +1,78 @@
+.grammer {
+	border-style: solid;
+	border-color: green;
+}
+
+.math{
+	border-style: solid;
+	border-color:red; 
+}
+
+.title
+{
+	text-align: center; 
+}
+h4.title{
+	font-size: 4ems; 
+}
+h2.title{
+	font-size: 8ems; 
+}
+
+
+.small.text{
+	visibility: hidden;
+	
+}
+
+
+.full.text{
+	visibility: visible; 
+}
+.btn.full{
+	visibility: visible; 
+}
+
+.btn.small{
+	visibility: hidden; 
+}
+
+
+img.full{
+	height:100%; 
+	width:100%; 
+	
+}
+
+img.small{
+	display: block; 
+	margin-right: auto;
+	margin-left: auto; 
+	height:100%; 
+	width:50%; 
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 0.25;
+}
+
+
+.image.full{
+	width: 100%;
+	height: 15em;
+	
+}
+.image.small{
+	width:100%; 
+	height:8em; 
+}
+
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
